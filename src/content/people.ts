@@ -5,14 +5,24 @@ export const peopleIntro =
 
 export const principalInvestigator: PrincipalInvestigator = {
   name: 'Prof. Ara Jeong',
-  position: 'Principal Investigator',
-  affiliation: 'Assistant Professor, ',
+  affiliation: 'Assistant Professor',
   researchInterests: 'Geomorphology, Earth Surface and Landforms, Anthropocene, Soil Erosion, Cosmogenic Radionuclides, Sustainability',
   email: 'ara.jeong@khu.ac.kr',
   photo: { alt: '교수님 사진' },
   biography: ['이곳에는 약력과 연구 경력을 소개하는 글이 들어갑니다.'],
-  education: ['이곳에는 학력 사항이 들어갑니다.'],
-  career: ['이곳에는 주요 경력 사항이 들어갑니다.'],
+  education: [
+    'Ph.D., 2015–2019, School of Geographical Sciences and Urban Planning, Arizona State University',
+    'Master’s, 2013–2015, Department of Geography, Korea University',
+    'Bachelor’s, 2009–2013, Department of Geography Education and Department of Earth and Environmental Sciences, Korea University',
+  ],
+  career: [
+    '2025.03–Present: Assistant Professor, Department of Geography, Kyung Hee University',
+    '2022.02–2025.02: Assistant Professor, Department of Civil and Environmental Engineering, Korea Military Academy',
+    '2021.07–2021.12: Full-time Researcher, Research Institute for Geological Hazards and Industrial Resources, Pusan National University',
+    '2020.07–2021.06: Research Professor, Future Territory Research Institute, Korea University',
+    '2020.01–2020.12: Full-time Researcher, Research Institute for Geological Hazards and Industrial Resources, Pusan National University',
+    '2019.07–2020.01: Post-Doctoral Research Scholar, Arizona State University',
+  ],
 }
 
 /** Graduate students. Copy an entry to add a member; delete to remove. */

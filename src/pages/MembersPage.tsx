@@ -21,10 +21,10 @@ function MemberGrid({ id, title, members }: { id: string; title: string; members
   )
 }
 
-export default function PeoplePage() {
+export default function MembersPage() {
   return (
     <>
-      <PageHeader eyebrow="People" title="People" lead={peopleIntro} />
+      <PageHeader eyebrow="Members" title="Members" lead={peopleIntro} />
       <div className="bg-ink-900">
         <div className="container-page">
           {/* Principal Investigator */}
@@ -36,8 +36,7 @@ export default function PeoplePage() {
               </div>
               <div className="md:col-span-7 lg:col-span-8">
                 <h2 id="pi-title" lang="ko" className="text-[clamp(1.75rem,1.3rem+1.8vw,2.75rem)] font-semibold">{pi.name}</h2>
-                <p className="mt-2 text-sm font-medium tracking-wide text-accent">{pi.position}</p>
-                <p lang="ko" className="mt-2 text-[0.95rem] text-fg-muted">{pi.affiliation}</p>
+                <p lang="en" className="mt-3 text-[1rem] text-accent">{pi.affiliation}</p>
                 {pi.email && (
                   <p className="mt-5 flex items-start gap-2.5 text-sm text-fg-muted">
                     <MailIcon className="mt-0.5 size-4 shrink-0 text-fg-subtle" />

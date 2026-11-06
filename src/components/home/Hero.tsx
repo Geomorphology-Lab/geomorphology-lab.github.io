@@ -30,7 +30,7 @@ export function Hero() {
             ))}
           </h1>
           <p
-            lang="ko"
+            lang="en"
             className="animate-rise mt-8 max-w-xl text-[clamp(1.05rem,0.95rem+0.45vw,1.3rem)] leading-[1.75] text-fg/85 [animation-delay:350ms] md:mt-10"
           >
             {hero.description}

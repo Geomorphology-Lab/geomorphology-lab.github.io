@@ -21,7 +21,7 @@ export function SelectedPublications() {
         <ul className="border-t border-line">
           {featured.map((p, i) => (
             <li key={i} className="border-b border-line">
-              <PublicationItem publication={p} category={p.category} />
+              <PublicationItem publication={p} category={p.category} hideYear />
             </li>
           ))}
         </ul>

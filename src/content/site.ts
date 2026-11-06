@@ -14,7 +14,7 @@ export const site = {
     eyebrow: 'Kyung Hee University',
     title: 'Geomorphology Lab',
     description:
-      '이곳에는 연구실의 주요 연구 분야와 연구 목표를 소개하는 문구가 들어갑니다.',
+      'Exploring the processes that shape Earth’s surface and transform landscapes.',
     primaryAction: { label: 'About the Lab', path: '/about' },
     secondaryAction: { label: 'Explore Research', path: '/research' },
   },
@@ -27,16 +27,12 @@ export const site = {
     ],
   },
 
-  footer: {
-    description: '이곳에는 연구실을 한두 문장으로 소개하는 짧은 문구가 들어갑니다.',
-    address: '이곳에는 연구실의 위치와 공식 연락처가 들어갑니다.',
-  },
 }
 
 export const navigation: NavItem[] = [
   { label: 'About', path: '/about' },
   { label: 'Research', path: '/research' },
-  { label: 'People', path: '/people' },
+  { label: 'Members', path: '/members' },
   { label: 'Publications', path: '/publications' },
   { label: 'News', path: '/news' },
   { label: 'Contact', path: '/contact' },
@@ -81,11 +77,11 @@ export const contact = {
   intro: '이곳에는 연구실의 위치와 공식 연락처가 들어갑니다.',
   /** Confirmed: the laboratory belongs to Kyung Hee University. */
   university: 'Kyung Hee University (경희대학교)',
-  department: '이곳에는 연구실이 소속된 단과대학 및 학과명이 들어갑니다.',
-  location: '이곳에는 연구실이 위치한 건물명과 호실, 주소가 들어갑니다.',
+  department: 'Department of Geography, College of Science',
+  location: 'SPACE21, College of Science, Room 624',
   /** Set to a confirmed public address to show a mailto link. */
-  email: '이곳에는 연구실의 공식 이메일 주소가 들어갑니다.',
-  phone: '이곳에는 연구실의 공식 전화번호가 들어갑니다.',
+  email: 'ara.jeong@khu.ac.kr',
+  phone: '02-961-0738',
   prospective:
     '이곳에는 대학원 진학 및 연구실 참여를 희망하는 학생들을 위한 안내 문구가 들어갑니다.',
   /** Optional: a Google Maps / Naver Map / Kakao Map embed URL. Leave undefined to show the placeholder panel. */

@@ -4,15 +4,17 @@ import { ArrowUpRight } from '../common/Icons'
 interface Props {
   publication: Publication
   category?: string
+  /** Hide the year column (used for the homepage list) */
+  hideYear?: boolean
 }
 
 /** One publication row. Real and temporary entries share exactly the same layout. */
-export function PublicationItem({ publication: p, category }: Props) {
+export function PublicationItem({ publication: p, category, hideYear }: Props) {
   const href = p.doi ? `https://doi.org/${p.doi}` : p.url
   return (
     <article className="grid gap-x-10 gap-y-3 py-7 md:grid-cols-[7rem_1fr_auto] md:py-8">
       <div className="flex items-baseline gap-3 md:flex-col md:gap-1.5">
-        <span lang="ko" className="font-display text-base font-semibold tabular-nums text-accent">{p.year}</span>
+        {!hideYear && <span lang="ko" className="font-display text-base font-semibold tabular-nums text-accent">{p.year}</span>}
         {category && <span className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-fg-subtle">{category}</span>}
       </div>
       <div className="min-w-0">

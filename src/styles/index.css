@@ -201,9 +201,9 @@
    Members page photo sizes. The PI portrait sets the reference width;
    member photos are always a fixed share of it, so they can never be larger.
    ------------------------------------------------------------------ */
-:root { --pi-photo: 15rem; --member-photo-ratio: 0.82; }
+:root { --pi-photo: 15.5rem; --member-photo-ratio: 0.77; }
 @media (min-width: 48rem) {
-  :root { --pi-photo: clamp(12.5rem, 21.5vw, 16.875rem); }
+  :root { --pi-photo: clamp(12.5rem, 23vw, 18rem); }
 }
 .pi-photo { width: var(--pi-photo); }
 .member-photo {

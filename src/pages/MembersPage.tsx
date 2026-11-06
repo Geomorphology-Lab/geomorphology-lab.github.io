@@ -34,7 +34,7 @@ export default function MembersPage() {
 
             {/* Upper row: portrait + identification */}
             <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12 lg:gap-16">
-              <div className="w-56 shrink-0 md:w-[clamp(11.5rem,20vw,15.625rem)]">
+              <div className="pi-photo shrink-0">
                 <MediaFrame image={pi.photo} aspect="aspect-[4/5]" variant="portrait" eager />
               </div>
               <div className="min-w-0">

@@ -1,10 +1,6 @@
 import type { NewsCategory, NewsItem } from './types'
 
-export const newsIntro =
-  '이곳에는 연구실의 공지사항과 현장 조사, 학술대회 참가, 수상 소식 등 연구실 활동 소식이 들어갑니다.'
-
 export const newsCategories: { id: NewsCategory; label: string }[] = [
-  { id: 'Announcement', label: 'Announcements' },
   { id: 'Fieldwork', label: 'Fieldwork' },
   { id: 'Conference', label: 'Conferences' },
   { id: 'Award', label: 'Awards' },
@@ -12,19 +8,11 @@ export const newsCategories: { id: NewsCategory; label: string }[] = [
 ]
 
 /**
- * News items, newest first. The first three appear on the homepage.
+ * News items, newest first.
  * To add a photo: put the file in /public/images/news/ and set
  * image: { src: '/images/news/filename.jpg', alt: '사진 설명' }
  */
 export const news: NewsItem[] = [
-  {
-    id: 'announcement',
-    category: 'Announcement',
-    date: '게시일',
-    title: '이곳에는 연구실 공지사항의 제목이 들어갑니다.',
-    summary: '이곳에는 공지사항의 주요 내용을 요약한 문장이 들어갑니다.',
-    image: { alt: '이곳에는 공지사항과 관련된 사진이 들어갑니다.' },
-  },
   {
     id: 'fieldwork',
     category: 'Fieldwork',

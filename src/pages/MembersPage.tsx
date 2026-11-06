@@ -1,4 +1,5 @@
-import { alumni, graduateStudents, peopleIntro, principalInvestigator as pi, undergraduateResearchers } from '../content/people'
+import { alumni, graduateStudents, principalInvestigator as pi, undergraduateResearchers } from '../content/people'
+import { headerPhotos } from '../content/pageImages'
 import type { Person } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
 import { MediaFrame } from '../components/common/MediaFrame'
@@ -24,46 +25,71 @@ function MemberGrid({ id, title, members }: { id: string; title: string; members
 export default function MembersPage() {
   return (
     <>
-      <PageHeader eyebrow="Members" title="Members" lead={peopleIntro} />
+      <PageHeader eyebrow="Members" title="Members" photo={headerPhotos.members} />
       <div className="bg-ink-900">
         <div className="container-page">
           {/* Principal Investigator */}
           <section aria-labelledby="pi-title" className="py-16 md:py-24">
             <p className="eyebrow mb-10">Principal Investigator</p>
-            <div className="grid gap-10 md:grid-cols-12 md:gap-14">
-              <div className="max-w-xs md:col-span-5 md:max-w-none lg:col-span-4">
+
+            {/* Upper row: portrait + identification */}
+            <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12 lg:gap-16">
+              <div className="w-56 shrink-0 md:w-[clamp(11.5rem,20vw,15.625rem)]">
                 <MediaFrame image={pi.photo} aspect="aspect-[4/5]" variant="portrait" eager />
               </div>
-              <div className="md:col-span-7 lg:col-span-8">
-                <h2 id="pi-title" lang="ko" className="text-[clamp(1.75rem,1.3rem+1.8vw,2.75rem)] font-semibold">{pi.name}</h2>
-                <p lang="en" className="mt-3 text-[1rem] text-accent">{pi.affiliation}</p>
+              <div className="min-w-0">
+                <h2 id="pi-title" lang="en" className="text-[clamp(2rem,1.5rem+1.95vw,3.125rem)] font-semibold">{pi.name}</h2>
+                <p lang="en" className="mt-3 text-[1.0625rem] text-accent">{pi.affiliation}</p>
                 {pi.email && (
                   <p className="mt-5 flex items-start gap-2.5 text-sm text-fg-muted">
                     <MailIcon className="mt-0.5 size-4 shrink-0 text-fg-subtle" />
                     <EmailText value={pi.email} />
                   </p>
                 )}
-                <div className="mt-8 space-y-4 border-t border-line pt-8">
-                  {pi.biography.map((p, i) => (
-                    <p key={i} lang="ko" className="prose-body">{p}</p>
-                  ))}
-                </div>
-                <dl className="mt-10 grid gap-8 sm:grid-cols-3">
-                  {[
-                    ['Research Interests', [pi.researchInterests]],
-                    ['Education', pi.education],
-                    ['Career', pi.career],
-                  ].map(([label, items]) => (
-                    <div key={label as string}>
-                      <dt className="eyebrow mb-3 text-fg-subtle">{label as string}</dt>
-                      {(items as string[]).map((t, i) => (
-                        <dd key={i} lang="ko" className="mt-2 text-[0.95rem] leading-[1.7] text-fg-muted">{t}</dd>
-                      ))}
-                    </div>
-                  ))}
-                </dl>
+                {pi.biography && pi.biography.length > 0 && (
+                  <div className="mt-8 max-w-2xl space-y-4 border-t border-line pt-8">
+                    {pi.biography.map((p, i) => (
+                      <p key={i} lang="ko" className="prose-body">{p}</p>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
+
+            {/* Lower row: academic information across the full content width */}
+            <dl className="mt-14 grid gap-x-12 gap-y-12 border-t border-line pt-12 md:grid-cols-2 lg:grid-cols-[1fr_1.2fr_1.5fr] lg:gap-x-14">
+              <div>
+                <dt className="eyebrow mb-4 text-fg-subtle">Research Interests</dt>
+                <dd lang="en" className="text-[0.975rem] leading-[1.75] text-fg-muted">{pi.researchInterests}</dd>
+              </div>
+              <div>
+                <dt className="eyebrow mb-4 text-fg-subtle">Education</dt>
+                {pi.education.map((t, i) => (
+                  <dd key={i} lang="en" className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
+                    {t}
+                  </dd>
+                ))}
+              </div>
+              <div className="md:col-span-2 lg:col-span-1">
+                <dt className="eyebrow mb-4 text-fg-subtle">Career</dt>
+                {pi.career.map((t, i) => {
+                  // "2025.03–Present: Title, Institution" → date shown on its own line (text unchanged)
+                  const m = t.match(/^(\d{4}\.\d{2}\s*[–-]\s*(?:\d{4}\.\d{2}|Present)):\s*(.+)$/)
+                  return (
+                    <dd key={i} lang="en" className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
+                      {m ? (
+                        <>
+                          <span className="block font-display text-[0.8125rem] font-medium tabular-nums tracking-wide text-accent">{m[1]}</span>
+                          <span className="mt-1 block">{m[2]}</span>
+                        </>
+                      ) : (
+                        t
+                      )}
+                    </dd>
+                  )
+                })}
+              </div>
+            </dl>
           </section>
 
           <MemberGrid id="graduate-title" title="Graduate Students" members={graduateStudents} />

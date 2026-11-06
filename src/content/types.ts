@@ -41,7 +41,8 @@ export interface Person {
 
 export interface PrincipalInvestigator extends Omit<Person, 'position'> {
   affiliation: string
-  biography: string[]
+  /** Optional short biography paragraphs (not shown when empty) */
+  biography?: string[]
   education: string[]
   career: string[]
 }
@@ -54,29 +55,26 @@ export interface Alumnus {
 }
 
 export interface Publication {
-  authors: string
-  year: string
+  /** Unique, stable key, e.g. 'jeong-2025-esr' */
+  id: string
+  /** Publication year. Leave undefined only for a record whose year is not yet known. */
+  year?: number
   title: string
+  authors: string[]
   /** Journal name, conference name, or publisher */
   venue: string
-  /** Volume / issue / pages, presentation type, etc. */
-  details?: string
-  /** DOI without the https://doi.org/ prefix, e.g. '10.1016/j.geomorph.2024.109000' */
+  volume?: string
+  issue?: string
+  pages?: string
+  /** DOI without the https://doi.org/ prefix, e.g. '10.1016/j.earscirev.2025.105000' */
   doi?: string
   /** External link when no DOI exists */
   url?: string
-  /** Mark to feature on the homepage */
-  featured?: boolean
+  /** Kept for future use (e.g. 'journal', 'conference'); not shown on the page */
+  type?: string
 }
 
-export interface PublicationCategory {
-  id: string
-  title: string
-  description: string
-  items: Publication[]
-}
-
-export type NewsCategory = 'Announcement' | 'Fieldwork' | 'Conference' | 'Award' | 'Research'
+export type NewsCategory = 'Fieldwork' | 'Conference' | 'Award' | 'Research'
 
 export interface NewsItem {
   id: string
@@ -87,4 +85,17 @@ export interface NewsItem {
   summary: string
   image?: ImageRef
   link?: string
+}
+
+/** A responsive photograph available at several widths under /public */
+export interface ResponsivePhoto {
+  alt: string
+  /** Files keyed by pixel width; paths start with /images/ */
+  files: { width: number; src: string }[]
+  /** Pixel size of the largest file (used to pick the right size when cropped) */
+  aspect: number
+  /** CSS object-position for mobile and for tablet/desktop */
+  position: { mobile: string; desktop: string }
+  /** 'light' keeps more of a bright focal point (e.g. lava) visible under the overlay */
+  overlay?: 'default' | 'light'
 }

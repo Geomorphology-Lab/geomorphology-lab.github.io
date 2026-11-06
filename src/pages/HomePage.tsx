@@ -1,7 +1,6 @@
 import { Hero } from '../components/home/Hero'
 import { ResearchOverview } from '../components/home/ResearchOverview'
 import { AboutPreview } from '../components/home/AboutPreview'
-import { SelectedPublications } from '../components/home/SelectedPublications'
 
 export default function HomePage() {
   return (
@@ -9,7 +8,6 @@ export default function HomePage() {
       <Hero />
       <ResearchOverview />
       <AboutPreview />
-      <SelectedPublications />
     </>
   )
 }

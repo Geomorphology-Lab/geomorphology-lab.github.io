@@ -20,6 +20,13 @@ export const site = {
   },
 
   homeAbout: {
+    /** Atmospheric image at the top of the homepage About section (file in public/images/about/) */
+    image: {
+      src: '/images/about/coastal-landform.webp',
+      alt: '청록빛 바다와 파도 위로 솟은 해안 암석 지형을 공중에서 내려다본 모습',
+      /** Which part stays visible when cropped: mobile / desktop */
+      position: { mobile: '50% 45%', desktop: '50% 40%' },
+    },
     heading: 'Studying the processes that shape the Earth’s surface',
     paragraphs: [
       '이곳에는 연구실의 주요 연구 주제와 연구 목표, 연구실이 수행하는 학술 활동에 대한 소개글이 들어갑니다.',

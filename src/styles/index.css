@@ -177,3 +177,15 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-slide-img.is-animating { animation: none; }
 }
+
+/* ------------------------------------------------------------------
+   Homepage About image: soft bottom fade (mask works in all modern browsers)
+   ------------------------------------------------------------------ */
+.about-visual {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, rgb(0 0 0 / 0.82) 55%, rgb(0 0 0 / 0.5) 70%, rgb(0 0 0 / 0.18) 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 42%, rgb(0 0 0 / 0.82) 55%, rgb(0 0 0 / 0.5) 70%, rgb(0 0 0 / 0.18) 85%, transparent 100%);
+}
+.about-visual-img { object-position: var(--pos-mobile, 50% 50%); }
+@media (min-width: 48rem) {
+  .about-visual-img { object-position: var(--pos-desktop, 50% 50%); }
+}

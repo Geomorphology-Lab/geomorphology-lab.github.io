@@ -1,29 +1,28 @@
-import { heroImage } from '../../content/images'
 import { site } from '../../content/site'
 import { ArrowLink } from '../common/ArrowLink'
 import { Reveal } from '../common/Reveal'
 
 export function AboutPreview() {
+  const { image } = site.homeAbout
   return (
-    <section aria-labelledby="about-preview-title" className="relative overflow-hidden border-y border-line bg-ink-800 py-24 md:py-32">
-      <div className="container-page grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
-        <Reveal className="lg:col-span-6">
-          <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/11] lg:aspect-[4/5]">
-            <img
-              src={heroImage.src}
-              srcSet={heroImage.srcSet}
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              className="absolute inset-0 size-full scale-[1.25] object-cover"
-              style={{ objectPosition: '72% 55%' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent" />
-            <div className="absolute inset-4 border border-fg/15 md:inset-6" aria-hidden="true" />
-          </div>
-        </Reveal>
-        <Reveal delay={120} className="lg:col-span-6">
+    <section aria-labelledby="about-preview-title" className="relative overflow-hidden border-b border-line bg-ink-800 pb-24 md:pb-32">
+      {/* Full-width atmospheric image: starts at the section's top edge and dissolves into the background */}
+      <div className="about-visual relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9] lg:max-h-[36rem]">
+        <img
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          decoding="async"
+          className="about-visual-img absolute inset-0 size-full object-cover"
+          style={{ '--pos-mobile': image.position.mobile, '--pos-desktop': image.position.desktop } as React.CSSProperties}
+        />
+        {/* Gentle tone-down so the bright photo sits inside the dark palette */}
+        <div aria-hidden="true" className="absolute inset-0 bg-ink-900/25" />
+      </div>
+
+      {/* The text overlaps the faded bottom of the image slightly */}
+      <div className="container-page relative z-10 -mt-[clamp(3.5rem,11vw,9rem)]">
+        <Reveal className="max-w-3xl">
           <p className="eyebrow mb-5">About the Laboratory</p>
           <h2 id="about-preview-title" className="text-[clamp(1.75rem,1.3rem+1.8vw,2.75rem)] font-semibold text-fg">
             {site.homeAbout.heading}

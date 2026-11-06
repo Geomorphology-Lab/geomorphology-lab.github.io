@@ -7,7 +7,7 @@ import { join } from 'node:path'
 const dist = join(process.cwd(), 'dist')
 const index = join(dist, 'index.html')
 // Keep this list in sync with the routes in src/content/site.ts
-const routes = ['about', 'research', 'people', 'publications', 'news', 'contact']
+const routes = ['about', 'research', 'members', 'publications', 'news', 'contact']
 
 if (!existsSync(index)) throw new Error('dist/index.html not found - run vite build first')
 // Inner pages do not show the slideshow, so drop the homepage image preload there.

@@ -140,8 +140,9 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <p className="mt-auto text-xs uppercase tracking-[0.24em] text-fg-subtle">
-            {site.name} · {site.institution}
+          <p className="mt-auto text-xs uppercase leading-relaxed tracking-[0.24em] text-fg-subtle">
+            <span className="block">{site.name}</span>
+            <span className="block">{site.institution}</span>
           </p>
         </nav>
       </div>

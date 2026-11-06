@@ -68,7 +68,7 @@ All replaceable text and data are in `src/content/`. You do not need to edit any
 | --- | --- |
 | `site.ts` | Lab name, hero text, homepage About text, About page, footer, Contact page, navigation menu |
 | `research.ts` | Research areas (title, summary, description, image, related projects and publications) |
-| `people.ts` | Principal investigator, graduate students, undergraduate researchers, alumni |
+| `people.ts` | Principal investigator, graduate students, undergraduate researchers, alumni (shown on the Members page) |
 | `publications.ts` | Publications by category |
 | `news.ts` | News and gallery items, news categories |
 | `heroSlides.ts` | Homepage hero slideshow (photos, order, timing) |

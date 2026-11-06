@@ -39,7 +39,7 @@ export interface Person {
   photo?: ImageRef
 }
 
-export interface PrincipalInvestigator extends Person {
+export interface PrincipalInvestigator extends Omit<Person, 'position'> {
   affiliation: string
   biography: string[]
   education: string[]

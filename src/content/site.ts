@@ -17,8 +17,6 @@ export const site = {
       '이곳에는 연구실의 주요 연구 분야와 연구 목표를 소개하는 문구가 들어갑니다.',
     primaryAction: { label: 'About the Lab', path: '/about' },
     secondaryAction: { label: 'Explore Research', path: '/research' },
-    /** Describes the hero photograph for screen readers. Update when the photo is replaced. */
-    imageAlt: '안개가 낀 계곡 너머로 겹겹이 이어지는 산 능선 풍경',
   },
 
   homeAbout: {

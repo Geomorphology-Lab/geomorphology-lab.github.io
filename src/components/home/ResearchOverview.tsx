@@ -1,0 +1,46 @@
+import { Link } from 'react-router-dom'
+import { researchAreas, researchIntro } from '../../content/research'
+import { ArrowLink } from '../common/ArrowLink'
+import { ArrowUpRight } from '../common/Icons'
+import { Reveal } from '../common/Reveal'
+import { SectionHeading } from '../common/SectionHeading'
+
+export function ResearchOverview() {
+  return (
+    <section id="research-areas" aria-labelledby="research-areas-title" className="relative bg-ink-900 py-24 md:py-32">
+      <div className="container-page">
+        <SectionHeading
+          id="research-areas-title"
+          eyebrow="Research Areas"
+          title="Research Areas"
+          description={researchIntro.lead}
+          action={<ArrowLink to="/research">All research</ArrowLink>}
+        />
+        <ol className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 xl:grid-cols-4">
+          {researchAreas.map((area, i) => (
+            <li key={area.id} className="bg-ink-900">
+              <Reveal delay={i * 80} className="h-full">
+                <Link
+                  to={`/research#${area.id}`}
+                  className="group relative flex h-full min-h-[13rem] flex-col p-7 transition-colors duration-500 hover:bg-ink-800 md:min-h-[21rem] md:p-8"
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="font-display text-sm font-medium tabular-nums tracking-[0.18em] text-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <ArrowUpRight className="size-5 text-fg-subtle transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                  </div>
+                  <div className="mt-auto pt-8 md:pt-12">
+                    <h3 lang="ko" className="text-xl font-semibold text-fg md:text-[1.375rem]">{area.title}</h3>
+                    <p lang="ko" className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted">{area.summary}</p>
+                  </div>
+                  <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
+                </Link>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )
+}

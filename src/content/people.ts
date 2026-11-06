@@ -4,15 +4,15 @@ export const peopleIntro =
   '이곳에는 연구실 구성원과 연구실의 공동체 문화를 간략히 소개하는 문장이 들어갑니다.'
 
 export const principalInvestigator: PrincipalInvestigator = {
-  name: '책임교수 성명',
+  name: 'Prof. Ara Jeong',
   position: 'Principal Investigator',
-  affiliation: '이곳에는 책임교수의 소속 학과와 직위가 들어갑니다.',
-  researchInterests: '이곳에는 책임교수의 주요 연구 관심 분야가 들어갑니다.',
-  email: '이곳에는 공개가 승인된 이메일 주소가 들어갑니다.',
-  photo: { alt: '책임교수 사진' },
-  biography: ['이곳에는 책임교수의 약력과 연구 경력을 소개하는 글이 들어갑니다.'],
-  education: ['이곳에는 책임교수의 학력 사항이 들어갑니다.'],
-  career: ['이곳에는 책임교수의 주요 경력 사항이 들어갑니다.'],
+  affiliation: 'Assistant Professor, ',
+  researchInterests: 'Geomorphology, Earth Surface and Landforms, Anthropocene, Soil Erosion, Cosmogenic Radionuclides, Sustainability',
+  email: 'ara.jeong@khu.ac.kr',
+  photo: { alt: '교수님 사진' },
+  biography: ['이곳에는 약력과 연구 경력을 소개하는 글이 들어갑니다.'],
+  education: ['이곳에는 학력 사항이 들어갑니다.'],
+  career: ['이곳에는 주요 경력 사항이 들어갑니다.'],
 }
 
 /** Graduate students. Copy an entry to add a member; delete to remove. */

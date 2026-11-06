@@ -81,7 +81,6 @@ export const contact = {
   location: 'SPACE21, College of Science, Room 624',
   /** Set to a confirmed public address to show a mailto link. */
   email: 'ara.jeong@khu.ac.kr',
-  phone: '02-961-0738',
   prospective:
     '이곳에는 대학원 진학 및 연구실 참여를 희망하는 학생들을 위한 안내 문구가 들어갑니다.',
   /** Optional: a Google Maps / Naver Map / Kakao Map embed URL. Leave undefined to show the placeholder panel. */

@@ -1,7 +1,7 @@
 import { contact } from '../content/site'
 import { PageHeader } from '../components/common/PageHeader'
 import { EmailText } from '../components/common/EmailText'
-import { BuildingIcon, MailIcon, PhoneIcon, PinIcon } from '../components/common/Icons'
+import { BuildingIcon, MailIcon, PinIcon } from '../components/common/Icons'
 
 export default function ContactPage() {
   const rows = [
@@ -9,7 +9,6 @@ export default function ContactPage() {
     { icon: BuildingIcon, label: 'Department', value: <span lang="ko">{contact.department}</span> },
     { icon: PinIcon, label: 'Location', value: <span lang="ko">{contact.location}</span> },
     { icon: MailIcon, label: 'Email', value: <EmailText value={contact.email} /> },
-    { icon: PhoneIcon, label: 'Phone', value: <span lang="ko">{contact.phone}</span> },
   ]
   return (
     <>

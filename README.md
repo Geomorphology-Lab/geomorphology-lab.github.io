@@ -1,1 +1,189 @@
 # geomorphology-lab.github.io
+
+Website for **Geomorphology Lab, Kyung Hee University** (경희대학교 지형학 연구실).
+
+- Public address: <https://geomorphology.khu.ac.kr>
+- GitHub Pages address: <https://geomorphology-lab.github.io>
+- Stack: React 18 · TypeScript · Vite · Tailwind CSS v4 · GitHub Actions → GitHub Pages
+
+> **Status: first design prototype.** Most text is temporary Korean wording that describes what will go there, for example "이곳에는 … 이 들어갑니다". It uses the same styling as the final content, so the layout already looks finished. Replace this text with verified information as it becomes available (see below).
+
+---
+
+## 1. Run locally
+
+You need Node.js 20 or newer (22 recommended).
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Open the address printed in the terminal (usually <http://localhost:5173>).
+
+## 2. Build and check
+
+```bash
+npm run lint
+```
+
+```bash
+npm run build
+```
+
+`npm run build` does three things:
+
+1. Type-checks with TypeScript.
+2. Builds the static site into `dist/`.
+3. Runs `scripts/postbuild.mjs`, which copies `index.html` to `dist/<route>/index.html` and `dist/404.html`. That lets URLs such as `/research` load directly and survive a page refresh on GitHub Pages. The script also stops the build if `CNAME` is missing.
+
+To preview the production build:
+
+```bash
+npm run preview
+```
+
+## 3. Deploy
+
+Deployment is automatic. Every push to `main` runs `.github/workflows/deploy.yml`, which lints, builds and publishes `dist/` to GitHub Pages. It works on a free GitHub plan.
+
+**One-time setup (an organization owner must do this before the first merge):**
+
+1. Open the repository's **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**. Until this changes, Pages keeps serving the raw files from the branch. After the merge that would be the unbuilt `index.html`, and the site would show a blank page.
+3. Under **Custom domain**, confirm the domain is still `geomorphology.khu.ac.kr`, and enable **Enforce HTTPS** once GitHub has issued the certificate.
+
+The custom domain is kept by `public/CNAME`, which is copied into every build. The root `CNAME` is also kept for compatibility. The university manages the DNS record, so no DNS changes are needed.
+
+You can also start a deployment manually: **Actions → Deploy to GitHub Pages → Run workflow**.
+
+## 4. Where the content lives
+
+All replaceable text and data are in `src/content/`. You do not need to edit any component code.
+
+| File | Contents |
+| --- | --- |
+| `site.ts` | Lab name, hero text, homepage About text, About page, footer, Contact page, navigation menu |
+| `research.ts` | Research areas (title, summary, description, image, related projects and publications) |
+| `people.ts` | Principal investigator, graduate students, undergraduate researchers, alumni |
+| `publications.ts` | Publications by category |
+| `news.ts` | News and gallery items, news categories |
+| `images.ts` | Hero image configuration |
+| `types.ts` | Field definitions for every content type (reference) |
+
+### Replacing temporary text
+
+Find a sentence such as `'이곳에는 … 들어갑니다.'` in the files above and overwrite it with the real text. Keep the quotes `'…'` and the trailing commas. The new text appears with exactly the same design.
+
+### Adding a research area
+
+In the `researchAreas` array in `research.ts`, copy one `{ … }` block, paste it, and change its `id` to a new value (for example `'area-5'`). Numbers (01, 02 …) are assigned automatically in order. The homepage cards and the Research page update together.
+
+### Adding a lab member
+
+Add an entry to the appropriate array in `people.ts`:
+
+```ts
+{
+  name: '홍길동',
+  position: '박사과정',
+  researchInterests: '하천 지형 변화, 퇴적물 이동',
+  email: 'name@khu.ac.kr',            // Only when the member has approved public disclosure. Delete this line otherwise.
+  photo: { src: '/images/people/hong.jpg', alt: '홍길동 사진' },
+},
+```
+
+- Photos go in `public/images/people/`. A 4:5 portrait ratio around 800×1000 px is recommended.
+- If you omit `photo.src`, a neutral portrait image is shown.
+- `email` becomes a mailto link automatically only when it is a valid email address.
+- When a member graduates, move them to `alumni` in the form `{ name, degree, year, currentPosition }`.
+
+### Adding a publication
+
+Add an entry to the `items` of the matching category in `publications.ts` (newest first), and delete the temporary entry.
+
+```ts
+{
+  authors: 'Hong, G.-D., Kim, C.-S.',
+  year: '2025',
+  title: 'Title of the article',
+  venue: 'Geomorphology',
+  details: '450, 109000',
+  doi: '10.1016/j.geomorph.2025.109000', // Without the https://doi.org/ prefix
+  featured: true,                         // Show it in "Selected Publications" on the homepage (up to 4)
+},
+```
+
+If there is no DOI, use `url: 'https://…'` instead. Enter only verified records.
+
+### Adding news or gallery items
+
+Add an item to the top of the `news` array in `news.ts`. The three newest items appear on the homepage automatically. `category` must be one of `'Announcement' | 'Fieldwork' | 'Conference' | 'Award' | 'Research'`. Photos go in `public/images/news/`, using a 3:2 ratio:
+
+```ts
+image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모습' },
+```
+
+### Contact information and map
+
+Edit the `contact` object in `site.ts`. To show a map, put an embed URL from Google Maps, Naver Map, or Kakao Map in `mapEmbedUrl`.
+
+## 5. Replacing the photographs
+
+### Hero photo (homepage top, and the header band on inner pages)
+
+The current hero image is **an original landscape rendered by code** (`scripts/generate-hero.py`), so it has no copyright issues. It is a temporary image meant to be replaced with the lab's own fieldwork photo.
+
+1. Choose a landscape photo (a horizontal one with a calm area on the left works well). Confirm that you own its copyright or have permission to use it.
+2. Save it as JPG at three widths: **2560 px, 1600 px and 960 px**, each about 80% quality.
+3. Overwrite the three files in `src/assets/images/hero/` using the same file names:
+   `hero-2560.jpg`, `hero-1600.jpg`, `hero-960.jpg`
+4. Update `site.hero.imageAlt` in `src/content/site.ts` to describe the new photo.
+5. If a key subject gets cropped on mobile, adjust `position` in `src/content/images.ts`. For example, `'50% 50%'` keeps the center.
+
+You do not need to change any component code. If the image fails to load, the hero section still works on its dark background.
+
+### Research, people and news photos
+
+Put files under `public/images/…` and add `src` and `alt` to the matching content entry. Where there is no photo, a topographic-contour pattern is shown in the same frame size.
+
+## 6. Project structure
+
+```
+src/
+  components/
+    common/        Shared components (headings, image frame, icons, etc.)
+    layout/        Layout, footer
+    navigation/    Header and mobile menu
+    home/          Homepage sections (Hero, Research Areas, About, Publications, News)
+    research/      Research page blocks
+    people/        Member cards
+    publications/  Publication items
+    news/          News cards
+  content/         ← Content to edit
+  pages/           Page components
+  assets/images/   Hero image
+  styles/          Global styles and design tokens (colors, fonts)
+public/            Files copied as-is (CNAME, favicon, member and news photos)
+scripts/           Build helper scripts
+.github/workflows/ Automatic deployment
+```
+
+### Adding a new page
+
+1. Write a component in `src/pages/`.
+2. Add a `<Route>` in `src/App.tsx`.
+3. Add a menu item to `navigation` in `src/content/site.ts`.
+4. Add the path to the `routes` array in `scripts/postbuild.mjs`.
+
+## 7. Notes for future maintainers
+
+- **Only verified information**: do not publish publications, member details or contact details until they are confirmed.
+- **Image licensing**: use only photos the lab owns or has permission to use. Do not hotlink images found in search results.
+- **Accessibility**: always add an `alt` description to new images.
+- **Before you push**: run `npm run build` locally to confirm there are no errors. If the build fails on `main`, the site is not updated, and the previous version stays live.
+- Design tokens (colors, fonts) are in the `@theme` block of `src/styles/index.css`.
+- Fonts (Inter and Pretendard) are bundled through npm packages, so the site does not depend on an external font CDN.

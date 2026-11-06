@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { news, newsCategories, newsIntro } from '../content/news'
+import { news, newsCategories } from '../content/news'
+import { headerPhotos } from '../content/pageImages'
 import type { NewsCategory } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
 import { NewsCard } from '../components/news/NewsCard'
@@ -11,7 +12,7 @@ export default function NewsPage() {
 
   return (
     <>
-      <PageHeader eyebrow="News & Gallery" title="News & Gallery" lead={newsIntro} />
+      <PageHeader eyebrow="News & Gallery" title="News & Gallery" photo={headerPhotos.news} />
       <div className="bg-ink-900 py-16 md:py-24">
         <div className="container-page">
           <div role="group" aria-label="Filter news by category" className="-mx-1 mb-12 flex gap-2 overflow-x-auto px-1 pb-1 md:mb-16 md:flex-wrap">

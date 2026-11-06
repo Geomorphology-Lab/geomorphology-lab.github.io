@@ -22,10 +22,11 @@ export const site = {
   homeAbout: {
     /** Atmospheric image at the top of the homepage About section (file in public/images/about/) */
     image: {
-      src: '/images/about/coastal-landform.webp',
-      alt: '청록빛 바다와 파도 위로 솟은 해안 암석 지형을 공중에서 내려다본 모습',
+      src: '/images/about/braided-river-1600.webp',
+      srcSet: '/images/about/braided-river-960.webp 960w, /images/about/braided-river-1600.webp 1600w, /images/about/braided-river-2560.webp 2560w',
+      alt: '어두운 퇴적층 위로 여러 갈래의 물길이 갈라졌다 합쳐지는 망상하천을 위에서 내려다본 모습',
       /** Which part stays visible when cropped: mobile / desktop */
-      position: { mobile: '50% 45%', desktop: '50% 40%' },
+      position: { mobile: '40% 50%', desktop: '50% 48%' },
     },
     heading: 'Studying the processes that shape the Earth’s surface',
     paragraphs: [
@@ -81,7 +82,6 @@ export const about = {
 }
 
 export const contact = {
-  intro: '이곳에는 연구실의 위치와 공식 연락처가 들어갑니다.',
   /** Confirmed: the laboratory belongs to Kyung Hee University. */
   university: 'Kyung Hee University (경희대학교)',
   department: 'Department of Geography, College of Science',
@@ -90,7 +90,13 @@ export const contact = {
   email: 'ara.jeong@khu.ac.kr',
   prospective:
     '이곳에는 대학원 진학 및 연구실 참여를 희망하는 학생들을 위한 안내 문구가 들어갑니다.',
-  /** Optional: a Google Maps / Naver Map / Kakao Map embed URL. Leave undefined to show the placeholder panel. */
-  mapEmbedUrl: undefined as string | undefined,
-  mapDescription: '이곳에는 연구실 위치를 보여주는 지도가 들어갑니다.',
+  /**
+   * Building shown on the map (Google Maps search, no API key needed).
+   * Space21 houses the College of Science and the College of Nursing Science, Seoul Campus.
+   */
+  map: {
+    query: '경희대학교 서울캠퍼스 스페이스21 간호과학대학',
+    label: 'Space21, College of Nursing Science · Kyung Hee University Seoul Campus',
+    address: '26 Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea',
+  },
 }

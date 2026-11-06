@@ -1,11 +1,12 @@
 import { researchAreas, researchIntro } from '../content/research'
 import { PageHeader } from '../components/common/PageHeader'
+import { headerPhotos } from '../content/pageImages'
 import { ResearchAreaBlock } from '../components/research/ResearchAreaBlock'
 
 export default function ResearchPage() {
   return (
     <>
-      <PageHeader eyebrow="Research" title={researchIntro.title} lead={researchIntro.lead} />
+      <PageHeader eyebrow="Research" title={researchIntro.title} photo={headerPhotos.research} />
       <section className="bg-ink-900 pt-16 pb-8 md:pt-24">
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <p lang="ko" className="prose-body lg:col-span-7">{researchIntro.description}</p>

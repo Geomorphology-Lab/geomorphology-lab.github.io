@@ -10,6 +10,8 @@ export function AboutPreview() {
       <div className="about-visual relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9] lg:max-h-[36rem]">
         <img
           src={image.src}
+          srcSet={image.srcSet}
+          sizes="100vw"
           alt={image.alt}
           loading="lazy"
           decoding="async"
@@ -21,7 +23,7 @@ export function AboutPreview() {
       </div>
 
       {/* The text overlaps the faded bottom of the image slightly */}
-      <div className="container-page relative z-10 -mt-[clamp(3.5rem,11vw,9rem)]">
+      <div className="container-page relative z-10 -mt-[clamp(2.5rem,7vw,6rem)]">
         <Reveal className="max-w-3xl">
           <p className="eyebrow mb-5">About the Laboratory</p>
           <h2 id="about-preview-title" className="text-[clamp(1.75rem,1.3rem+1.8vw,2.75rem)] font-semibold text-fg">

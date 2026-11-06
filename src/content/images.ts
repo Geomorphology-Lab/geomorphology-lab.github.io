@@ -1,8 +1,8 @@
 /**
- * Hero photograph. To replace it, overwrite the three files in
- * src/assets/images/hero/ (same file names) with a landscape photograph
- * exported at 2560px, 1600px and 960px wide — no code changes needed.
- * Update `site.hero.imageAlt` in site.ts to describe the new photo.
+ * Image for the inner-page header band (PageHeader) and the homepage About section.
+ * The homepage hero slideshow is configured separately in heroSlides.ts.
+ * To replace: overwrite the three files in src/assets/images/hero/ (same names).
+ *
  */
 import hero2560 from '../assets/images/hero/hero-2560.jpg'
 import hero1600 from '../assets/images/hero/hero-1600.jpg'

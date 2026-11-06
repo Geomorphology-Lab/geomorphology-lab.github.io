@@ -1,31 +1,17 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../../content/site'
-import { heroImage } from '../../content/images'
+import { HeroSlideshow } from './HeroSlideshow'
 import { ArrowDown, ArrowRight } from '../common/Icons'
 
 export function Hero() {
-  const [imageFailed, setImageFailed] = useState(false)
   const { hero } = site
 
   return (
     <section aria-labelledby="hero-title" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink-900">
-      {/* Background photograph (replaceable — see src/content/images.ts) */}
-      {!imageFailed && (
-        <img
-          src={heroImage.src}
-          srcSet={heroImage.srcSet}
-          sizes="100vw"
-          alt={hero.imageAlt}
-          fetchPriority="high"
-          decoding="async"
-          onError={() => setImageFailed(true)}
-          className="absolute inset-0 -z-20 size-full object-cover"
-          style={{ objectPosition: heroImage.position }}
-        />
-      )}
+      {/* Background photographs: cross-dissolve slideshow (config: src/content/heroSlides.ts) */}
+      <HeroSlideshow />
       {/* Legibility overlays: left-to-right for the title, top & bottom for nav and transition */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(8_16_26/0.82)_0%,rgb(8_16_26/0.55)_38%,rgb(8_16_26/0.12)_72%,transparent_100%)] max-md:bg-[linear-gradient(180deg,rgb(8_16_26/0.55)_0%,rgb(8_16_26/0.3)_50%,rgb(8_16_26/0.05)_78%,transparent_100%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,15,25,0.80)_0%,rgba(5,15,25,0.70)_32%,rgba(5,15,25,0.48)_55%,rgba(5,15,25,0.24)_78%,rgba(5,15,25,0.20)_100%)] max-md:bg-[linear-gradient(180deg,rgba(5,15,25,0.72)_0%,rgba(5,15,25,0.62)_35%,rgba(5,15,25,0.5)_60%,rgba(5,15,25,0.3)_100%)]" />
       <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-ink-900/70 to-transparent" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-ink-900 to-transparent md:h-48" />
 

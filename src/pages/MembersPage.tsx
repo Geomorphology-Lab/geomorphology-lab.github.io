@@ -34,7 +34,7 @@ export default function MembersPage() {
 
             {/* Upper row: portrait + identification */}
             <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12 lg:gap-16">
-              <div className="w-56 shrink-0 md:w-[clamp(11.5rem,20vw,15.625rem)]">
+              <div className="pi-photo shrink-0">
                 <MediaFrame image={pi.photo} aspect="aspect-[4/5]" variant="portrait" eager />
               </div>
               <div className="min-w-0">
@@ -57,7 +57,7 @@ export default function MembersPage() {
             </div>
 
             {/* Lower row: academic information across the full content width */}
-            <dl className="mt-14 grid gap-x-12 gap-y-12 border-t border-line pt-12 md:grid-cols-2 lg:grid-cols-[1fr_1.2fr_1.5fr] lg:gap-x-14">
+            <dl className="mt-14 grid gap-x-12 gap-y-12 border-t border-line pt-12 md:grid-cols-2">
               <div>
                 <dt className="eyebrow mb-4 text-fg-subtle">Research Interests</dt>
                 <dd lang="en" className="text-[0.975rem] leading-[1.75] text-fg-muted">{pi.researchInterests}</dd>
@@ -70,7 +70,7 @@ export default function MembersPage() {
                   </dd>
                 ))}
               </div>
-              <div className="md:col-span-2 lg:col-span-1">
+              <div className="md:col-span-2">
                 <dt className="eyebrow mb-4 text-fg-subtle">Career</dt>
                 {pi.career.map((t, i) => {
                   // "2025.03–Present: Title, Institution" → date shown on its own line (text unchanged)

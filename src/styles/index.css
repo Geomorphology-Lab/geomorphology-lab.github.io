@@ -196,3 +196,17 @@
 @media (min-width: 48rem) {
   .page-header-img { object-position: var(--pos-desktop, 50% 50%); }
 }
+
+/* ------------------------------------------------------------------
+   Members page photo sizes. The PI portrait sets the reference width;
+   member photos are always a fixed share of it, so they can never be larger.
+   ------------------------------------------------------------------ */
+:root { --pi-photo: 15.5rem; --member-photo-ratio: 0.77; }
+@media (min-width: 48rem) {
+  :root { --pi-photo: clamp(12.5rem, 23vw, 18rem); }
+}
+.pi-photo { width: var(--pi-photo); }
+.member-photo {
+  width: calc(var(--pi-photo) * var(--member-photo-ratio));
+  max-width: 100%; /* in a narrow card the photo shrinks, keeping its 4:5 ratio */
+}

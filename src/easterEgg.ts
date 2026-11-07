@@ -3,28 +3,24 @@
  * It only writes to the console: nothing in the page UI changes.
  */
 
-// The text below is printed exactly as written (spaces and line breaks included). Do not reformat it.
-const MESSAGE = `
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
- 
-    랩 홈페이지의 이곳까지 당도한 당신,
-    훌륭한 연구자의 자질을 갖고 계십니다 ✧⁺⸜(･ ᗜ ･ )⸝⁺✧
-    Geomorphology Lab에서 당신의 재능을 꽃피워 보세요!
+// The text is printed exactly as written (spaces, emoji and line breaks included). Do not reformat it.
+const BORDER_TOP = '┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓'
+const BORDER_BOTTOM = '┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛'
+const LINE_CREDIT = '  Built with 🩷 by @shkim03 · GitHub'
+const LINE_DEDICATION = '  and with a little extra love and admiration for Prof. Ara Jeong 🌷'
 
-              ∘₊✧ Contact: ara.jeong@khu.ac.kr ✧₊∘
+/** Shown as its own console line so the browser turns it into a clickable link. */
+const GITHUB_URL = 'https://github.com/shkim03'
 
-                                          - 2026년도 학부연구생 드림.
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-`
-
-// Muted lavender (#906fc9): about 4:1 contrast on both light and dark console backgrounds.
-// A monospace stack with Korean-capable fallbacks keeps the box-drawing characters as even as the font allows.
-const STYLE = [
-  'color: #906fc9',
+// Colours are mid-tone pinks so they stay readable on both light and dark consoles (about 3.4:1 to 5:1).
+const STYLE_BORDER = [
+  'color: #9f8294',
   'font-size: 14px',
-  'line-height: 1.8',
-  "font-family: 'D2Coding', 'Noto Sans Mono CJK KR', 'Nanum Gothic Coding', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Malgun Gothic', 'Apple SD Gothic Neo', monospace",
+  'line-height: 1.7',
+  "font-family: 'D2Coding', 'Noto Sans Mono CJK KR', 'Nanum Gothic Coding', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
 ].join('; ')
+const STYLE_CREDIT = ['color: #d44aa6', 'font-size: 18px', 'font-weight: 600', 'line-height: 1.8'].join('; ')
+const STYLE_DEDICATION = ['color: #c2729a', 'font-size: 15px', 'font-style: italic', 'line-height: 1.8'].join('; ')
 
 const FLAG = '__geomorphologyLabEasterEgg__'
 
@@ -34,5 +30,13 @@ export function printEasterEgg() {
   const w = window as unknown as Record<string, unknown>
   if (w[FLAG]) return
   w[FLAG] = true
-  console.log('%c' + MESSAGE, STYLE)
+
+  console.log(
+    `\n%c${BORDER_TOP}\n\n%c${LINE_CREDIT}\n%c${LINE_DEDICATION}\n\n%c${BORDER_BOTTOM}\n`,
+    STYLE_BORDER,
+    STYLE_CREDIT,
+    STYLE_DEDICATION,
+    STYLE_BORDER,
+  )
+  console.log(GITHUB_URL)
 }

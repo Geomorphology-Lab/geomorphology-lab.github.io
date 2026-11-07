@@ -39,7 +39,7 @@ export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: 
             {photo}
           </Reveal>
         )}
-        <Reveal delay={100} className={wide ? 'lg:col-span-12 lg:max-w-4xl' : `lg:col-span-7 ${flip ? 'lg:order-1 lg:col-start-1' : ''}`}>
+        <Reveal delay={100} className={wide ? 'lg:col-span-12' : `lg:col-span-7 ${flip ? 'lg:order-1 lg:col-start-1' : ''}`}>
           <p className="flex items-center gap-4 font-display text-sm font-medium tracking-[0.18em] text-accent uppercase">
             <span className="tabular-nums">{num}</span>
             {area.label && <span className="text-fg-subtle">{area.label}</span>}

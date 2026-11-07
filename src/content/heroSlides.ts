@@ -8,7 +8,7 @@
  */
 
 /** A transition starts every … ms (measured from the start of the previous one). */
-export const SLIDE_INTERVAL_MS = 3500
+export const SLIDE_INTERVAL_MS = 3000
 /** Duration of the opacity cross-dissolve. */
 export const CROSSFADE_DURATION_MS = 1100
 /** Largest Ken Burns scale used by any slide. */

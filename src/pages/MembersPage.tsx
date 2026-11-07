@@ -13,7 +13,7 @@ function MemberGrid({ id, title, members }: { id: string; title: string; members
   return (
     <section aria-labelledby={id} className="border-t border-line py-16 md:py-24">
       <SectionHeading id={id} eyebrow="Members" title={title} />
-      <ul className="member-grid">
+      <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {members.map((m, i) => (
           <li key={i}><MemberCard person={m} /></li>
         ))}

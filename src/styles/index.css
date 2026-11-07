@@ -198,20 +198,10 @@
 }
 
 /* ------------------------------------------------------------------
-   Members page sizes. The PI portrait sets the reference width; the member
-   card is a fixed share of it plus its padding, so a member photo is always
-   smaller than the portrait and a lone card never stretches across the row.
+   Members page: the PI portrait width
    ------------------------------------------------------------------ */
-:root { --pi-photo: 16.75rem; --member-photo-ratio: 0.71; }
+:root { --pi-photo: 16.75rem; }
 @media (min-width: 48rem) {
   :root { --pi-photo: clamp(13.5rem, 24.8vw, 19.5rem); }
 }
 .pi-photo { width: var(--pi-photo); }
-.member-grid {
-  --member-card-w: calc(var(--pi-photo) * var(--member-photo-ratio) + 2.5rem);
-  display: grid;
-  /* fixed-width columns, as many as fit; extra members wrap into an orderly grid */
-  grid-template-columns: repeat(auto-fill, min(100%, var(--member-card-w)));
-  justify-content: start;
-  gap: 1.5rem;
-}

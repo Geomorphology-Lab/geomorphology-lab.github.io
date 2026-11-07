@@ -1,7 +1,7 @@
 import { contact } from '../content/site'
 import { PageHeader } from '../components/common/PageHeader'
 import { EmailText } from '../components/common/EmailText'
-import { ArrowUpRight, BuildingIcon, MailIcon, PinIcon } from '../components/common/Icons'
+import { ArrowUpRight, MailIcon, PinIcon } from '../components/common/Icons'
 import { headerPhotos } from '../content/pageImages'
 
 const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(contact.map.query)}&hl=ko&z=17&output=embed`
@@ -9,10 +9,8 @@ const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 
 export default function ContactPage() {
   const rows = [
-    { icon: BuildingIcon, label: 'University', value: <span>{contact.university}</span> },
-    { icon: BuildingIcon, label: 'Department', value: <span lang="ko">{contact.department}</span> },
-    { icon: PinIcon, label: 'Location', value: <span lang="ko">{contact.location}</span> },
     { icon: MailIcon, label: 'Email', value: <EmailText value={contact.email} /> },
+    { icon: PinIcon, label: 'Location', value: <span lang="ko">{contact.location}</span> },
   ]
   return (
     <>
@@ -20,6 +18,15 @@ export default function ContactPage() {
       <div className="bg-ink-900 py-16 md:py-24">
         <div className="container-page grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
+            {/* Prospective Students: first and most prominent block */}
+            <section aria-labelledby="prospective-title" className="mb-10 border-l-[3px] border-accent bg-ink-800/60 py-7 pr-6 pl-6 md:mb-12 md:py-9 md:pr-8 md:pl-8">
+              <h2 id="prospective-title" className="text-[clamp(1.5rem,1.3rem+0.9vw,1.875rem)] leading-tight font-semibold text-fg">
+                Prospective Students
+              </h2>
+              <p lang="ko" className="mt-4 text-[clamp(1.0625rem,1rem+0.3vw,1.1875rem)] leading-[1.8] text-fg-muted">
+                {contact.prospective}
+              </p>
+            </section>
             <dl className="border-t border-line">
               {rows.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="grid grid-cols-[2.25rem_1fr] gap-x-3 border-b border-line py-6">
@@ -31,10 +38,6 @@ export default function ContactPage() {
                 </div>
               ))}
             </dl>
-            <div className="mt-12 border-l-2 border-accent pl-6">
-              <h2 className="text-xl font-semibold">Prospective Students</h2>
-              <p lang="ko" className="prose-body mt-3">{contact.prospective}</p>
-            </div>
           </div>
           <div className="lg:col-span-7">
             <figure>

@@ -27,7 +27,7 @@ export default function MembersPage() {
   return (
     <>
       <PageHeader eyebrow="Members" title="Members" photo={headerPhotos.members} />
-      <div className="bg-ink-900">
+      <div className="theme-paper">
         <div className="container-page">
           {/* Principal Investigator */}
           <section aria-labelledby="pi-title" className="py-16 md:py-24">

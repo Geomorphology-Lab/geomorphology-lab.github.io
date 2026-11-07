@@ -12,24 +12,22 @@ export default function NewsPage() {
 
   return (
     <>
-      <PageHeader eyebrow="News & Gallery" title="News & Gallery" photo={headerPhotos.news} />
-      <div className="bg-ink-900 py-16 md:py-24">
-        <div className="container-page">
-          <div role="group" aria-label="Filter news by category" className="-mx-1 mb-12 flex gap-2 overflow-x-auto px-1 pb-1 md:mb-16 md:flex-wrap">
+      <PageHeader
+        eyebrow="News & Gallery"
+        title="News & Gallery"
+        photo={headerPhotos.news}
+        tabs={
+          <div role="group" aria-label="Filter news by category" className="page-tabs">
             {options.map((o) => (
-              <button
-                key={o.id}
-                type="button"
-                aria-pressed={filter === o.id}
-                onClick={() => setFilter(o.id)}
-                className={`min-h-11 shrink-0 border px-5 text-sm font-medium transition-colors ${
-                  filter === o.id ? 'border-accent bg-accent text-ink-900' : 'border-line text-fg-muted hover:border-line-strong hover:text-fg'
-                }`}
-              >
+              <button key={o.id} type="button" aria-pressed={filter === o.id} onClick={() => setFilter(o.id)} className="page-tab">
                 {o.label}
               </button>
             ))}
           </div>
+        }
+      />
+      <div className="theme-paper pt-12 pb-16 md:pt-16 md:pb-24">
+        <div className="container-page">
           <p className="sr-only" aria-live="polite">{items.length} items shown</p>
           <ul className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => (

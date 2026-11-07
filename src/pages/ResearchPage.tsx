@@ -7,7 +7,7 @@ export default function ResearchPage() {
   return (
     <>
       <PageHeader eyebrow="Research" title={researchIntro.title} photo={headerPhotos.research} />
-      <section className="bg-ink-900 pt-16 pb-8 md:pt-24">
+      <section className="theme-paper pt-16 pb-8 md:pt-24">
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <p lang="en" className="prose-body lg:col-span-7">{researchIntro.lead}</p>
           <nav aria-label="Research areas" className="lg:col-span-4 lg:col-start-9">
@@ -25,7 +25,7 @@ export default function ResearchPage() {
           </nav>
         </div>
       </section>
-      <div className="bg-ink-900 pb-16 md:pb-24">
+      <div className="theme-paper pb-16 md:pb-24">
         <div className="container-page">
           {researchAreas.map((area, i) => (
             <ResearchAreaBlock key={area.id} area={area} index={i} />

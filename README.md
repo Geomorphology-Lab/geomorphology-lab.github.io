@@ -144,7 +144,7 @@ The homepage top shows three landscape photos as a cross-dissolve slideshow. All
 
 | Setting | Value | Meaning |
 | --- | --- | --- |
-| `SLIDE_INTERVAL_MS` | 3500 | A new transition starts every 3.5 seconds |
+| `SLIDE_INTERVAL_MS` | 3000 | A new transition starts every 3 seconds |
 | `CROSSFADE_DURATION_MS` | 1100 | Each cross-dissolve takes 1.1 seconds |
 | `KEN_BURNS_MAX_SCALE` | 1.035 | Maximum scale of the slow zoom |
 

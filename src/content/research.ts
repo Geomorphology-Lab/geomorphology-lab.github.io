@@ -22,6 +22,7 @@ export const researchAreas: ResearchArea[] = [
       position: '42% 0%',
     },
     title: 'Rock Coast Dynamics & Geomorphic Thresholds',
+    tabLabel: 'Rock Coast Dynamics',
     summary:
       'We quantify rock coast erosion along the Korean Peninsula from the mid-Holocene to the present. By combining UAV-SfM surveys, cosmogenic nuclides, and finite element modeling, we predict the collapse thresholds and remaining lifespans of sea stacks and coastal cliffs.',
     question: 'How fast do rocky coasts erode, and when do coastal landforms such as sea stacks reach the point of collapse?',
@@ -51,6 +52,7 @@ export const researchAreas: ResearchArea[] = [
       position: '47% 50%',
     },
     title: 'Landscape Chronology & Quaternary Environments',
+    tabLabel: 'Landscape Chronology',
     summary:
       'Using cosmogenic radionuclide dating and LiDAR-based terrain analysis, we reconstruct the history of glacial landforms, river terraces, and structural landscapes. We ask how Earth’s surface responded to Quaternary glacial–interglacial cycles and past climate change.',
     question: 'When did today’s landscapes form, and how did they respond to past glacial–interglacial climate change?',
@@ -89,6 +91,7 @@ export const researchAreas: ResearchArea[] = [
       position: '18% 50%',
     },
     title: 'Anthropocene Soil Erosion & Land Use',
+    tabLabel: 'Soil Erosion & Land Use',
     summary:
       'We measure how agriculture, urbanization, and land-use change have accelerated hillslope erosion and soil loss. Our work spans historical farming landscapes in Korea and urbanizing arid regions of Arizona, linking surface processes to their social consequences.',
     question: 'How much faster do hillslopes erode when people farm, build, and develop the land?',
@@ -120,6 +123,7 @@ export const researchAreas: ResearchArea[] = [
       position: '45% 52%',
     },
     title: 'Interdisciplinary Research: Geomorphology Meets Ecology',
+    tabLabel: 'Geomorphology Meets Ecology',
     summary:
       'We combine geomorphology with microbial ecology to study how landscapes and soil ecosystems respond together to extreme events. Our current work tracks post-fire soil erosion and changes in soil microbial communities on slopes burned in the 2025 Gyeongbuk wildfires.',
     question: 'How do burned landscapes and their soil ecosystems recover after extreme wildfire?',

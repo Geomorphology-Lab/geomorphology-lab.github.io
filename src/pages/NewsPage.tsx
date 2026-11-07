@@ -3,6 +3,7 @@ import { news, newsCategories } from '../content/news'
 import { headerPhotos } from '../content/pageImages'
 import type { NewsCategory } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
+import { PageTabs } from '../components/common/PageTabs'
 import { NewsCard } from '../components/news/NewsCard'
 
 export default function NewsPage() {
@@ -16,15 +17,7 @@ export default function NewsPage() {
         eyebrow="News & Gallery"
         title="News & Gallery"
         photo={headerPhotos.news}
-        tabs={
-          <div role="group" aria-label="Filter news by category" className="page-tabs">
-            {options.map((o) => (
-              <button key={o.id} type="button" aria-pressed={filter === o.id} onClick={() => setFilter(o.id)} className="page-tab">
-                {o.label}
-              </button>
-            ))}
-          </div>
-        }
+        tabs={<PageTabs label="Filter news by category" options={options} value={filter} onChange={setFilter} />}
       />
       <div className="theme-paper pt-12 pb-16 md:pt-16 md:pb-24">
         <div className="container-page">

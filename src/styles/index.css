@@ -122,28 +122,28 @@
      Navy stays in the nav, the page hero and the footer.
        ink-900 → page background (white, identical to .page-tab[aria-pressed=true])
        ink-800 / ink-700 → cards and image placeholders
-       accent → deep teal, same hue as the cyan accent but dark enough for white (5.8:1)
-     Text colours are checked against #fff: fg 17:1, fg-muted 7.8:1, fg-subtle 5.9:1.
+       accent → teal #167D8D, same hue as the cyan accent but dark enough for white (4.8:1)
+     Text colours are checked against #fff: fg 17:1, fg-muted 11:1, fg-subtle 7.7:1.
      ------------------------------------------------------------------ */
   .theme-paper {
     --color-ink-900: var(--color-paper);
-    --color-ink-800: #eef2f6;
-    --color-ink-700: #e6ebf0;
-    --color-fg: #0f1a2a;
-    --color-fg-muted: #455062;
-    --color-fg-subtle: #5b6573;
-    --color-accent: #0b6e8a;
-    --color-accent-strong: #08506a;
-    --color-line: rgb(15 26 42 / 0.12);
-    --color-line-strong: rgb(15 26 42 / 0.3);
+    --color-ink-800: #e6f4f6;  /* light cyan (#B9E4E8 softened) for cards and callouts */
+    --color-ink-700: #eeeeee;  /* light grey for image placeholders */
+    --color-fg: #071b2b;
+    --color-fg-muted: #2b3844;
+    --color-fg-subtle: #465561;
+    --color-accent: #167d8d;
+    --color-accent-strong: #0f5f6c;
+    --color-line: rgb(7 27 43 / 0.12);
+    --color-line-strong: rgb(7 27 43 / 0.3);
     background-color: var(--color-paper);
     color: var(--color-fg);
     color-scheme: light;
   }
-  .theme-paper ::selection { background: rgb(11 110 138 / 0.22); color: inherit; }
+  .theme-paper ::selection { background: rgb(185 228 232 / 0.8); color: inherit; }
   /* The contour placeholder redrawn in the teal accent (the base one is cyan on navy) */
   .theme-paper .topo-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%230B6E8A' stroke-opacity='.2' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23167D8D' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 240px 240px;
   }
 
@@ -163,6 +163,7 @@
     font-size: 0.9375rem;
     font-weight: 500;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
     color: var(--color-fg-muted);
     transition: color 0.2s, background-color 0.2s;
   }

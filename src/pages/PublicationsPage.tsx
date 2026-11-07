@@ -3,6 +3,7 @@ import { EMPTY_MESSAGE, UNDATED_LABEL, publications } from '../content/publicati
 import { headerPhotos } from '../content/pageImages'
 import type { Publication } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
+import { PageTabs } from '../components/common/PageTabs'
 import { PublicationItem } from '../components/publications/PublicationItem'
 
 type Filter = 'all' | number
@@ -27,15 +28,7 @@ export default function PublicationsPage() {
         eyebrow="Publications"
         title="Publications"
         photo={headerPhotos.publications}
-        tabs={
-          <div role="group" aria-label="Filter publications by year" className="page-tabs">
-            {options.map((o) => (
-              <button key={o.id} type="button" aria-pressed={filter === o.id} onClick={() => setFilter(o.id)} className="page-tab">
-                {o.label}
-              </button>
-            ))}
-          </div>
-        }
+        tabs={<PageTabs label="Filter publications by year" options={options} value={filter} onChange={setFilter} />}
       />
       <div className="theme-paper pt-10 pb-16 md:pt-14 md:pb-24">
         <div className="container-page">

@@ -33,6 +33,7 @@ export const headerPhotos = {
     aspect: 1,
     position: { mobile: '45% 62%', desktop: '50% 64%' },
     overlay: 'light',
+    dim: 0.6, // the lava photo is very bright: tone it down
   },
   contact: {
     alt: '',

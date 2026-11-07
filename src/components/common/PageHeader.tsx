@@ -43,6 +43,7 @@ export function PageHeader({ eyebrow, title, lead, photo, tabs }: Props) {
           {
             '--pos-mobile': photo?.position.mobile ?? heroImage.position,
             '--pos-desktop': photo?.position.desktop ?? heroImage.position,
+            filter: photo?.dim && photo.dim !== 1 ? `brightness(${photo.dim})` : undefined,
           } as React.CSSProperties
         }
         onError={(e) => (e.currentTarget.style.display = 'none')}

@@ -80,7 +80,7 @@ export function SiteHeader() {
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {navigation.map((item) => (
-              <li key={item.path}>
+              <li key={item.path} className="group/nav relative">
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
@@ -91,6 +91,28 @@ export function SiteHeader() {
                 >
                   {item.label}
                 </NavLink>
+                {item.children && (
+                  /* Drop-down: opens on hover or keyboard focus. The top padding keeps the pointer inside the
+                     menu while it crosses the gap below the item, so it does not flicker shut. */
+                  <div className="invisible absolute top-full left-1/2 z-50 -translate-x-1/2 pt-2 opacity-0 transition-[opacity,visibility,transform] duration-200 group-focus-within/nav:visible group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:opacity-100 motion-reduce:transition-none">
+                    <ul
+                      aria-label={`${item.label} sections`}
+                      className="w-max min-w-[15rem] max-w-[22rem] border border-line-strong bg-ink-900 py-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]"
+                    >
+                      {item.children.map((c) => (
+                        <li key={c.path}>
+                          <Link
+                            to={c.path}
+                            onClick={(e) => e.currentTarget.blur()}
+                            className="block px-5 py-2.5 text-[0.875rem] leading-snug text-fg-muted transition-colors hover:bg-fg/[0.06] hover:text-accent focus-visible:bg-fg/[0.06] focus-visible:text-accent"
+                          >
+                            {c.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -137,6 +159,22 @@ export function SiteHeader() {
                   {item.label}
                   <span className="text-xs tabular-nums tracking-[0.2em] text-fg-subtle">{String(i + 1).padStart(2, '0')}</span>
                 </NavLink>
+                {item.children && (
+                  <ul className="-mt-2 mb-4 space-y-0.5 pl-1">
+                    {item.children.map((c) => (
+                      <li key={c.path}>
+                        <Link
+                          to={c.path}
+                          tabIndex={open ? 0 : -1}
+                          className="flex min-h-11 items-center py-1.5 text-[0.95rem] leading-snug text-fg-muted transition-colors hover:text-accent"
+                        >
+                          <span aria-hidden="true" className="mr-3 inline-block h-px w-3 shrink-0 bg-line-strong" />
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>

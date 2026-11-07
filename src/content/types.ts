@@ -22,6 +22,24 @@ export interface ImageRef {
 export interface NavItem {
   label: string
   path: string
+  /** Drop-down links shown under the item on hover / keyboard focus (and in the mobile menu) */
+  children?: { label: string; path: string }[]
+}
+
+/** A line of text with optional bold parts: plain strings and { bold } pieces are joined in order */
+export type RichText = (string | { bold: string })[]
+
+export interface ProspectiveSection {
+  heading: string
+  items: RichText[]
+  /** Shown in a tinted box instead of a plain list */
+  boxed?: boolean
+}
+
+export interface ProspectiveInfo {
+  /** Heading of the box */
+  title: string
+  sections: ProspectiveSection[]
 }
 
 export interface RelatedProject {
@@ -152,4 +170,6 @@ export interface ResponsivePhoto {
   position: { mobile: string; desktop: string }
   /** 'light' keeps more of a bright focal point (e.g. lava) visible under the overlay */
   overlay?: 'default' | 'light'
+  /** Brightness multiplier applied to the photo (1 = unchanged); e.g. 0.7 tones down a very bright photo */
+  dim?: number
 }

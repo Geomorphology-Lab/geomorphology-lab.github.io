@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { alumni, graduateStudents, principalInvestigator as pi, undergraduateResearchers } from '../content/people'
 import { headerPhotos } from '../content/pageImages'
 import type { Person } from '../content/types'
@@ -34,8 +35,17 @@ function MemberGrid({ id, title, members }: { id: string; title: string; members
   )
 }
 
+/** Addresses such as /members#graduate open that tab (used by the navigation drop-down) */
+const tabFromHash = (hash: string): Tab | undefined => tabOptions.find((o) => `#${o.id}` === hash)?.id
+
 export default function MembersPage() {
-  const [tab, setTab] = useState<Tab>('professor')
+  const { hash, key } = useLocation()
+  const [tab, setTab] = useState<Tab>(tabFromHash(hash) ?? 'professor')
+  // Also react when the link is followed while already on this page (even to the same address)
+  useEffect(() => {
+    const t = tabFromHash(hash)
+    if (t) setTab(t)
+  }, [hash, key])
   return (
     <>
       <PageHeader

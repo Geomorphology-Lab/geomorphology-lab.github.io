@@ -21,11 +21,35 @@ export default function ContactPage() {
             {/* Prospective Students: first and most prominent block */}
             <section aria-labelledby="prospective-title" className="mb-10 border-l-[3px] border-accent bg-ink-800/60 py-7 pr-6 pl-6 md:mb-12 md:py-9 md:pr-8 md:pl-8">
               <h2 id="prospective-title" className="text-[clamp(1.5rem,1.3rem+0.9vw,1.875rem)] leading-tight font-semibold text-fg">
-                Prospective Students
+                {contact.prospective.title}
               </h2>
-              <p lang="ko" className="mt-4 text-[clamp(1.0625rem,1rem+0.3vw,1.1875rem)] leading-[1.8] text-fg-muted">
-                {contact.prospective}
-              </p>
+              <div className="mt-7 space-y-7 md:space-y-8">
+                {contact.prospective.sections.map((section) => (
+                  <div
+                    key={section.heading}
+                    className={section.boxed ? 'rounded-sm border border-line bg-ink-900/50 p-5 md:p-6' : 'border-t border-dashed border-line-strong pt-7 first:border-t-0 first:pt-0 md:pt-8'}
+                  >
+                    <h3 lang="ko" className="flex items-center gap-3 text-[1.125rem] font-semibold text-fg md:text-[1.25rem]">
+                      <span aria-hidden="true" className="size-2 shrink-0 bg-accent" />
+                      {section.heading}
+                    </h3>
+                    <ul className="mt-4 space-y-3">
+                      {section.items.map((parts, i) => (
+                        <li key={i} lang="ko" className="relative pl-5 text-[1rem] leading-[1.75] text-fg-muted md:text-[1.0625rem]">
+                          <span aria-hidden="true" className="absolute top-[0.72em] left-0 size-1.5 rounded-full bg-accent/80" />
+                          {parts.map((p, j) =>
+                            typeof p === 'string' ? (
+                              <span key={j}>{p}</span>
+                            ) : (
+                              <strong key={j} className="font-semibold text-fg">{p.bold}</strong>
+                            ),
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </section>
             <dl className="border-t border-line">
               {rows.map(({ icon: Icon, label, value }) => (

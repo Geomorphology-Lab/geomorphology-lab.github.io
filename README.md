@@ -235,3 +235,7 @@ scripts/           Build helper scripts
 - **Drop-down menu:** hovering (or tabbing to) *Research* or *Members* in the top bar opens a list of its sections. The links are the `children` of each item in `navigation` (`src/content/site.ts`); the Members links such as `/members#graduate` open that tab (the address after `#` is read by `MembersPage`); the Research list is built from `research.ts`, so it always matches the four research areas. The mobile menu shows the same links under each item.
 - **Prospective Students (Contact page):** the recruitment guide is `contact.prospective` in `src/content/site.ts`: three sections, each item a list of text pieces where `{ bold: '…' }` marks bold parts.
 - **Dimming a header photo:** set `dim` (e.g. `0.6`) on a photo in `src/content/pageImages.ts`; the News lava photo uses it.
+
+### Browser-tab icon
+
+The icon shown in the browser tab is the university emblem with white and navy swapped (white emblem on a navy square). The files are `public/favicon.ico`, `favicon-32.png`, `favicon-192.png` and `apple-touch-icon.png`, created from the emblem image with `python3 scripts/make-favicon.py <emblem.png>` (the source image is not kept in the repository). Browsers cache tab icons for a long time, so after a change a hard refresh or a new private window may be needed to see it.

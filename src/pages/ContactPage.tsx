@@ -17,9 +17,9 @@ export default function ContactPage() {
       <PageHeader eyebrow="Contact" title="Contact" photo={headerPhotos.contact} />
       <div className="theme-paper py-16 md:py-24">
         <div className="container-page flex flex-col gap-14 lg:gap-16">
-          <div className="max-w-3xl">
-            {/* Prospective Students: first and most prominent block */}
-            <section aria-labelledby="prospective-title" className="mb-10 border-l-[3px] border-accent bg-ink-800/60 py-7 pr-6 pl-6 md:mb-12 md:py-9 md:pr-8 md:pl-8">
+          {/* Join Us box on the left, contact details beside it on wide screens (stacked below that) */}
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <section aria-labelledby="prospective-title" className="border-l-[3px] border-accent bg-ink-800/60 py-7 pr-6 pl-6 md:py-9 md:pr-8 md:pl-8 lg:col-span-7">
               <h2 id="prospective-title" className="text-[clamp(1.5rem,1.3rem+0.9vw,1.875rem)] leading-tight font-semibold text-fg">
                 {contact.prospective.title}
               </h2>
@@ -51,7 +51,7 @@ export default function ContactPage() {
                 ))}
               </div>
             </section>
-            <dl className="border-t border-line">
+            <dl className="border-t border-line lg:col-span-5">
               {rows.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="grid grid-cols-[2.25rem_1fr] gap-x-3 border-b border-line py-6">
                   <Icon className="mt-0.5 size-5 text-accent" />

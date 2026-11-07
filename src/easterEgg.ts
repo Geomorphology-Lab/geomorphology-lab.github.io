@@ -9,11 +9,11 @@ const LINE_CREDIT = 'Built with ♡'
 /** The console turns a full https:// address into a clickable link. */
 const GITHUB_URL = 'https://github.com/shkim03'
 const LINE_BY = `by @shkim03 (${GITHUB_URL})`
-const LINE_DEDICATION = 'and with a little extra love and admiration for Prof. Ara Jeong 🌷'
+const LINE_DEDICATION = '...and with a little extra love and admiration for Prof. Ara Jeong 🌷'
 
 // One soft blue for all lines; mid-tone so it stays readable on both light and dark consoles.
 // All lines share one size and spacing; only the first is bold and only the last is italic.
-const BLUE = '#4a8fe7'
+const BLUE = '#868cda'
 const STYLE_SOFT = [`color: ${BLUE}`, 'font-size: 15px', 'line-height: 1.8']
 const STYLE_CREDIT = [...STYLE_SOFT, 'font-weight: 700'].join('; ')
 const STYLE_BY = STYLE_SOFT.join('; ')

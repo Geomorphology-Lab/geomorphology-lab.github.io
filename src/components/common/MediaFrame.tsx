@@ -10,13 +10,15 @@ interface Props {
   eager?: boolean
   /** `sizes` attribute used when the image provides a srcSet */
   sizes?: string
+  /** Keep the photo fixed: no zoom when the parent card is hovered */
+  still?: boolean
 }
 
 /**
  * Displays an image, or — when no photograph has been supplied yet — a calm
  * topographic-contour surface of identical size, so layouts look final.
  */
-export function MediaFrame({ image, aspect = 'aspect-[4/3]', variant = 'landscape', className = '', eager, sizes = '(min-width: 1024px) 40vw, 100vw' }: Props) {
+export function MediaFrame({ image, aspect = 'aspect-[4/3]', variant = 'landscape', className = '', eager, sizes = '(min-width: 1024px) 40vw, 100vw', still }: Props) {
   const frame = `relative overflow-hidden bg-ink-700 ${aspect} ${className}`
   if (image?.src) {
     return (
@@ -31,7 +33,7 @@ export function MediaFrame({ image, aspect = 'aspect-[4/3]', variant = 'landscap
           className={
             image.fit === 'contain'
               ? 'block h-auto w-full'
-              : 'absolute inset-0 size-full object-cover transition-transform duration-700 ease-out-soft group-hover:scale-[1.03]'
+              : `absolute inset-0 size-full object-cover ${still ? '' : 'transition-transform duration-700 ease-out-soft group-hover:scale-[1.03]'}`
           }
           style={image.position ? { objectPosition: image.position } : undefined}
         />

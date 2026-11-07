@@ -36,7 +36,7 @@ export const principalInvestigator: PrincipalInvestigator = {
     '2021.07–2021.12: Full-time Researcher, Institute of Geologic Hazard and Industrial Resources, Pusan National University',
     '2020.07–2021.06: Research Professor, Institute of Future Land, Korea University',
     '2020.01–2020.12: Full-time Researcher, Institute of Geologic Hazard and Industrial Resources, Pusan National University',
-    '2019.07–2020.01: Post-Doctoral Research Scholar, Arizona State University',
+    '2019.07–2020.01: Postdoctoral Research Scholar and Lecturer, Arizona State University, USA',
   ],
 }
 

@@ -47,7 +47,7 @@ export const navigation: NavItem[] = [
 ]
 
 export const contact = {
-  location: 'SPACE21, College of Sciences, Room 624',
+  location: 'Space21 #624',
   /** Set to a confirmed public address to show a mailto link. */
   email: 'ara.jeong@khu.ac.kr',
   prospective:

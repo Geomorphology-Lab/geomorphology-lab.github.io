@@ -76,9 +76,12 @@ export default function MembersPage() {
               </div>
               <div>
                 <dt className="eyebrow mb-4 text-fg-subtle">Education</dt>
-                {pi.education.map((t, i) => (
+                {pi.education.map((e, i) => (
                   <dd key={i} lang="en" className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
-                    {t}
+                    <span className="block font-display text-[0.8125rem] font-medium tracking-wide text-accent">
+                      {e.degree} · <span className="tabular-nums">{e.years}</span>
+                    </span>
+                    <span className="mt-1 block">{e.institution}</span>
                   </dd>
                 ))}
               </div>

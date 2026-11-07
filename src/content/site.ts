@@ -67,7 +67,7 @@ export const contact = {
   email: 'ara.jeong@khu.ac.kr',
   /** Student recruitment guide (shown in the Prospective Students box) */
   prospective: {
-    subtitle: '학생 모집 요강 · JOIN US',
+    title: 'Join Us | Undergraduate Researchers',
     sections: [
       {
         heading: '지원 대상',

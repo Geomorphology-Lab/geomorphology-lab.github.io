@@ -37,8 +37,8 @@ export interface ProspectiveSection {
 }
 
 export interface ProspectiveInfo {
-  /** Small line under the title, e.g. '학생 모집 요강 · JOIN US' */
-  subtitle: string
+  /** Heading of the box */
+  title: string
   sections: ProspectiveSection[]
 }
 

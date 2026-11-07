@@ -234,4 +234,4 @@ scripts/           Build helper scripts
 
 - **Drop-down menu:** hovering (or tabbing to) *Research* or *Members* in the top bar opens a list of its sections. The links are the `children` of each item in `navigation` (`src/content/site.ts`); the Research list is built from `research.ts`, so it always matches the four research areas. The mobile menu shows the same links under each item.
 - **Prospective Students (Contact page):** the recruitment guide is `contact.prospective` in `src/content/site.ts`: three sections, each item a list of text pieces where `{ bold: '…' }` marks bold parts.
-- **Dimming a header photo:** set `dim` (e.g. `0.5`) on a photo in `src/content/pageImages.ts`; the News lava photo uses it.
+- **Dimming a header photo:** set `dim` (e.g. `0.6`) on a photo in `src/content/pageImages.ts`; the News lava photo uses it.

@@ -21,9 +21,8 @@ export default function ContactPage() {
             {/* Prospective Students: first and most prominent block */}
             <section aria-labelledby="prospective-title" className="mb-10 border-l-[3px] border-accent bg-ink-800/60 py-7 pr-6 pl-6 md:mb-12 md:py-9 md:pr-8 md:pl-8">
               <h2 id="prospective-title" className="text-[clamp(1.5rem,1.3rem+0.9vw,1.875rem)] leading-tight font-semibold text-fg">
-                Prospective Students
+                {contact.prospective.title}
               </h2>
-              <p lang="ko" className="mt-2 text-sm font-medium tracking-[0.14em] text-accent">{contact.prospective.subtitle}</p>
               <div className="mt-7 space-y-7 md:space-y-8">
                 {contact.prospective.sections.map((section) => (
                   <div

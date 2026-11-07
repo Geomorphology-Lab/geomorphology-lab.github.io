@@ -33,6 +33,7 @@ export function PageHeader({ eyebrow, title, lead, photo, tone = 'dark' }: Props
           {
             '--pos-mobile': photo?.position.mobile ?? heroImage.position,
             '--pos-desktop': photo?.position.desktop ?? heroImage.position,
+            filter: photo?.dim && photo.dim !== 1 ? `brightness(${photo.dim})` : undefined,
           } as React.CSSProperties
         }
         onError={(e) => (e.currentTarget.style.display = 'none')}
@@ -40,8 +41,15 @@ export function PageHeader({ eyebrow, title, lead, photo, tone = 'dark' }: Props
       {level === 'white' ? (
         <>
           {/* photo on top, melting into white towards the title; a soft white wash from the left keeps the title crisp */}
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.05)_22%,rgba(255,255,255,0.55)_52%,rgba(255,255,255,0.92)_78%,#fff_100%)]" />
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0.18)_45%,transparent_75%)]" />
+          {photo?.dim && photo.dim < 0.9 ? (
+            /* photo already toned down (e.g. the lava): the white starts lower, so the picture stays rich and dark */
+            <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_36%,rgba(255,255,255,0.55)_56%,rgba(255,255,255,0.92)_72%,#fff_88%)]" />
+          ) : (
+            <>
+              <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.05)_22%,rgba(255,255,255,0.55)_52%,rgba(255,255,255,0.92)_78%,#fff_100%)]" />
+              <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0.18)_45%,transparent_75%)]" />
+            </>
+          )}
         </>
       ) : level === 'light' ? (
         <>

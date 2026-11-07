@@ -1,4 +1,5 @@
-import type { NavItem } from './types'
+import type { NavItem, ProspectiveInfo } from './types'
+import { researchAreas } from './research'
 
 /**
  * Site-wide information. Text marked "이곳에는 …" is temporary and should be
@@ -39,8 +40,22 @@ export const site = {
 }
 
 export const navigation: NavItem[] = [
-  { label: 'Research', path: '/research' },
-  { label: 'Members', path: '/members' },
+  {
+    label: 'Research',
+    path: '/research',
+    // the four research areas (titles come from research.ts, so they always stay in sync)
+    children: researchAreas.map((a) => ({ label: a.title, path: `/research#${a.id}` })),
+  },
+  {
+    label: 'Members',
+    path: '/members',
+    children: [
+      { label: 'Principal Investigator', path: '/members#pi-title' },
+      { label: 'Graduate Students', path: '/members#graduate-title' },
+      { label: 'Undergraduate Researchers', path: '/members#undergraduate-title' },
+      { label: 'Alumni', path: '/members#alumni-title' },
+    ],
+  },
   { label: 'Publications', path: '/publications' },
   { label: 'News', path: '/news' },
   { label: 'Contact', path: '/contact' },
@@ -50,8 +65,38 @@ export const contact = {
   location: 'Space21 #624, College of Sciences · Kyung Hee University Seoul Campus',
   /** Set to a confirmed public address to show a mailto link. */
   email: 'ara.jeong@khu.ac.kr',
-  prospective:
-    '이곳에는 대학원 진학 및 연구실 참여를 희망하는 학생들을 위한 안내 문구가 들어갑니다.',
+  /** Student recruitment guide (shown in the Prospective Students box) */
+  prospective: {
+    subtitle: '학생 모집 요강 · JOIN US',
+    sections: [
+      {
+        heading: '지원 대상',
+        items: [
+          [{ bold: '대학원 진학(석사 / 석·박사 통합과정)을 고려하는 학부생 또는 예비 대학원생' }],
+          ['지리학, 지형학, 자연재해 및 지구환경 변화 연구에 관심 있는 ', { bold: '학부 3~4학년 재학생' }],
+          ['남학생의 경우 군필자(또는 면제자) (학업 및 연속적 연구 참여 가능)'],
+          [{ bold: '현장 지형 조사' }, '와 ', { bold: '지형 데이터 수치분석' }, '에 적극적인 열정을 가진 학생'],
+        ],
+      },
+      {
+        heading: '요구 역량 및 인재상',
+        items: [
+          [{ bold: '책임감과 성실성:' }, ' 맡은 분석 과업과 연구를 끝까지 주도적으로 완수하는 자세'],
+          [{ bold: '열정과 배움의 의지:' }, ' 3D 측량, 연대측정, 수치모델링을 적극적으로 배우려는 의지'],
+          [{ bold: '인성과 협업 태도:' }, ' 팀원과의 원활한 소통, 상호 배려와 존중 기반의 팀워크'],
+        ],
+      },
+      {
+        heading: '연구실 참여 혜택',
+        boxed: true,
+        items: [
+          ['국가연구개발사업 참여를 통한 연구 인건비/장학금 지원'],
+          ['국내외 학술대회 발표 및 논문 작성 1:1 밀착 지도'],
+          ['랩실 내 개인 연구 좌석 및 데이터 분석 인프라 제공'],
+        ],
+      },
+    ],
+  } satisfies ProspectiveInfo,
   /**
    * Building shown on the map (Google Maps search, no API key needed).
    * Space21 building, Kyung Hee University Seoul Campus (College of Sciences).

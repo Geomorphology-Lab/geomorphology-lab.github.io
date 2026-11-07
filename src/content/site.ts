@@ -50,10 +50,11 @@ export const navigation: NavItem[] = [
     label: 'Members',
     path: '/members',
     children: [
-      { label: 'Principal Investigator', path: '/members#pi-title' },
-      { label: 'Graduate Students', path: '/members#graduate-title' },
-      { label: 'Undergraduate Researchers', path: '/members#undergraduate-title' },
-      { label: 'Alumni', path: '/members#alumni-title' },
+      // the Members page shows one group at a time; the address after # chooses the tab (see MembersPage)
+      { label: 'Professor', path: '/members#professor' },
+      { label: 'Graduate Students', path: '/members#graduate' },
+      { label: 'Undergraduate Researchers', path: '/members#undergraduate' },
+      { label: 'Alumni', path: '/members#alumni' },
     ],
   },
   { label: 'Publications', path: '/publications' },

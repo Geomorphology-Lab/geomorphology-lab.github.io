@@ -15,7 +15,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader eyebrow="Contact" title="Contact" photo={headerPhotos.contact} />
-      <div className="bg-ink-900 py-16 md:py-24">
+      <div className="theme-paper py-16 md:py-24">
         <div className="container-page flex flex-col gap-14 lg:gap-16">
           <div className="max-w-3xl">
             {/* Prospective Students: first and most prominent block */}

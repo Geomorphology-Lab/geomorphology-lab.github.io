@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { alumni, graduateStudents, principalInvestigator as pi, undergraduateResearchers } from '../content/people'
 import { headerPhotos } from '../content/pageImages'
 import type { Person } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
+import { PageTabs } from '../components/common/PageTabs'
 import { MediaFrame } from '../components/common/MediaFrame'
 import { EmailText } from '../components/common/EmailText'
 import { ArrowUpRight, MailIcon } from '../components/common/Icons'
@@ -9,10 +11,19 @@ import { MemberCard } from '../components/people/MemberCard'
 import { AlumniList } from '../components/people/AlumniList'
 import { SectionHeading } from '../components/common/SectionHeading'
 
+type Tab = 'professor' | 'graduate' | 'undergraduate' | 'alumni'
+
+const tabOptions: { id: Tab; label: string }[] = [
+  { id: 'professor', label: 'Professor' },
+  { id: 'graduate', label: 'Graduate Students' },
+  { id: 'undergraduate', label: 'Undergraduate Researchers' },
+  { id: 'alumni', label: 'Alumni' },
+]
+
 function MemberGrid({ id, title, members }: { id: string; title: string; members: Person[] }) {
   if (members.length === 0) return null
   return (
-    <section aria-labelledby={id} className="border-t border-line py-16 md:py-24">
+    <section aria-labelledby={id} className="pt-10 pb-16 md:pt-14 md:pb-24">
       <SectionHeading id={id} eyebrow="Members" title={title} />
       <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {members.map((m, i) => (
@@ -24,13 +35,20 @@ function MemberGrid({ id, title, members }: { id: string; title: string; members
 }
 
 export default function MembersPage() {
+  const [tab, setTab] = useState<Tab>('professor')
   return (
     <>
-      <PageHeader eyebrow="Members" title="Members" photo={headerPhotos.members} />
-      <div className="bg-ink-900">
+      <PageHeader
+        eyebrow="Members"
+        title="Members"
+        photo={headerPhotos.members}
+        tabs={<PageTabs label="Show members by group" options={tabOptions} value={tab} onChange={setTab} />}
+      />
+      <div className="theme-paper">
         <div className="container-page">
           {/* Principal Investigator */}
-          <section aria-labelledby="pi-title" className="py-16 md:py-24">
+          {tab === 'professor' && (
+          <section aria-labelledby="pi-title" className="pt-10 pb-16 md:pt-14 md:pb-24">
             <p className="eyebrow mb-10">Principal Investigator</p>
 
             {/* Upper row: portrait + identification */}
@@ -123,13 +141,14 @@ export default function MembersPage() {
               </div>
             </dl>
           </section>
+          )}
 
-          <MemberGrid id="graduate-title" title="Graduate Students" members={graduateStudents} />
-          <MemberGrid id="undergraduate-title" title="Undergraduate Researchers" members={undergraduateResearchers} />
+          {tab === 'graduate' && <MemberGrid id="graduate-title" title="Graduate Students" members={graduateStudents} />}
+          {tab === 'undergraduate' && <MemberGrid id="undergraduate-title" title="Undergraduate Researchers" members={undergraduateResearchers} />}
 
           {/* Alumni */}
-          {alumni.length > 0 && (
-            <section aria-labelledby="alumni-title" className="border-t border-line py-16 md:py-24">
+          {tab === 'alumni' && alumni.length > 0 && (
+            <section aria-labelledby="alumni-title" className="pt-10 pb-16 md:pt-14 md:pb-24">
               <SectionHeading id="alumni-title" eyebrow="Members" title="Alumni" />
               <AlumniList alumni={alumni} />
             </section>

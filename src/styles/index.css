@@ -18,6 +18,7 @@
   --color-accent-strong: #93dade;
   --color-line: rgb(255 255 255 / 0.1);
   --color-line-strong: rgb(255 255 255 / 0.18);
+  --color-paper: #ffffff;   /* light content area (inner pages) and the active tab that joins it */
 
   --font-sans: 'Pretendard Variable', Pretendard, 'Inter Variable', -apple-system, BlinkMacSystemFont,
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
@@ -113,6 +114,83 @@
     transition: top 0.2s;
   }
   .skip-link:focus { top: 1rem; }
+
+  /* ------------------------------------------------------------------
+     Light content area (Research / Members / Publications / News / Contact).
+     The same colour tokens, redefined for everything inside this element, so the
+     markup keeps its class names (text-fg, text-accent, border-line, bg-ink-800 …).
+     Navy stays in the nav, the page hero and the footer.
+       ink-900 → page background (white, identical to .page-tab[aria-pressed=true])
+       ink-800 / ink-700 → cards and image placeholders
+       accent → teal #167D8D, same hue as the cyan accent but dark enough for white (4.8:1)
+     Text colours are checked against #fff: fg 17:1, fg-muted 11:1, fg-subtle 7.7:1.
+     ------------------------------------------------------------------ */
+  .theme-paper {
+    --color-ink-900: var(--color-paper);
+    --color-ink-800: #e6f4f6;  /* light cyan (#B9E4E8 softened) for cards and callouts */
+    --color-ink-700: #eeeeee;  /* light grey for image placeholders */
+    --color-fg: #071b2b;
+    --color-fg-muted: #2b3844;
+    --color-fg-subtle: #465561;
+    --color-accent: #167d8d;
+    --color-accent-strong: #0f5f6c;
+    --color-line: rgb(7 27 43 / 0.12);
+    --color-line-strong: rgb(7 27 43 / 0.3);
+    background-color: var(--color-paper);
+    color: var(--color-fg);
+    color-scheme: light;
+  }
+  .theme-paper ::selection { background: rgb(185 228 232 / 0.8); color: inherit; }
+  /* The contour placeholder redrawn in the teal accent (the base one is cyan on navy) */
+  .theme-paper .topo-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23167D8D' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 240px 240px;
+  }
+
+  /* Filter tabs that sit on the bottom edge of the navy page hero.
+     The active tab is white, so it continues straight into the white content below. */
+  .page-tabs {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .page-tabs::-webkit-scrollbar { display: none; }
+  .page-tab {
+    flex: none;
+    min-height: 3.25rem;
+    padding-inline: 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--color-fg-muted);
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .page-tab:hover { color: var(--color-fg); background-color: rgb(255 255 255 / 0.06); }
+  .page-tab[aria-pressed='true'] {
+    background-color: var(--color-paper);
+    color: var(--color-ink-900);
+    font-weight: 600;
+  }
+  .page-tab:focus-visible { outline-offset: -3px; border-radius: 0; }
+
+  /* Inner page hero: the photograph dissolves into navy, stays pure navy for the last
+     --solid of the hero, then the white content starts with a hard, undecorated edge. */
+  .page-header-fade {
+    --solid: 5.5rem;
+    background-image: linear-gradient(
+      to top,
+      var(--color-ink-900) 0,
+      var(--color-ink-900) var(--solid),
+      color-mix(in srgb, var(--color-ink-900) var(--mid), transparent) 62%,
+      color-mix(in srgb, var(--color-ink-900) var(--top), transparent) 100%
+    );
+  }
+  @media (min-width: 48rem) { .page-header-fade { --solid: 6.5rem; } }
+  .page-header-fade[data-level='fallback'] { --mid: 75%; --top: 40%; }
+  .page-header-fade[data-level='photo'] { --mid: 50%; --top: 35%; }
+  .page-header-fade[data-level='light'] { --mid: 35%; --top: 30%; }
 
   /* Subtle topographic contour texture used where no photograph exists yet */
   .topo-pattern {

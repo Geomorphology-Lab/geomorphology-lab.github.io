@@ -17,6 +17,9 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  // Drop-down that was just used (a link inside it was followed). It stays shut while the pointer is still over
+  // it, and opens normally again after the pointer has left and come back.
+  const [shut, setShut] = useState<string | null>(null)
   const { pathname } = useLocation()
   const toggleRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -80,7 +83,13 @@ export function SiteHeader() {
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {navigation.map((item) => (
-              <li key={item.path} className="group/nav relative">
+              <li
+                key={item.path}
+                className="group/nav relative"
+                onClick={() => item.children && setShut(item.path)}
+                onMouseLeave={() => setShut((s) => (s === item.path ? null : s))}
+                onFocus={() => setShut((s) => (s === item.path ? null : s))}
+              >
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
@@ -94,7 +103,9 @@ export function SiteHeader() {
                 {item.children && (
                   /* Drop-down: opens on hover or keyboard focus. The top padding keeps the pointer inside the
                      menu while it crosses the gap below the item, so it does not flicker shut. */
-                  <div className="invisible absolute top-full left-1/2 z-50 -translate-x-1/2 pt-2 opacity-0 transition-[opacity,visibility,transform] duration-200 group-focus-within/nav:visible group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:opacity-100 motion-reduce:transition-none">
+                  <div
+                    style={shut === item.path ? { visibility: 'hidden', opacity: 0 } : undefined}
+                    className="invisible absolute top-full left-1/2 z-50 -translate-x-1/2 pt-2 opacity-0 transition-[opacity,visibility,transform] duration-200 group-focus-within/nav:visible group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:opacity-100 motion-reduce:transition-none">
                     <ul
                       aria-label={`${item.label} sections`}
                       className="w-max min-w-[15rem] max-w-[22rem] border border-line-strong bg-ink-900 py-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]"

@@ -15,12 +15,14 @@ export function AlumniList({ alumni }: { alumni: Alumnus[] }) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="group inline-flex min-h-11 items-center gap-2 text-sm font-medium text-fg-muted transition-colors hover:text-accent"
+        aria-label={open ? 'Hide alumni entries' : 'Show alumni entries'}
+        title={open ? 'Hide alumni entries' : 'Show alumni entries'}
+        className="-ml-3.5 inline-flex size-11 items-center justify-center text-fg-muted transition-colors hover:text-accent"
       >
         <svg
           viewBox="0 0 16 16"
           aria-hidden="true"
-          className={`size-3.5 transition-transform duration-300 ${open ? 'rotate-90' : ''}`}
+          className={`size-4 transition-transform duration-300 ${open ? 'rotate-90' : ''}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="1.6"
@@ -29,9 +31,6 @@ export function AlumniList({ alumni }: { alumni: Alumnus[] }) {
         >
           <path d="M6 3l5 5-5 5" />
         </svg>
-        <span className="border-b border-line-strong pb-0.5 transition-colors group-hover:border-accent">
-          {open ? 'Hide alumni entries' : 'Show alumni entries'}
-        </span>
       </button>
       <div id={panelId} hidden={!open} className="mt-6">
         <ul className="border-t border-line">

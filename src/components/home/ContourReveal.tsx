@@ -47,9 +47,9 @@ export function ContourReveal() {
     /** Turns scroll progress into the CSS variables used by the stylesheet. */
     const apply = () => {
       const p = cur.p
-      set('--o', smooth(0, 0.85, p).toFixed(4)) // opacity factor (the stylesheet scales it to the final, restrained opacity)
-      set('--b', (1 - smooth(0.1, 0.95, p)).toFixed(4)) // blur factor: clears slightly before the end
-      set('--rv', (0.35 + 1.45 * smooth(0.05, 1, p)).toFixed(4)) // radial reveal radius, grows from the summit outwards
+      set('--o', smooth(0.02, 0.62, p).toFixed(4)) // opacity factor (the stylesheet scales it to the final, restrained opacity): comes up early so the lines read clearly
+      set('--b', (1 - smooth(0, 0.45, p)).toFixed(4)) // blur factor: gone by the middle of the reveal, so the map is sharp while it is still surfacing
+      set('--rv', (0.3 + 1.5 * smooth(0.02, 0.9, p)).toFixed(4)) // radial reveal radius, grows from the summit outwards
     }
 
     const measure = () => {

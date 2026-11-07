@@ -217,7 +217,7 @@
 /* ------------------------------------------------------------------
    About section: topographic contour map that surfaces from the dark background on scroll.
    The PNG's alpha is used as a mask and the lines are filled with the accent colour, so the space
-   between the lines is genuinely transparent. The map is rotated 25° clockwise and is completely
+   between the lines is genuinely transparent. The map is rotated 25° clockwise (to the right) and is completely
    still (it scrolls with the page like the navy background itself); only its visibility changes
    with scroll: ContourReveal.tsx writes --o --b --rv (opacity, blur and radial reveal). The defaults
    below are the final, static state (also used for reduced motion). Whatever sticks out of the
@@ -226,9 +226,9 @@
 .contour-layer {
   --contour-w: 55vw;      /* graphic width (the square image keeps its aspect ratio) */
   --contour-right: -10vw; /* the rotated map runs slightly past the right edge of the screen */
-  --contour-rotate: 25deg; /* clockwise */
+  --contour-rotate: 25deg; /* clockwise (to the right) */
   --contour-max: 0.36;    /* final, restrained opacity */
-  --contour-blur: 12px;   /* blur while submerged */
+  --contour-blur: 3px;    /* a hint of depth while submerged: the lines stay crisp, never hazy */
   position: absolute;
   inset: 0;
   overflow: hidden;       /* crops the rotated graphic to the section: no overflow, nothing over the hero */
@@ -252,9 +252,9 @@
   transform-origin: 50% 50%;
   opacity: calc(var(--o) * var(--contour-max));
   filter: blur(calc(var(--b) * var(--contour-blur)));
-  /* radial reveal growing outwards from the summit; --rv 1.8 = fully revealed, no edge */
-  -webkit-mask-image: radial-gradient(circle at 31% 56%, #000 calc(var(--rv) * 55%), transparent calc(var(--rv) * 100%));
-  mask-image: radial-gradient(circle at 31% 56%, #000 calc(var(--rv) * 55%), transparent calc(var(--rv) * 100%));
+  /* radial reveal growing outwards from the summit with a fairly tight, clean edge (--rv 1.8 = fully revealed, no edge) */
+  -webkit-mask-image: radial-gradient(circle at 31% 56%, #000 calc(var(--rv) * 78%), transparent calc(var(--rv) * 100%));
+  mask-image: radial-gradient(circle at 31% 56%, #000 calc(var(--rv) * 78%), transparent calc(var(--rv) * 100%));
 }
 .contour-stage[data-motion] { will-change: opacity, filter; }
 .contour-art {
@@ -264,8 +264,22 @@
   -webkit-mask: url('../assets/images/about/contour-map.webp') center / 100% 100% no-repeat;
   mask: url('../assets/images/about/contour-map.webp') center / 100% 100% no-repeat;
 }
+@media (min-width: 64rem) { /* desktop: the map starts to the right of the text column, never over the words */
+  .contour-layer {
+    /* right end of the text column: container left edge + container padding + the text's max width (48rem) */
+    --text-right: calc(max((100vw - 80rem) / 2, 0px) + clamp(1.25rem, 4vw, 3rem) + 48rem);
+    --contour-gap: 28px;
+    --contour-ink: 0.042;  /* the lines start about 4% of the image width inside its left edge */
+    /* the original 55vw size; on narrower desktops it shrinks a little so enough of the map stays on screen */
+    --contour-w: min(55vw, max(340px, (100vw - var(--text-right)) * 1.6));
+  }
+  .contour-stage {
+    right: auto;
+    left: calc(var(--text-right) + var(--contour-gap) - var(--contour-ink) * var(--contour-w));
+  }
+}
 @media (max-width: 63.99rem) { /* tablet: smaller, behind the text, quieter */
-  .contour-layer { --contour-w: 70vw; --contour-right: -12vw; --contour-max: 0.14; --contour-blur: 8px; }
+  .contour-layer { --contour-w: 70vw; --contour-right: -12vw; --contour-max: 0.14; --contour-blur: 2px; }
 }
 @media (max-width: 39.99rem) { /* mobile: faint, no blur (cheaper) */
   .contour-layer { --contour-w: 130vw; --contour-right: -45vw; --contour-max: 0.11; --contour-blur: 0px; }

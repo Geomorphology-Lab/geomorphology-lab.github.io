@@ -41,6 +41,8 @@ export interface Person {
 
 export interface PrincipalInvestigator extends Omit<Person, 'position'> {
   affiliation: string
+  /** Google Scholar profile URL (shows a button under the email) */
+  scholarUrl?: string
   /** Optional short biography paragraphs (not shown when empty) */
   biography?: string[]
   education: string[]
@@ -61,8 +63,10 @@ export interface Publication {
   year?: number
   title: string
   authors: string[]
-  /** Journal name, conference name, or publisher */
+  /** Journal name, conference name, or (for a chapter) the book title */
   venue: string
+  /** Publisher, shown for book chapters */
+  publisher?: string
   volume?: string
   issue?: string
   pages?: string

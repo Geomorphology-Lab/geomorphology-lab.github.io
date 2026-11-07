@@ -1,11 +1,16 @@
 import { site } from '../../content/site'
-import { ArrowLink } from '../common/ArrowLink'
 import { Reveal } from '../common/Reveal'
 
 export function AboutPreview() {
   const { image } = site.homeAbout
   return (
-    <section aria-labelledby="about-preview-title" className="relative overflow-hidden border-b border-line bg-ink-800 pb-24 md:pb-32">
+    <section
+      id="about"
+      aria-labelledby="about-preview-title"
+      // the image starts at the very top of the section, so cancel the global anchor offset for this target
+      style={{ scrollMarginTop: '-6rem' }}
+      className="relative overflow-hidden border-b border-line bg-ink-800 pb-24 md:pb-32"
+    >
       {/* Full-width atmospheric image: starts at the section's top edge and dissolves into the background */}
       <div className="about-visual relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9] lg:max-h-[36rem]">
         <img
@@ -34,7 +39,6 @@ export function AboutPreview() {
               <p key={i} lang="ko" className="prose-body">{p}</p>
             ))}
           </div>
-          <ArrowLink to="/about" className="mt-10">More about the lab</ArrowLink>
         </Reveal>
       </div>
     </section>

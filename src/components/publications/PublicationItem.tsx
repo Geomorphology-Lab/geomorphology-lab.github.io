@@ -1,8 +1,17 @@
 import type { Publication } from '../../content/types'
 import { ArrowUpRight } from '../common/Icons'
 
-/** "Venue, Volume(Issue), Pages" — only the parts that exist */
+/** "A, B, & C" — the author order is exactly the order in the data */
+function formatAuthors(authors: string[]) {
+  if (authors.length <= 1) return authors.join('')
+  return `${authors.slice(0, -1).join(', ')}, & ${authors[authors.length - 1]}`
+}
+
+/** Journal: "Venue, Volume(Issue), Pages". Chapter: "In Book (pp. Pages). Publisher." Only existing parts are shown. */
 function citation(p: Publication) {
+  if (p.type === 'chapter') {
+    return `In ${p.venue}${p.pages ? ` (pp. ${p.pages})` : ''}${p.publisher ? `. ${p.publisher}` : ''}.`
+  }
   let s = p.venue
   if (p.volume) s += `, ${p.volume}`
   if (p.issue) s += p.volume ? `(${p.issue})` : `, (${p.issue})`
@@ -10,21 +19,34 @@ function citation(p: Publication) {
   return s
 }
 
+/** Sets cosmogenic isotope names (10Be, 9Be) with a superscript mass number; the stored title stays plain text. */
+function Title({ text }: { text: string }) {
+  const parts = text.split(/(?<![\d.])(10|9)(?=Be\b)/)
+  return (
+    <>
+      {parts.map((part, i) => (i % 2 === 1 ? <sup key={i}>{part}</sup> : part))}
+    </>
+  )
+}
+
 /** One publication entry. Real and temporary entries share exactly the same layout. */
 export function PublicationItem({ publication: p }: { publication: Publication }) {
   const href = p.doi ? `https://doi.org/${p.doi}` : p.url
+  const lang = /[가-힣]/.test(p.title) ? 'ko' : 'en'
   return (
     <article className="flex items-start gap-6 py-7 md:py-8">
       <div className="min-w-0 flex-1">
-        <h3 lang="ko" className="text-[1.075rem] leading-snug font-semibold text-fg md:text-lg">{p.title}</h3>
-        <p lang="ko" className="mt-2.5 text-[0.95rem] leading-relaxed text-fg-muted">{p.authors.join(', ')}</p>
-        <p lang="ko" className="mt-1 text-[0.95rem] leading-relaxed text-fg-muted">
+        <h3 lang={lang} className="text-[1.075rem] leading-snug font-semibold text-fg md:text-lg">
+          <Title text={p.title} />
+        </h3>
+        <p lang={lang} className="mt-2.5 text-[0.95rem] leading-relaxed text-fg-muted">{formatAuthors(p.authors)}</p>
+        <p lang={lang} className="mt-1 text-[0.95rem] leading-relaxed text-fg-muted">
           <span className="text-fg/90">{citation(p)}</span>
           {p.doi && (
             <>
               <span aria-hidden="true"> · </span>
-              <a href={`https://doi.org/${p.doi}`} className="break-all text-fg-subtle hover:text-accent hover:underline">
-                DOI: {p.doi}
+              <a href={`https://doi.org/${p.doi}`} className="text-fg-subtle hover:text-accent hover:underline">
+                <span className="whitespace-nowrap">DOI:</span> <span className="[overflow-wrap:anywhere]">{p.doi}</span>
               </a>
             </>
           )}

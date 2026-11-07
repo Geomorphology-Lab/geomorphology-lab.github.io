@@ -4,7 +4,7 @@ import type { Person } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
 import { MediaFrame } from '../components/common/MediaFrame'
 import { EmailText } from '../components/common/EmailText'
-import { MailIcon } from '../components/common/Icons'
+import { ArrowUpRight, MailIcon } from '../components/common/Icons'
 import { MemberCard } from '../components/people/MemberCard'
 import { SectionHeading } from '../components/common/SectionHeading'
 
@@ -13,7 +13,7 @@ function MemberGrid({ id, title, members }: { id: string; title: string; members
   return (
     <section aria-labelledby={id} className="border-t border-line py-16 md:py-24">
       <SectionHeading id={id} eyebrow="Members" title={title} />
-      <ul className="grid grid-cols-1 gap-6 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="member-grid">
         {members.map((m, i) => (
           <li key={i}><MemberCard person={m} /></li>
         ))}
@@ -45,6 +45,18 @@ export default function MembersPage() {
                     <MailIcon className="mt-0.5 size-4 shrink-0 text-fg-subtle" />
                     <EmailText value={pi.email} />
                   </p>
+                )}
+                {pi.scholarUrl && (
+                  <a
+                    href={pi.scholarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex min-h-11 items-center gap-2 border border-accent/60 px-4 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-accent hover:text-ink-900"
+                  >
+                    Google Scholar
+                    <ArrowUpRight className="size-4" />
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
                 )}
                 {pi.biography && pi.biography.length > 0 && (
                   <div className="mt-8 max-w-2xl space-y-4 border-t border-line pt-8">

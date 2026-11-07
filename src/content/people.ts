@@ -5,6 +5,7 @@ export const principalInvestigator: PrincipalInvestigator = {
   affiliation: 'Assistant Professor',
   researchInterests: 'Geomorphology, Earth Surface and Landforms, Anthropocene, Soil Erosion, Cosmogenic Radionuclides, Sustainability',
   email: 'ara.jeong@khu.ac.kr',
+  scholarUrl: 'https://scholar.google.com/citations?user=FXMvtQwAAAAJ&hl=ko&oi=ao',
   photo: { alt: '교수님 사진' },
   education: [
     'Ph.D., 2015–2019, School of Geographical Sciences and Urban Planning, Arizona State University',
@@ -37,6 +38,7 @@ export const undergraduateResearchers: Person[] = [
     name: '구성원 성명',
     position: '이곳에는 학부 연구생의 학과와 학년이 들어갑니다.',
     researchInterests: '이곳에는 구성원의 연구 관심 분야가 들어갑니다.',
+    email: '이곳에는 공개가 승인된 이메일 주소가 들어갑니다.',
     photo: { alt: '학부 연구생 사진' },
   },
 ]

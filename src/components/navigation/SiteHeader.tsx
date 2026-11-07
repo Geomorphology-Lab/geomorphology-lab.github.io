@@ -17,8 +17,9 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  // Drop-down that was just used (a link inside it was followed). It stays shut while the pointer is still over
-  // it, and opens normally again after the pointer has left and come back.
+  // Drop-down that was just used (a link inside it, or the item itself, was followed). It stays shut, however the
+  // pointer moves over the spot where it was, and opens again only when the pointer re-enters the top-level item
+  // or the menu gets keyboard focus.
   const [shut, setShut] = useState<string | null>(null)
   const { pathname } = useLocation()
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -87,11 +88,11 @@ export function SiteHeader() {
                 key={item.path}
                 className="group/nav relative"
                 onClick={() => item.children && setShut(item.path)}
-                onMouseLeave={() => setShut((s) => (s === item.path ? null : s))}
                 onFocus={() => setShut((s) => (s === item.path ? null : s))}
               >
                 <NavLink
                   to={item.path}
+                  onMouseEnter={() => setShut((s) => (s === item.path ? null : s))}
                   className={({ isActive }) =>
                     `relative block px-3.5 py-2 text-[0.9rem] font-medium tracking-wide transition-colors after:absolute after:inset-x-3.5 after:bottom-0.5 after:h-px after:origin-left after:bg-accent after:transition-transform after:duration-300 ${
                       isActive ? 'text-fg after:scale-x-100' : 'text-fg-muted hover:text-fg after:scale-x-0 hover:after:scale-x-100'

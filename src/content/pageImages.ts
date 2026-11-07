@@ -17,9 +17,9 @@ export const headerPhotos = {
   },
   members: {
     alt: '',
-    files: set('members-karst', [960, 1600, 2560]),
-    aspect: 2560 / 1440,
-    position: { mobile: '45% 60%', desktop: '50% 58%' },
+    files: set('members-river-delta', [960, 1600, 2560]),
+    aspect: 2560 / 1707,
+    position: { mobile: '62% 45%', desktop: '50% 46%' },
   },
   publications: {
     alt: '',

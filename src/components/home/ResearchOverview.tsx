@@ -4,11 +4,20 @@ import { ArrowLink } from '../common/ArrowLink'
 import { ArrowUpRight } from '../common/Icons'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
+import { AboutVisual } from './AboutVisual'
 
 export function ResearchOverview() {
   return (
-    <section id="research-areas" aria-labelledby="research-areas-title" className="relative bg-ink-900 py-24 md:py-32">
-      <div className="container-page">
+    <section
+      id="research-areas"
+      aria-labelledby="research-areas-title"
+      className="relative overflow-hidden border-b border-line bg-ink-800 pb-24 md:pb-32"
+    >
+      {/* Background image: flush with the top edge, fading into the section background below */}
+      <AboutVisual />
+
+      {/* The heading overlaps the faded bottom of the image slightly */}
+      <div className="container-page relative z-10 -mt-[clamp(2.5rem,7vw,6rem)]">
         <SectionHeading
           id="research-areas-title"
           eyebrow="Research Areas"

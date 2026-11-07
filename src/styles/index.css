@@ -182,10 +182,9 @@
    Homepage About image: soft bottom fade (mask works in all modern browsers)
    ------------------------------------------------------------------ */
 .about-visual {
-  /* Short fade-in at the top (the image emerges from the hero's dark bottom edge), fully visible
-     down to ~65%, then dissolves into the section background */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 4%, #000 12%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 4%, #000 12%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
+  /* Fully visible down to ~65%, then dissolves into the section background */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
 }
 .about-visual-img { object-position: var(--pos-mobile, 50% 50%); }
 @media (min-width: 48rem) {

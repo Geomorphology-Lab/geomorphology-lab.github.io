@@ -188,7 +188,7 @@ src/
     common/        Shared components (headings, image frame, icons, etc.)
     layout/        Layout, footer
     navigation/    Header and mobile menu
-    home/          Homepage sections (Hero, About, Research Areas)
+    home/          Homepage sections (Hero, About text, Research Areas over the river image)
     research/      Research page blocks
     people/        Member cards
     publications/  Publication items

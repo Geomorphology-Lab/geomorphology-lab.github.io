@@ -31,8 +31,8 @@ export const site = {
     },
     heading: 'Studying the processes that shape the Earth’s surface',
     paragraphs: [
-      '이곳에는 연구실의 주요 연구 주제와 연구 목표, 연구실이 수행하는 학술 활동에 대한 소개글이 들어갑니다.',
-      '이곳에는 연구실이 지향하는 연구 방향과 현장 조사, 분석 방법 등 연구실의 특징을 간략히 설명하는 문장이 들어갑니다.',
+      'The Geomorphology Lab at Kyung Hee University investigates how landscapes form and change, and the mechanisms that turn surface processes into natural hazards. We reconstruct the evolution of landscapes across Quaternary glacial–interglacial cycles, quantify how rock coasts erode and collapse, and examine how agriculture, urbanization, wildfire, and climate change accelerate erosion today. Our study sites range from the rocky coasts and mountain slopes of the Korean Peninsula to the glaciated valleys of Wyoming and the arid landscapes of Arizona. Through national research programs, peer-reviewed publications, and international conferences, we aim to provide a scientific basis for understanding and responding to environmental change.',
+      'Our research begins in the field and is completed with numbers. We pair detailed field surveys with high-resolution 3D mapping from UAV-SfM and LiDAR, cosmogenic radionuclide (CRN) dating, and numerical modeling such as finite element analysis (FEA). By integrating these approaches, we connect what a landscape looks like today with how fast it has changed in the past and how it is likely to respond in the future.',
     ],
   },
 
@@ -47,7 +47,7 @@ export const navigation: NavItem[] = [
 ]
 
 export const contact = {
-  location: 'SPACE21, College of Sciences, Room 624',
+  location: 'Space21 #624',
   /** Set to a confirmed public address to show a mailto link. */
   email: 'ara.jeong@khu.ac.kr',
   prospective:

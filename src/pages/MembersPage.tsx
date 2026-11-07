@@ -6,6 +6,7 @@ import { MediaFrame } from '../components/common/MediaFrame'
 import { EmailText } from '../components/common/EmailText'
 import { ArrowUpRight, MailIcon } from '../components/common/Icons'
 import { MemberCard } from '../components/people/MemberCard'
+import { AlumniList } from '../components/people/AlumniList'
 import { SectionHeading } from '../components/common/SectionHeading'
 
 function MemberGrid({ id, title, members }: { id: string; title: string; members: Person[] }) {
@@ -47,6 +48,7 @@ export default function MembersPage() {
                   </p>
                 )}
                 {pi.scholarUrl && (
+                  <div>
                   <a
                     href={pi.scholarUrl}
                     target="_blank"
@@ -57,6 +59,21 @@ export default function MembersPage() {
                     <ArrowUpRight className="size-4" />
                     <span className="sr-only">(opens in a new tab)</span>
                   </a>
+                  </div>
+                )}
+                {pi.cvUrl && (
+                  <div>
+                    <a
+                      href={pi.cvUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex min-h-11 items-center gap-2 border border-accent/60 px-4 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-accent hover:text-ink-900"
+                    >
+                      Download CV
+                      <ArrowUpRight className="size-4" />
+                      <span className="sr-only">(PDF, opens in a new tab)</span>
+                    </a>
+                  </div>
                 )}
                 {pi.biography && pi.biography.length > 0 && (
                   <div className="mt-8 max-w-2xl space-y-4 border-t border-line pt-8">
@@ -114,16 +131,7 @@ export default function MembersPage() {
           {alumni.length > 0 && (
             <section aria-labelledby="alumni-title" className="border-t border-line py-16 md:py-24">
               <SectionHeading id="alumni-title" eyebrow="Members" title="Alumni" />
-              <ul className="border-t border-line">
-                {alumni.map((a, i) => (
-                  <li key={i} className="grid gap-x-8 gap-y-1.5 border-b border-line py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_8rem_minmax(0,1.6fr)] md:items-baseline">
-                    <p lang="ko" className="font-semibold text-fg">{a.name}</p>
-                    <p lang="ko" className="text-[0.95rem] text-fg-muted">{a.degree}</p>
-                    <p lang="ko" className="text-[0.95rem] tabular-nums text-accent">{a.year}</p>
-                    <p lang="ko" className="text-[0.95rem] text-fg-muted">{a.currentPosition}</p>
-                  </li>
-                ))}
-              </ul>
+              <AlumniList alumni={alumni} />
             </section>
           )}
         </div>

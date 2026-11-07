@@ -8,23 +8,32 @@ interface Props {
   className?: string
   /** Set for above-the-fold images */
   eager?: boolean
+  /** `sizes` attribute used when the image provides a srcSet */
+  sizes?: string
 }
 
 /**
  * Displays an image, or — when no photograph has been supplied yet — a calm
  * topographic-contour surface of identical size, so layouts look final.
  */
-export function MediaFrame({ image, aspect = 'aspect-[4/3]', variant = 'landscape', className = '', eager }: Props) {
+export function MediaFrame({ image, aspect = 'aspect-[4/3]', variant = 'landscape', className = '', eager, sizes = '(min-width: 1024px) 40vw, 100vw' }: Props) {
   const frame = `relative overflow-hidden bg-ink-700 ${aspect} ${className}`
   if (image?.src) {
     return (
       <div className={frame}>
         <img
           src={image.src}
+          srcSet={image.srcSet}
+          sizes={image.srcSet ? sizes : undefined}
           alt={image.alt}
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
-          className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out-soft group-hover:scale-[1.03]"
+          className={
+            image.fit === 'contain'
+              ? 'block h-auto w-full'
+              : 'absolute inset-0 size-full object-cover transition-transform duration-700 ease-out-soft group-hover:scale-[1.03]'
+          }
+          style={image.position ? { objectPosition: image.position } : undefined}
         />
       </div>
     )

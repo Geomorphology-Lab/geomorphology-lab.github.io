@@ -10,7 +10,10 @@ function formatAuthors(authors: string[]) {
 /** Journal: "Venue, Volume(Issue), Pages". Chapter: "In Book (pp. Pages). Publisher." Only existing parts are shown. */
 function citation(p: Publication) {
   if (p.type === 'chapter') {
-    return `In ${p.venue}${p.pages ? ` (pp. ${p.pages})` : ''}${p.publisher ? `. ${p.publisher}` : ''}.`
+    // "In R. Schaetzl & R. Marston (Eds.), Book Title (Chapter 10, pp. 182–211). Publisher."
+    const who = p.editors ? `${p.editors} (Eds.), ` : ''
+    const where = [p.chapter ? `Chapter ${p.chapter}` : '', p.pages ? `pp. ${p.pages}` : ''].filter(Boolean).join(', ')
+    return `In ${who}${p.venue}${where ? ` (${where})` : ''}${p.publisher ? `. ${p.publisher}` : ''}.`
   }
   let s = p.venue
   if (p.volume) s += `, ${p.volume}`

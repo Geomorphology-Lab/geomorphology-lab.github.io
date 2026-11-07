@@ -13,7 +13,7 @@ export function AboutPreview() {
           </h2>
           <div className="mt-8 space-y-5">
             {site.homeAbout.paragraphs.map((p, i) => (
-              <p key={i} lang="ko" className="prose-body">{p}</p>
+              <p key={i} lang="en" className="prose-body">{p}</p>
             ))}
           </div>
         </Reveal>

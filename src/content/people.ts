@@ -3,10 +3,16 @@ import type { Alumnus, Person, PrincipalInvestigator } from './types'
 export const principalInvestigator: PrincipalInvestigator = {
   name: 'Prof. Ara Jeong',
   affiliation: 'Assistant Professor',
-  researchInterests: 'Geomorphology, Earth Surface and Landforms, Anthropocene, Soil Erosion, Cosmogenic Radionuclides, Sustainability',
+  researchInterests:
+    'Quaternary Geochronology · Cosmogenic Radionuclides · Rock Coast Evolution · Geomorphic Hazards · Anthropocene Soil Erosion · Post-Wildfire Landscapes · UAV-SfM & LiDAR · Numerical Modeling',
   email: 'ara.jeong@khu.ac.kr',
   scholarUrl: 'https://scholar.google.com/citations?user=FXMvtQwAAAAJ&hl=ko&oi=ao',
-  photo: { alt: '교수님 사진' },
+  cvUrl: '/docs/Ara_Jeong_CV.pdf',
+  photo: {
+    src: '/images/people/pi-ara-jeong-1000.webp',
+    srcSet: '/images/people/pi-ara-jeong-600.webp 600w, /images/people/pi-ara-jeong-1000.webp 1000w',
+    alt: 'Ara Jeong 교수의 프로필 사진. 회색 배경 앞에서 흰 셔츠를 입고 있다.',
+  },
   education: [
     {
       degree: 'Ph.D.',
@@ -30,28 +36,32 @@ export const principalInvestigator: PrincipalInvestigator = {
     '2021.07–2021.12: Full-time Researcher, Institute of Geologic Hazard and Industrial Resources, Pusan National University',
     '2020.07–2021.06: Research Professor, Institute of Future Land, Korea University',
     '2020.01–2020.12: Full-time Researcher, Institute of Geologic Hazard and Industrial Resources, Pusan National University',
-    '2019.07–2020.01: Post-Doctoral Research Scholar, Arizona State University',
+    '2019.07–2020.01: Postdoctoral Research Scholar and Lecturer, Arizona State University, USA',
   ],
 }
 
-/** Graduate students. Copy the example entry to add a member; delete it to remove. */
+/** Graduate students. Copy an entry to add a member; delete it to remove. Optional fields can simply be left out. */
 export const graduateStudents: Person[] = [
   {
-    name: '구성원 성명',
-    position: '이곳에는 학위과정(박사과정·석사과정 등)이 들어갑니다.',
-    researchInterests: '이곳에는 구성원의 연구 관심 분야가 들어갑니다.',
-    email: '이곳에는 공개가 승인된 이메일 주소가 들어갑니다.',
-    photo: { alt: '대학원생 구성원 사진' },
+    name: 'Eungi Cho',
+    position: 'M.S. student',
+    email: 'dmsrlwh@khu.ac.kr',
+    photo: { alt: 'Eungi Cho 프로필 사진 (사진 준비 중)' },
   },
 ]
 
 export const undergraduateResearchers: Person[] = [
   {
-    name: '구성원 성명',
-    position: '이곳에는 학부 연구생의 학과와 학년이 들어갑니다.',
-    researchInterests: '이곳에는 구성원의 연구 관심 분야가 들어갑니다.',
-    email: '이곳에는 공개가 승인된 이메일 주소가 들어갑니다.',
-    photo: { alt: '학부 연구생 사진' },
+    name: 'Sohyeon Kim',
+    position: 'Undergraduate researcher',
+    affiliation: 'Department of Chemistry and Department of Geography, Kyung Hee University',
+    researchInterests: 'Biogeochemistry, Environmental Remote Sensing, Earth System Data Analysis',
+    email: 'nhye03@khu.ac.kr',
+    photo: {
+      src: '/images/people/sohyeon-kim-600.webp',
+      srcSet: '/images/people/sohyeon-kim-600.webp 600w, /images/people/sohyeon-kim-951.webp 951w',
+      alt: 'Sohyeon Kim의 증명사진. 흰 바탕 앞에서 검은 재킷을 입고 있다.',
+    },
   },
 ]
 

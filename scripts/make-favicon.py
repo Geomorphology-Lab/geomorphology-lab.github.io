@@ -2,15 +2,17 @@
 
 Usage: python3 scripts/make-favicon.py <emblem.png>
 The emblem's colours are swapped (white emblem on a navy square) and the result is written to
-public/favicon.ico (16/32/48 px), public/favicon-32.png, public/favicon-192.png and
-public/apple-touch-icon.png (180 px). The source file is not modified.
+public/favicon.ico (16/32/48 px), public/favicon-32.png and public/favicon-192.png (rounded corners,
+transparent outside them) and public/apple-touch-icon.png (180 px, square: iOS rounds it itself).
+The source file is not modified.
 """
 import sys
 from pathlib import Path
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw
 
 OUT = Path(__file__).resolve().parent.parent / "public"
+CORNER = 0.15  # corner radius as a fraction of the icon size (rounded, not circular)
 
 
 def swapped_square(src: str, size: int = 1024, pad: float = 0.05) -> Image.Image:
@@ -36,11 +38,23 @@ def swapped_square(src: str, size: int = 1024, pad: float = 0.05) -> Image.Image
     return Image.fromarray(out.astype("uint8"), "RGB"), tuple(int(round(v)) for v in navy)
 
 
+def rounded(img: Image.Image, ratio: float = CORNER) -> Image.Image:
+    """RGBA copy with rounded corners; the mask is drawn at 4x for smooth edges."""
+    w, h = img.size
+    mask = Image.new("L", (w * 4, h * 4), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, w * 4 - 1, h * 4 - 1), radius=int(min(w, h) * 4 * ratio), fill=255)
+    out = img.convert("RGBA")
+    out.putalpha(mask.resize((w, h), Image.LANCZOS))
+    return out
+
+
 def main(src: str) -> None:
     big, navy = swapped_square(src)
-    for name, px in [("favicon-192.png", 192), ("apple-touch-icon.png", 180), ("favicon-32.png", 32)]:
-        big.resize((px, px), Image.LANCZOS).save(OUT / name, optimize=True)
-    big.save(OUT / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
+    big_round = rounded(big)
+    for name, px in [("favicon-192.png", 192), ("favicon-32.png", 32)]:
+        big_round.resize((px, px), Image.LANCZOS).save(OUT / name, optimize=True)
+    big.resize((180, 180), Image.LANCZOS).save(OUT / "apple-touch-icon.png", optimize=True)
+    big_round.save(OUT / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
     print("navy", "#%02x%02x%02x" % navy, "| wrote", ", ".join(p.name for p in sorted(OUT.glob("*")) if "icon" in p.name))
 
 

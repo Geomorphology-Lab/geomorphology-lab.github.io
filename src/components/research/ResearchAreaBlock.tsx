@@ -2,6 +2,21 @@ import type { ResearchArea } from '../../content/types'
 import { MediaFrame } from '../common/MediaFrame'
 import { Reveal } from '../common/Reveal'
 
+/**
+ * Keeps each half of a "First part & Second part" title together, so the heading can only wrap
+ * after the "&" (e.g. "Anthropocene Soil Erosion &" / "Land Use") and never in the middle of a phrase.
+ * A half that is wider than the screen still wraps normally. Titles without "&" are unchanged.
+ */
+function HeadingText({ title }: { title: string }) {
+  const i = title.indexOf(' & ')
+  if (i === -1) return <>{title}</>
+  return (
+    <>
+      <span className="inline-block">{title.slice(0, i + 2)}</span> <span className="inline-block">{title.slice(i + 3)}</span>
+    </>
+  )
+}
+
 export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: number }) {
   const num = String(index + 1).padStart(2, '0')
   const flip = index % 2 === 1
@@ -30,7 +45,7 @@ export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: 
             {area.label && <span className="text-fg-subtle">{area.label}</span>}
           </p>
           <h2 id={`${area.id}-title`} lang="en" className="mt-4 text-[clamp(1.6rem,1.25rem+1.4vw,2.4rem)] font-semibold text-fg">
-            {area.title}
+            <HeadingText title={area.title} />
           </h2>
           {area.question && (
             <p lang="en" className="mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">

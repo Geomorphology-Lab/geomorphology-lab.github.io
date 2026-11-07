@@ -172,6 +172,18 @@ python3 scripts/optimize-photo.py new-photo.jpg public/images/headers research-g
 
 Using the same name overwrites the existing files, so no code change is needed. Adjust `position` (mobile / desktop) if an important feature is cropped. The 404 page still uses the code-rendered landscape in `src/assets/images/hero/`.
 
+### About section contour map
+
+A pale-cyan topographic contour map surfaces from the dark background behind the right side of "About the Laboratory" as you scroll (and fades back when scrolling up). The behaviour is in `src/components/home/ContourReveal.tsx` and the look is in the `.contour-*` rules at the end of `src/styles/index.css`:
+
+- `--contour-max` is the final opacity (0.3 on desktop, lower on tablet and phone), `--contour-blur` the starting blur, `--contour-w` / `--contour-right` the size and position.
+- The image (`src/assets/images/about/contour-map.webp`) is used as a mask, so only its alpha matters; the line colour is the site accent colour. To use another map, replace the file with a transparent PNG/WebP of any square shape.
+- With "reduce motion" enabled in the system, a static, faint version is shown instead.
+
+### Research card hover photos
+
+Each Home research card reveals a photograph on hover or keyboard focus. The photos are set per area as `cardPhoto` in `src/content/research.ts` (files in `public/images/research/card-*`); `position` chooses which part stays visible in the card crop. Create new sizes with `python3 scripts/optimize-content-image.py <photo> public/images/research <name> 1000 600`. Touch devices never download these photos.
+
 ### Homepage About image
 
 The braided-river photo is configured in `homeAbout.image` in `src/content/site.ts` (files in `public/images/about/`, created with `scripts/optimize-photo.py`).

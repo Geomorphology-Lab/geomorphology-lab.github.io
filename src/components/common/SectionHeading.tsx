@@ -5,9 +5,11 @@ interface Props {
   action?: React.ReactNode
   id?: string
   as?: 'h1' | 'h2'
+  /** Language of the description text (default Korean) */
+  descriptionLang?: 'ko' | 'en'
 }
 
-export function SectionHeading({ eyebrow, title, description, action, id, as: Tag = 'h2' }: Props) {
+export function SectionHeading({ eyebrow, title, description, action, id, as: Tag = 'h2', descriptionLang = 'ko' }: Props) {
   return (
     <div className="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
       <div className="max-w-3xl">
@@ -16,7 +18,7 @@ export function SectionHeading({ eyebrow, title, description, action, id, as: Ta
           {title}
         </Tag>
         {description && (
-          <p lang="ko" className="prose-body mt-5 max-w-2xl">
+          <p lang={descriptionLang} className="prose-body mt-5 max-w-2xl">
             {description}
           </p>
         )}

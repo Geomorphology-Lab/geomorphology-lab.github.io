@@ -205,3 +205,11 @@
   :root { --pi-photo: clamp(13.5rem, 24.8vw, 19.5rem); }
 }
 .pi-photo { width: var(--pi-photo); }
+
+/* Research photos shown whole (wide group photo, portrait photos): cap the height of tall photos
+   and centre them so they never look stretched or cropped. */
+.research-photo { display: flex; justify-content: center; background: transparent; }
+.research-photo img { max-height: 34rem; width: auto; max-width: 100%; }
+@media (max-width: 47.99rem) {
+  .research-photo img { max-height: 28rem; }
+}

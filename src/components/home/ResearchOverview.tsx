@@ -23,6 +23,7 @@ export function ResearchOverview() {
           eyebrow="Research Areas"
           title="Research Areas"
           description={researchIntro.lead}
+          descriptionLang="en"
           action={<ArrowLink to="/research">All research</ArrowLink>}
         />
         <ol className="grid border-t border-l border-line sm:grid-cols-2 xl:grid-cols-4">
@@ -31,7 +32,7 @@ export function ResearchOverview() {
               <Reveal delay={i * 80} className="h-full">
                 <Link
                   to={`/research#${area.id}`}
-                  className="group relative flex h-full min-h-[13rem] flex-col p-7 transition-colors duration-500 hover:bg-fg/[0.04] md:min-h-[21rem] md:p-8"
+                  className="group relative flex h-full flex-col p-7 transition-colors duration-500 hover:bg-fg/[0.04] md:p-8"
                 >
                   <div className="flex items-start justify-between">
                     <span className="font-display text-sm font-medium tabular-nums tracking-[0.18em] text-accent">
@@ -39,9 +40,9 @@ export function ResearchOverview() {
                     </span>
                     <ArrowUpRight className="size-5 text-fg-subtle transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                   </div>
-                  <div className="mt-auto pt-8 md:pt-12">
-                    <h3 lang="ko" className="text-xl font-semibold text-fg md:text-[1.375rem]">{area.title}</h3>
-                    <p lang="ko" className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted">{area.summary}</p>
+                  <div className="pt-8 md:pt-10">
+                    <h3 lang="en" className="text-xl font-semibold text-fg md:text-[1.375rem]">{area.title}</h3>
+                    <p lang="en" className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted">{area.summary}</p>
                   </div>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
                 </Link>

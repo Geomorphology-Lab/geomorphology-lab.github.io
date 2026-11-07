@@ -11,7 +11,7 @@ import type { Publication } from './types'
  *   venue     journal name (or book title for a chapter)
  *   volume / issue / pages    optional; pages may be an article number
  *   doi       optional, without the https://doi.org/ prefix (or use url)
- *   type      'journal' or 'chapter' (a chapter also uses `publisher`)
+ *   type      'journal' or 'chapter' (a chapter also uses publisher, and optionally editors, chapter, date)
  *
  * Titles are plain text; isotope names such as 10Be and 9Be are set with
  * superscripts automatically.
@@ -30,6 +30,21 @@ export const publications: Publication[] = [
     pages: '105323',
     doi: '10.1016/j.earscirev.2025.105323',
     type: 'journal',
+  },
+  {
+    id: '2025-10-1017-9781108781459',
+    year: 2025,
+    date: 'November 12, 2025',
+    title: 'Landforms on faulted rocks',
+    authors: ['Dorn, R. I.', 'Larson, P. H.', 'Jeong, A.'],
+    venue: 'Essentials of Geomorphology',
+    editors: 'R. Schaetzl & R. Marston',
+    chapter: '10',
+    pages: '182–211',
+    publisher: 'Cambridge University Press',
+    doi: '10.1017/9781108781459',
+    url: 'https://www.cambridge.org/highereducation/books/essentials-of-geomorphology/C043BE51FDD9AED47FED30A5EA6EFDCB#overview',
+    type: 'chapter',
   },
   {
     id: '2025-10-3390-land14081590',

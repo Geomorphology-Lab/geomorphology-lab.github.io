@@ -3,6 +3,8 @@ import { EmailText } from '../common/EmailText'
 import { MailIcon } from '../common/Icons'
 import { MediaFrame } from '../common/MediaFrame'
 
+const isKorean = (s: string) => /[가-힣]/.test(s)
+
 /**
  * Horizontal member card: photo on the left, details on the right.
  * Below ~384 px (very narrow phones) the photo stacks above the details.
@@ -15,12 +17,17 @@ export function MemberCard({ person }: { person: Person }) {
         <MediaFrame image={person.photo} aspect="aspect-[4/5]" variant="portrait" className="w-full" />
       </div>
       <div className="flex min-w-0 flex-1 flex-col [overflow-wrap:anywhere]">
-        <h3 lang="ko" className="text-lg leading-snug font-semibold text-fg md:text-xl">{person.name}</h3>
-        <p lang="ko" className="mt-1.5 text-sm leading-relaxed text-accent md:text-[0.9375rem]">{person.position}</p>
-        <div className="mt-4">
-          <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">Research Interests</p>
-          <p lang="ko" className="text-[0.95rem] leading-[1.7] text-fg-muted">{person.researchInterests}</p>
-        </div>
+        <h3 lang={isKorean(person.name) ? 'ko' : 'en'} className="text-lg leading-snug font-semibold text-fg md:text-xl">{person.name}</h3>
+        <p lang={isKorean(person.position) ? 'ko' : 'en'} className="mt-1.5 text-sm leading-relaxed text-accent md:text-[0.9375rem]">{person.position}</p>
+        {person.affiliation && (
+          <p lang={isKorean(person.affiliation) ? 'ko' : 'en'} className="mt-1 text-sm leading-relaxed text-fg-muted">{person.affiliation}</p>
+        )}
+        {person.researchInterests && (
+          <div className="mt-4">
+            <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">Research Interests</p>
+            <p lang={isKorean(person.researchInterests) ? 'ko' : 'en'} className="text-[0.95rem] leading-[1.7] text-fg-muted">{person.researchInterests}</p>
+          </div>
+        )}
         {person.email && (
           <div className="mt-auto border-t border-line pt-4 [&:not(:first-child)]:mt-5">
             <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">Email</p>

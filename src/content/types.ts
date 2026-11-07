@@ -9,6 +9,14 @@ export interface ImageRef {
   src?: string
   /** Meaningful description for screen readers (required when `src` is set) */
   alt: string
+  /** Optional responsive sources, e.g. '/images/a-960.webp 960w, /images/a-1600.webp 1600w' */
+  srcSet?: string
+  /** CSS object-position to keep the important part visible when cropped (default: centre) */
+  position?: string
+  /** 'contain' shows the whole photograph without cropping (default: 'cover') */
+  fit?: 'cover' | 'contain'
+  /** Very wide photographs: show them across the full content width below the text instead of in the narrow side column */
+  wide?: boolean
 }
 
 export interface NavItem {
@@ -16,27 +24,40 @@ export interface NavItem {
   path: string
 }
 
+export interface RelatedProject {
+  title: string
+  /** Funding or role line shown under the title, e.g. 'NRF Early Career Research Program · PI · 2026–2029' */
+  detail?: string
+}
+
 export interface ResearchArea {
   /** URL anchor, e.g. 'area-1' → /research#area-1 */
   id: string
   title: string
-  /** Short English label shown above the title (optional) */
+  /** Short English label shown above the title (optional; not shown when omitted) */
   label?: string
+  /** Short summary used on the Home cards */
   summary: string
-  /** One or more paragraphs */
+  /** The guiding research question, shown prominently on the Research page */
+  question?: string
+  /** One or more paragraphs: background and methods, then achievements and future directions */
   description: string[]
   image?: ImageRef
-  relatedProjects: string[]
+  relatedProjects: RelatedProject[]
+  /** Short citation lines such as 'Jeong et al. (2026), Earth-Sci. Rev.' */
   relatedPublications: string[]
 }
 
 export interface Person {
   name: string
   position: string
-  researchInterests: string
+  /** Optional: when missing, the card simply omits the section (no placeholder text is shown) */
+  researchInterests?: string
   /** Only publish emails that the person has approved. Shown as a mailto link when it is a valid address. */
   email?: string
   photo?: ImageRef
+  /** Optional line shown between the position and the research interests (e.g. department) */
+  affiliation?: string
 }
 
 /** One degree: shown as "Degree · Years" with the institution on the next line */
@@ -46,10 +67,13 @@ export interface EducationEntry {
   institution: string
 }
 
-export interface PrincipalInvestigator extends Omit<Person, 'position'> {
+export interface PrincipalInvestigator extends Omit<Person, 'position' | 'researchInterests'> {
+  researchInterests: string
   affiliation: string
   /** Google Scholar profile URL (shows a button under the email) */
   scholarUrl?: string
+  /** Curriculum vitae PDF in /public (shows a "Download CV" button) */
+  cvUrl?: string
   /** Optional short biography paragraphs (not shown when empty) */
   biography?: string[]
   education: EducationEntry[]
@@ -74,6 +98,12 @@ export interface Publication {
   venue: string
   /** Publisher, shown for book chapters */
   publisher?: string
+  /** Book editors, e.g. 'R. Schaetzl & R. Marston' (chapters only; shown as "(Eds.)") */
+  editors?: string
+  /** Chapter number or label, e.g. '10' (chapters only) */
+  chapter?: string
+  /** Full publication date as supplied, e.g. 'November 12, 2025' (kept for reference; not shown) */
+  date?: string
   volume?: string
   issue?: string
   pages?: string

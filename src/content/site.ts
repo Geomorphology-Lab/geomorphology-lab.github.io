@@ -47,9 +47,6 @@ export const navigation: NavItem[] = [
 ]
 
 export const contact = {
-  /** Confirmed: the laboratory belongs to Kyung Hee University. */
-  university: 'Kyung Hee University (경희대학교)',
-  department: 'Department of Geography, College of Sciences',
   location: 'SPACE21, College of Sciences, Room 624',
   /** Set to a confirmed public address to show a mailto link. */
   email: 'ara.jeong@khu.ac.kr',

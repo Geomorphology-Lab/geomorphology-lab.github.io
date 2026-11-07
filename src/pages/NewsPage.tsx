@@ -11,8 +11,8 @@ export default function NewsPage() {
   const options = [{ id: 'All' as const, label: 'All' }, ...newsCategories]
 
   return (
-    <>
-      <PageHeader eyebrow="News & Gallery" title="News & Gallery" photo={headerPhotos.news} />
+    <div className="light-page">
+      <PageHeader eyebrow="News & Gallery" title="News & Gallery" photo={headerPhotos.news} tone="light" />
       <div className="bg-ink-900 py-16 md:py-24">
         <div className="container-page">
           <div role="group" aria-label="Filter news by category" className="-mx-1 mb-12 flex gap-2 overflow-x-auto px-1 pb-1 md:mb-16 md:flex-wrap">
@@ -38,6 +38,6 @@ export default function NewsPage() {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   )
 }

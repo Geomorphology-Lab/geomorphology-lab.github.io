@@ -284,3 +284,29 @@
 @media (max-width: 39.99rem) { /* mobile: faint, no blur (cheaper) */
   .contour-layer { --contour-w: 130vw; --contour-right: -45vw; --contour-max: 0.11; --contour-blur: 0px; }
 }
+
+/* ------------------------------------------------------------------
+   Light page theme (example for Publications and News & Gallery): inside `.light-page` the colour
+   tokens are remapped, so every existing component restyles itself. The navigation bar and footer sit
+   outside the wrapper and stay navy.
+   - page background: white, text: near-black navy, secondary text: slate grey
+   - the accent (normally pale cyan) becomes the site's navy, so labels, years and active buttons are navy
+   ------------------------------------------------------------------ */
+.light-page {
+  color-scheme: light;
+  --color-ink-950: #ffffff;
+  --color-ink-900: #ffffff;
+  --color-ink-800: #f3f6f9;
+  --color-ink-700: #e8edf2;
+  --color-ink-600: #d9e1e8;
+  --color-fg: #0a1220;          /* near-black navy */
+  --color-fg-muted: #4a5a6b;    /* slate grey (about 6.6:1 on white) */
+  --color-fg-subtle: #64748a;   /* lighter slate for small labels (about 4.7:1 on white) */
+  --color-accent: #0b1420;      /* the site's navy replaces the pale cyan */
+  --color-accent-strong: #0b1420;
+  --color-line: rgb(11 20 32 / 0.12);
+  --color-line-strong: rgb(11 20 32 / 0.24);
+  background-color: #ffffff;
+  color: var(--color-fg);
+}
+.light-page ::selection { background: rgb(11 20 32 / 0.16); color: #0a1220; }

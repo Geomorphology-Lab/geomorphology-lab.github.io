@@ -8,12 +8,14 @@ interface Props {
   lead?: string
   /** Page-specific photograph; falls back to the shared landscape */
   photo?: ResponsivePhoto
+  /** 'light': the photo fades into a white page (use inside `.light-page`) */
+  tone?: 'dark' | 'light'
 }
 
 /** Top band for inner pages: a landscape photograph, cropped and darkened. */
-export function PageHeader({ eyebrow, title, lead, photo }: Props) {
+export function PageHeader({ eyebrow, title, lead, photo, tone = 'dark' }: Props) {
   // Real photographs get a lighter overlay than the dark fallback image so the landforms stay recognisable.
-  const level = !photo ? 'fallback' : photo.overlay === 'light' ? 'light' : 'photo'
+  const level = tone === 'light' ? 'white' : !photo ? 'fallback' : photo.overlay === 'light' ? 'light' : 'photo'
   // Header height is about min(62vh, 34rem); a cover-cropped wide photo can render wider than the viewport.
   const sizes = photo ? `max(100vw, ${Math.ceil(62 * photo.aspect)}vh)` : '100vw'
   return (
@@ -26,7 +28,7 @@ export function PageHeader({ eyebrow, title, lead, photo }: Props) {
         aria-hidden="true"
         decoding="async"
         fetchPriority="high"
-        className={`page-header-img absolute inset-0 -z-20 size-full object-cover ${level === 'fallback' ? 'opacity-70' : level === 'photo' ? 'opacity-85' : 'opacity-95'}`}
+        className={`page-header-img absolute inset-0 -z-20 size-full object-cover ${level === 'fallback' ? 'opacity-70' : level === 'photo' ? 'opacity-85' : level === 'white' ? 'opacity-100' : 'opacity-95'}`}
         style={
           {
             '--pos-mobile': photo?.position.mobile ?? heroImage.position,
@@ -35,7 +37,13 @@ export function PageHeader({ eyebrow, title, lead, photo }: Props) {
         }
         onError={(e) => (e.currentTarget.style.display = 'none')}
       />
-      {level === 'light' ? (
+      {level === 'white' ? (
+        <>
+          {/* photo on top, melting into white towards the title; a soft white wash from the left keeps the title crisp */}
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.05)_22%,rgba(255,255,255,0.55)_52%,rgba(255,255,255,0.92)_78%,#fff_100%)]" />
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0.18)_45%,transparent_75%)]" />
+        </>
+      ) : level === 'light' ? (
         <>
           <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-900 via-ink-900/35 to-ink-900/30" />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink-900/70 via-ink-900/10 to-transparent" />

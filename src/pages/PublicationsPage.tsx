@@ -22,8 +22,8 @@ export default function PublicationsPage() {
   const options: { id: Filter; label: string }[] = [{ id: 'all', label: 'All' }, ...years.map((y) => ({ id: y, label: String(y) }))]
 
   return (
-    <>
-      <PageHeader eyebrow="Publications" title="Publications" photo={headerPhotos.publications} />
+    <div className="light-page">
+      <PageHeader eyebrow="Publications" title="Publications" photo={headerPhotos.publications} tone="light" />
       <div className="bg-ink-900 py-16 md:py-24">
         <div className="container-page">
           <div role="group" aria-label="Filter publications by year" className="-mx-1 mb-12 flex gap-2 overflow-x-auto px-1 pb-1 md:mb-16 md:flex-wrap">
@@ -69,6 +69,6 @@ export default function PublicationsPage() {
           <p className="sr-only" aria-live="polite">{visible.reduce((n, [, items]) => n + items.length, 0)} publications shown</p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

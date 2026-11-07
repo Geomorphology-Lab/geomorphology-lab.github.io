@@ -39,13 +39,20 @@ export interface Person {
   photo?: ImageRef
 }
 
+/** One degree: shown as "Degree · Years" with the institution on the next line */
+export interface EducationEntry {
+  degree: string
+  years: string
+  institution: string
+}
+
 export interface PrincipalInvestigator extends Omit<Person, 'position'> {
   affiliation: string
   /** Google Scholar profile URL (shows a button under the email) */
   scholarUrl?: string
   /** Optional short biography paragraphs (not shown when empty) */
   biography?: string[]
-  education: string[]
+  education: EducationEntry[]
   career: string[]
 }
 

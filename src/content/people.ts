@@ -8,9 +8,21 @@ export const principalInvestigator: PrincipalInvestigator = {
   scholarUrl: 'https://scholar.google.com/citations?user=FXMvtQwAAAAJ&hl=ko&oi=ao',
   photo: { alt: '교수님 사진' },
   education: [
-    'Ph.D., 2015–2019, School of Geographical Sciences and Urban Planning, Arizona State University',
-    'Master’s, 2013–2015, Department of Geography, Korea University',
-    'Bachelor’s, 2009–2013, Department of Geography Education and Department of Earth and Environmental Sciences, Korea University',
+    {
+      degree: 'Ph.D.',
+      years: '2015–2019',
+      institution: 'School of Geographical Sciences and Urban Planning, Arizona State University',
+    },
+    {
+      degree: 'Master’s Degree',
+      years: '2013–2015',
+      institution: 'Department of Geography, Korea University',
+    },
+    {
+      degree: 'Bachelor’s Degree',
+      years: '2009–2013',
+      institution: 'Department of Geography Education and Department of Earth and Environmental Sciences, Korea University',
+    },
   ],
   career: [
     '2025.03–Present: Assistant Professor, Department of Geography, Kyung Hee University',

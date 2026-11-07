@@ -5,6 +5,7 @@ import { ArrowUpRight } from '../common/Icons'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
 import { AboutVisual } from './AboutVisual'
+import { CardPhotoReveal } from './CardPhotoReveal'
 
 export function ResearchOverview() {
   return (
@@ -32,8 +33,9 @@ export function ResearchOverview() {
               <Reveal delay={i * 80} className="h-full">
                 <Link
                   to={`/research#${area.id}`}
-                  className="group relative flex h-full flex-col p-7 transition-colors duration-500 hover:bg-fg/[0.04] md:p-8"
+                  className="group relative isolate flex h-full flex-col p-7 transition-colors duration-500 hover:bg-fg/[0.04] md:p-8"
                 >
+                  {area.cardPhoto && <CardPhotoReveal photo={area.cardPhoto} />}
                   <div className="flex items-start justify-between">
                     <span className="font-display text-sm font-medium tabular-nums tracking-[0.18em] text-accent">
                       {String(i + 1).padStart(2, '0')}

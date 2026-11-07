@@ -8,13 +8,19 @@ export const researchIntro = {
 
 /**
  * Research areas. The Home cards and the Research page both read from this list.
- * Numbers (01, 02 …) follow the order. Photographs live in /public/images/research/
+ * Numbers (01, 02 …) follow the order. `cardPhoto` is the picture revealed behind each Home card on hover.
+ * Photographs live in /public/images/research/
  * (created with scripts/optimize-content-image.py); `position` keeps the key part of a photo
  * visible when it is cropped, and fit: 'contain' shows a photo uncropped.
  */
 export const researchAreas: ResearchArea[] = [
   {
     id: 'area-1',
+    cardPhoto: {
+      src: '/images/research/card-rock-coast-600.webp',
+      srcSet: '/images/research/card-rock-coast-600.webp 600w, /images/research/card-rock-coast-1000.webp 1000w',
+      position: '42% 0%',
+    },
     title: 'Rock Coast Dynamics & Geomorphic Thresholds',
     summary:
       'We quantify rock coast erosion along the Korean Peninsula from the mid-Holocene to the present. By combining UAV-SfM surveys, cosmogenic nuclides, and finite element modeling, we predict the collapse thresholds and remaining lifespans of sea stacks and coastal cliffs.',
@@ -39,6 +45,11 @@ export const researchAreas: ResearchArea[] = [
   },
   {
     id: 'area-2',
+    cardPhoto: {
+      src: '/images/research/card-moraine-600.webp',
+      srcSet: '/images/research/card-moraine-600.webp 600w, /images/research/card-moraine-1000.webp 1000w',
+      position: '47% 50%',
+    },
     title: 'Landscape Chronology & Quaternary Environments',
     summary:
       'Using cosmogenic radionuclide dating and LiDAR-based terrain analysis, we reconstruct the history of glacial landforms, river terraces, and structural landscapes. We ask how Earth’s surface responded to Quaternary glacial–interglacial cycles and past climate change.',
@@ -72,6 +83,11 @@ export const researchAreas: ResearchArea[] = [
   },
   {
     id: 'area-3',
+    cardPhoto: {
+      src: '/images/research/card-erosion-600.webp',
+      srcSet: '/images/research/card-erosion-600.webp 600w, /images/research/card-erosion-1000.webp 1000w',
+      position: '18% 50%',
+    },
     title: 'Anthropocene Soil Erosion & Land Use',
     summary:
       'We measure how agriculture, urbanization, and land-use change have accelerated hillslope erosion and soil loss. Our work spans historical farming landscapes in Korea and urbanizing arid regions of Arizona, linking surface processes to their social consequences.',
@@ -98,6 +114,11 @@ export const researchAreas: ResearchArea[] = [
   },
   {
     id: 'area-4',
+    cardPhoto: {
+      src: '/images/research/card-wildfire-600.webp',
+      srcSet: '/images/research/card-wildfire-600.webp 600w, /images/research/card-wildfire-1000.webp 1000w',
+      position: '45% 52%',
+    },
     title: 'Interdisciplinary Research: Geomorphology Meets Ecology',
     summary:
       'We combine geomorphology with microbial ecology to study how landscapes and soil ecosystems respond together to extreme events. Our current work tracks post-fire soil erosion and changes in soil microbial communities on slopes burned in the 2025 Gyeongbuk wildfires.',

@@ -30,6 +30,15 @@ export interface RelatedProject {
   detail?: string
 }
 
+/** Decorative photograph revealed behind a Research Areas card on hover (hidden from assistive technology) */
+export interface CardPhoto {
+  src: string
+  /** Responsive sources, e.g. '/images/a-600.webp 600w, /images/a-1000.webp 1000w' */
+  srcSet: string
+  /** CSS object-position: which part of the photo stays visible in the card crop */
+  position: string
+}
+
 export interface ResearchArea {
   /** URL anchor, e.g. 'area-1' → /research#area-1 */
   id: string
@@ -43,6 +52,8 @@ export interface ResearchArea {
   /** One or more paragraphs: background and methods, then achievements and future directions */
   description: string[]
   image?: ImageRef
+  /** Photo shown behind the Home card on hover (optional) */
+  cardPhoto?: CardPhoto
   relatedProjects: RelatedProject[]
   /** Short citation lines such as 'Jeong et al. (2026), Earth-Sci. Rev.' */
   relatedPublications: string[]

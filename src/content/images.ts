@@ -1,5 +1,5 @@
 /**
- * Image for the inner-page header band (PageHeader) and the homepage About section.
+ * Fallback image for the page header band (used by the 404 page).
  * The homepage hero slideshow is configured separately in heroSlides.ts.
  * To replace: overwrite the three files in src/assets/images/hero/ (same names).
  *

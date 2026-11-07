@@ -1,7 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 import HomePage from './pages/HomePage'
-import AboutPage from './pages/AboutPage'
 import ResearchPage from './pages/ResearchPage'
 import MembersPage from './pages/MembersPage'
 import PublicationsPage from './pages/PublicationsPage'
@@ -20,7 +19,6 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
           <Route path="research" element={<ResearchPage />} />
           <Route path="members" element={<MembersPage />} />
           <Route path="people" element={<Navigate to="/members" replace />} />

@@ -66,14 +66,14 @@ All replaceable text and data are in `src/content/`. You do not need to edit any
 
 | File | Contents |
 | --- | --- |
-| `site.ts` | Lab name, hero text, homepage About text, About page, footer, Contact page, navigation menu |
+| `site.ts` | Lab name, hero text, homepage About text, footer, Contact page (location and map), navigation menu |
 | `research.ts` | Research areas (title, summary, description, image, related projects and publications) |
 | `people.ts` | Principal investigator, graduate students, undergraduate researchers, alumni (shown on the Members page) |
 | `publications.ts` | All publications (grouped by year on the page) |
 | `news.ts` | News and gallery items, news categories |
 | `heroSlides.ts` | Homepage hero slideshow (photos, order, timing) |
 | `pageImages.ts` | Header photographs for Research, Members, Publications, News and Contact |
-| `images.ts` | Fallback header image (About and 404 pages) |
+| `images.ts` | Fallback header image (404 page) |
 | `types.ts` | Field definitions for every content type (reference) |
 
 ### Replacing temporary text
@@ -93,7 +93,7 @@ Add an entry to the appropriate array in `people.ts`:
   name: '홍길동',
   position: '박사과정',
   researchInterests: '하천 지형 변화, 퇴적물 이동',
-  email: 'name@khu.ac.kr',            // Only when the member has approved public disclosure. Delete this line otherwise.
+  email: 'name@khu.ac.kr',            // Only when the member has approved public disclosure. A real address becomes a mailto link; placeholder text is shown as plain text.
   photo: { src: '/images/people/hong.jpg', alt: '홍길동 사진' },
 },
 ```
@@ -105,7 +105,7 @@ Add an entry to the appropriate array in `people.ts`:
 
 ### Adding a publication
 
-Add an entry to the `publications` array in `publications.ts`, and delete the temporary entry (`id: 'placeholder'`).
+Add an entry to the `publications` array in `publications.ts` (the file's header comment explains each field). Titles stay plain text; isotope names such as 10Be are set with superscripts automatically; the page adds the `&` before the last author.
 
 ```ts
 {
@@ -170,7 +170,7 @@ Research, Members, Publications, News and Contact each have their own header pho
 python3 scripts/optimize-photo.py new-photo.jpg public/images/headers research-glacier
 ```
 
-Using the same name overwrites the existing files, so no code change is needed. Adjust `position` (mobile / desktop) if an important feature is cropped. The About and 404 pages still use the code-rendered landscape in `src/assets/images/hero/`.
+Using the same name overwrites the existing files, so no code change is needed. Adjust `position` (mobile / desktop) if an important feature is cropped. The 404 page still uses the code-rendered landscape in `src/assets/images/hero/`.
 
 ### Homepage About image
 
@@ -188,7 +188,7 @@ src/
     common/        Shared components (headings, image frame, icons, etc.)
     layout/        Layout, footer
     navigation/    Header and mobile menu
-    home/          Homepage sections (Hero, Research Areas, About, Publications, News)
+    home/          Homepage sections (Hero, About text, Research Areas over the river image)
     research/      Research page blocks
     people/        Member cards
     publications/  Publication items

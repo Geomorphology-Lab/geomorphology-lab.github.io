@@ -36,13 +36,13 @@ export function Hero() {
             {hero.description}
           </p>
           <div className="animate-rise mt-10 flex flex-col gap-3 [animation-delay:500ms] xs:flex-row xs:flex-wrap sm:gap-4 md:mt-12">
-            <Link
-              to={hero.primaryAction.path}
+            <a
+              href={hero.primaryAction.href}
               className="group inline-flex min-h-12 items-center justify-between gap-6 border border-fg/80 bg-fg px-6 text-sm font-semibold tracking-wide text-ink-900 transition-colors hover:border-accent hover:bg-accent xs:justify-center"
             >
               {hero.primaryAction.label}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            </a>
             <Link
               to={hero.secondaryAction.path}
               className="group inline-flex min-h-12 items-center justify-between gap-6 border border-fg/35 bg-ink-900/20 px-6 text-sm font-semibold tracking-wide text-fg backdrop-blur-[2px] transition-colors hover:border-accent hover:text-accent xs:justify-center"
@@ -55,7 +55,7 @@ export function Hero() {
       </div>
 
       <a
-        href="#research-areas"
+        href="#about"
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.625rem] font-medium uppercase tracking-[0.3em] text-fg/70 transition-colors hover:text-fg md:flex"
       >
         Scroll

@@ -174,9 +174,9 @@ Using the same name overwrites the existing files, so no code change is needed. 
 
 ### About section contour map
 
-A pale-cyan topographic contour map surfaces from the dark background behind the right side of "About the Laboratory" as you scroll (and fades back when scrolling up). The behaviour is in `src/components/home/ContourReveal.tsx` and the look is in the `.contour-*` rules at the end of `src/styles/index.css`:
+A pale-cyan topographic contour map (rotated 25° clockwise) surfaces from the dark background behind the right side of "About the Laboratory" as you scroll, and fades back when scrolling up. The map itself never moves: it scrolls with the page like the background, only its visibility changes. Parts that stick out of the section are cropped, and its top and bottom edges fade into the navy, so it never touches the hero photo. The behaviour is in `src/components/home/ContourReveal.tsx` and the look is in the `.contour-*` rules at the end of `src/styles/index.css`:
 
-- `--contour-max` is the final opacity (0.3 on desktop, lower on tablet and phone), `--contour-blur` the starting blur, `--contour-w` / `--contour-right` the size and position.
+- `--contour-max` is the final opacity (0.36 on desktop, lower on tablet and phone), `--contour-blur` the starting blur, `--contour-rotate` the angle, `--contour-w` / `--contour-right` the size and position.
 - The image (`src/assets/images/about/contour-map.webp`) is used as a mask, so only its alpha matters; the line colour is the site accent colour. To use another map, replace the file with a transparent PNG/WebP of any square shape.
 - With "reduce motion" enabled in the system, a static, faint version is shown instead.
 

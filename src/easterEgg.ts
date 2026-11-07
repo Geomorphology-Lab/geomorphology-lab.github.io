@@ -6,7 +6,7 @@
 // The text is printed exactly as written (spaces, emoji and line breaks included). Do not reformat it.
 const BORDER_TOP = '┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓'
 const BORDER_BOTTOM = '┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛'
-const LINE_CREDIT = '  Built with 🩷 by @shkim03 · GitHub'
+const LINE_CREDIT = '  Built with ♡ by @shkim03 · GitHub'
 const LINE_DEDICATION = '  and with a little extra love and admiration for Prof. Ara Jeong 🌷'
 
 /** Shown as its own console line so the browser turns it into a clickable link. */

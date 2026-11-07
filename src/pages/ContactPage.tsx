@@ -16,8 +16,8 @@ export default function ContactPage() {
     <>
       <PageHeader eyebrow="Contact" title="Contact" photo={headerPhotos.contact} />
       <div className="bg-ink-900 py-16 md:py-24">
-        <div className="container-page grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+        <div className="container-page flex flex-col gap-14 lg:gap-16">
+          <div className="max-w-3xl">
             {/* Prospective Students: first and most prominent block */}
             <section aria-labelledby="prospective-title" className="mb-10 border-l-[3px] border-accent bg-ink-800/60 py-7 pr-6 pl-6 md:mb-12 md:py-9 md:pr-8 md:pl-8">
               <h2 id="prospective-title" className="text-[clamp(1.5rem,1.3rem+0.9vw,1.875rem)] leading-tight font-semibold text-fg">
@@ -39,9 +39,9 @@ export default function ContactPage() {
               ))}
             </dl>
           </div>
-          <div className="lg:col-span-7">
+          <div>
             <figure>
-              <div className="relative aspect-square w-full overflow-hidden border border-line bg-ink-700 sm:aspect-[4/3]">
+              <div className="relative aspect-square w-full overflow-hidden border border-line bg-ink-700 sm:aspect-[4/3] lg:aspect-[21/9]">
                 <iframe
                   src={mapEmbed}
                   title={`Map: ${contact.map.label}`}

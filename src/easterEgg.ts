@@ -6,11 +6,11 @@
 // The text is printed exactly as written (spaces, emoji and line breaks included). Do not reformat it.
 const BORDER_TOP = '┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓'
 const BORDER_BOTTOM = '┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━༻❁༺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛'
-const LINE_CREDIT = '  Built with ♡ by @shkim03 · GitHub'
 const LINE_DEDICATION = '  and with a little extra love and admiration for Prof. Ara Jeong 🌷'
 
-/** Shown as its own console line so the browser turns it into a clickable link. */
+/** Part of the credit line: the console turns a full https:// address into a clickable link. */
 const GITHUB_URL = 'https://github.com/shkim03'
+const LINE_CREDIT = `  Built with ♡ by @shkim03·${GITHUB_URL}`
 
 // Colours are mid-tone pinks so they stay readable on both light and dark consoles (about 3.4:1 to 5:1).
 const STYLE_BORDER = [
@@ -38,5 +38,4 @@ export function printEasterEgg() {
     STYLE_DEDICATION,
     STYLE_BORDER,
   )
-  console.log(GITHUB_URL)
 }

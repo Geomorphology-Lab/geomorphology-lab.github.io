@@ -14,9 +14,6 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
   )
 }
 
-/** Pages with a white body: the bar stays solid navy even at the top of the page. */
-const SOLID_NAV_ROUTES = ['/publications', '/news']
-
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -69,7 +66,7 @@ export function SiteHeader() {
     }
   }, [open])
 
-  const solid = scrolled || open || SOLID_NAV_ROUTES.includes(pathname.replace(/\/+$/, ''))
+  const solid = scrolled || open
   return (
     <>
     <header

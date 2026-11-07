@@ -61,6 +61,8 @@ export interface ResearchArea {
   /** URL anchor, e.g. 'area-1' → /research#area-1 */
   id: string
   title: string
+  /** Short name for the tab on the Research page (falls back to `title`) */
+  tabLabel?: string
   /** Short English label shown above the title (optional; not shown when omitted) */
   label?: string
   /** Short summary used on the Home cards */

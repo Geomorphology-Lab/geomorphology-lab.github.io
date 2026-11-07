@@ -12,7 +12,7 @@ const isKorean = (s: string) => /[가-힣]/.test(s)
  */
 export function MemberCard({ person }: { person: Person }) {
   return (
-    <article className="group flex h-full flex-col gap-5 border border-line bg-ink-800/60 p-5 transition-colors duration-500 hover:border-line-strong min-[24rem]:flex-row min-[24rem]:gap-6 md:p-6">
+    <article className="group flex h-full flex-col gap-5 border border-line p-5 transition-colors duration-500 hover:border-line-strong min-[24rem]:flex-row min-[24rem]:gap-6 md:p-6">
       <div className="w-[7.5rem] shrink-0 sm:w-36 xl:w-[10.5rem]">
         <MediaFrame image={person.photo} aspect="aspect-[4/5]" variant="portrait" className="w-full" still />
       </div>

@@ -25,13 +25,13 @@ export function ResearchOverview() {
           description={researchIntro.lead}
           action={<ArrowLink to="/research">All research</ArrowLink>}
         />
-        <ol className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 xl:grid-cols-4">
+        <ol className="grid border-t border-l border-line sm:grid-cols-2 xl:grid-cols-4">
           {researchAreas.map((area, i) => (
-            <li key={area.id} className="bg-ink-900">
+            <li key={area.id} className="border-r border-b border-line">
               <Reveal delay={i * 80} className="h-full">
                 <Link
                   to={`/research#${area.id}`}
-                  className="group relative flex h-full min-h-[13rem] flex-col p-7 transition-colors duration-500 hover:bg-ink-800 md:min-h-[21rem] md:p-8"
+                  className="group relative flex h-full min-h-[13rem] flex-col p-7 transition-colors duration-500 hover:bg-fg/[0.04] md:min-h-[21rem] md:p-8"
                 >
                   <div className="flex items-start justify-between">
                     <span className="font-display text-sm font-medium tabular-nums tracking-[0.18em] text-accent">

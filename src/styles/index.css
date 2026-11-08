@@ -300,13 +300,14 @@
 .about-visual-glow {
   background: radial-gradient(38% 30% at var(--glow-x) var(--glow-y), rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.14) 55%, transparent 80%);
   mix-blend-mode: soft-light;
-  opacity: calc(0.15 + 0.85 * var(--sr));
+  opacity: calc(0.12 + 0.63 * var(--sr)); /* final strength 0.75 */
 }
 /* faint dimming that lifts: never darker than 22% */
 .about-visual-dim { background: #000; opacity: calc((1 - var(--sr)) * 0.22); }
 /* drifting mist, kept to the band of ridges (not the black top, not the white bottom) */
 .about-visual-mist {
   overflow: hidden;
+  opacity: 0.75;
   -webkit-mask-image: linear-gradient(to bottom, transparent 30%, #000 48%, #000 70%, transparent 88%);
   mask-image: linear-gradient(to bottom, transparent 30%, #000 48%, #000 70%, transparent 88%);
 }

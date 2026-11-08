@@ -158,11 +158,11 @@
 
   /* Home: the end of the dark About section. Black passes to pure white so the Research Areas section below
      starts without a visible edge. It sits after the text, never behind it.
-     Kept short (about 9rem): longer, it reads as haze rather than a soft edge. The mid-greys carry a faint
+     Kept fairly short (about 13.5rem): longer, it reads as haze rather than a soft edge. The mid-greys carry a faint
      navy tint so they read as atmosphere, not dirty grey; the ends stay pure black and pure white.
      The second declaration interpolates in OKLab (even perceived lightness); older browsers use the first. */
   .about-fade {
-    height: clamp(6rem, 12vw, 9rem);
+    height: clamp(9rem, 18vw, 13.5rem);
     background-image: linear-gradient(to bottom, #000000 0%, #05080c 14%, #1a2330 34%, #5b6877 56%, #b8c2cb 77%, #eef1f4 91%, #ffffff 100%);
     background-image: linear-gradient(
       to bottom in oklab,

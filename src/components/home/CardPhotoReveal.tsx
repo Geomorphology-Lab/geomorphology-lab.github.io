@@ -5,7 +5,7 @@ const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAA
 
 /**
  * Photograph revealed behind a Research Areas card. It is invisible until the card (the parent
- * `group`) is hovered or keyboard-focused, then fades in under a navy overlay while settling from
+ * `group`) is hovered or keyboard-focused, then fades in under a black overlay while settling from
  * a slight zoom. Pure CSS: no state or event listeners. Must be placed inside an `isolate`d,
  * `group` card so the layers sit behind the card's text and above its background.
  *
@@ -29,8 +29,8 @@ export function CardPhotoReveal({ photo }: { photo: CardPhoto }) {
           style={{ objectPosition: photo.position }}
         />
       </picture>
-      {/* Navy veil keeps the palette and the text contrast consistent across photos of different brightness */}
-      <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(19,36,51,0.68)_0%,rgba(19,36,51,0.78)_45%,rgba(19,36,51,0.9)_100%)]" />
+      {/* Black veil keeps the palette and the text contrast consistent across photos of different brightness */}
+      <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(0,0,0,0.78)_45%,rgba(0,0,0,0.9)_100%)]" />
     </span>
   )
 }

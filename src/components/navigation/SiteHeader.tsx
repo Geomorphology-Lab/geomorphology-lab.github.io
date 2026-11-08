@@ -73,9 +73,11 @@ export function SiteHeader() {
   const solid = scrolled || open
   return (
     <>
+    {/* The bar's frosted background is a ::before layer, not the header itself: an element with backdrop-filter
+        hides the page from its descendants' own backdrop-filter, and the drop-down menus below need it. */}
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
-        solid ? 'border-b border-line bg-ink-900/92 backdrop-blur-md' : 'border-b border-transparent bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-ink-900/92 before:backdrop-blur-md before:transition-opacity before:duration-500 ${
+        solid ? 'border-line before:opacity-100' : 'border-transparent before:opacity-0'
       }`}
     >
       <div className={`container-page flex items-center justify-between transition-[height] duration-500 ${scrolled ? 'h-16' : 'h-20'}`}>
@@ -109,7 +111,7 @@ export function SiteHeader() {
                     className="invisible absolute top-full left-1/2 z-50 -translate-x-1/2 pt-2 opacity-0 transition-[opacity,visibility,transform] duration-200 group-focus-within/nav:visible group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:opacity-100 motion-reduce:transition-none">
                     <ul
                       aria-label={`${item.label} sections`}
-                      className="w-max min-w-[15rem] max-w-[22rem] border border-line-strong bg-ink-900 py-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]"
+                      className="w-max min-w-[15rem] max-w-[22rem] border border-line-strong bg-ink-900/88 py-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-lg [@media(prefers-reduced-transparency:reduce)]:bg-ink-900"
                     >
                       {item.children.map((c) => (
                         <li key={c.path}>

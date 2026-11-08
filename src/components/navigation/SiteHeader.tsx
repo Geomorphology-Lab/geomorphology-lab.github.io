@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { navigation, site } from '../../content/site'
-import { CloseIcon, MenuIcon } from '../common/Icons'
+import { ChevronDown, CloseIcon, MenuIcon } from '../common/Icons'
 
 function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
@@ -21,8 +21,14 @@ export function SiteHeader() {
   // pointer moves over the spot where it was, and opens again only when the pointer re-enters the top-level item
   // or the menu gets keyboard focus.
   const [shut, setShut] = useState<string | null>(null)
+  // Mobile menu: the one section whose sub-links are shown (all are folded when the menu opens)
+  const [expanded, setExpanded] = useState<string | null>(null)
   const { pathname } = useLocation()
   const toggleRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!open) setExpanded(null)
+  }, [open])
   const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -163,31 +169,72 @@ export function SiteHeader() {
                 className={`border-b border-line transition-[opacity,transform] duration-500 ease-out-soft ${open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}
                 style={{ transitionDelay: open ? `${60 + i * 35}ms` : '0ms' }}
               >
-                <NavLink
-                  to={item.path}
-                  tabIndex={open ? 0 : -1}
-                  className={({ isActive }) =>
-                    `flex min-h-14 items-center justify-between py-4 font-display text-2xl font-medium tracking-tight ${isActive ? 'text-accent' : 'text-fg'}`
-                  }
-                >
-                  {item.label}
-                  <span className="text-xs tabular-nums tracking-[0.2em] text-fg-subtle">{String(i + 1).padStart(2, '0')}</span>
-                </NavLink>
-                {item.children && (
-                  <ul className="-mt-2 mb-4 space-y-0.5 pl-1">
-                    {item.children.map((c) => (
-                      <li key={c.path}>
-                        <Link
-                          to={c.path}
+                {item.children ? (
+                  (() => {
+                    /* A section with sub-links: the row is a button that folds them in and out (folded by default).
+                       Only one section is unfolded at a time. The rows animate open with grid-template-rows 0fr → 1fr. */
+                    const isOpen = expanded === item.path
+                    const subId = `mobile-sub-${i}`
+                    return (
+                      <>
+                        <button
+                          type="button"
                           tabIndex={open ? 0 : -1}
-                          className="flex min-h-11 items-center py-1.5 text-[0.95rem] leading-snug text-fg-muted transition-colors hover:text-accent"
+                          aria-expanded={isOpen}
+                          aria-controls={subId}
+                          onClick={() => setExpanded((e) => (e === item.path ? null : item.path))}
+                          className={`flex min-h-14 w-full items-center justify-between py-4 text-left font-display text-2xl font-medium tracking-tight ${
+                            pathname.startsWith(item.path) ? 'text-accent' : 'text-fg'
+                          }`}
                         >
-                          <span aria-hidden="true" className="mr-3 inline-block h-px w-3 shrink-0 bg-line-strong" />
-                          {c.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                          <span className="flex items-center gap-3">
+                            {item.label}
+                            <ChevronDown
+                              className={`size-5 text-fg-subtle transition-transform duration-300 motion-reduce:transition-none ${isOpen ? 'rotate-180' : ''}`}
+                            />
+                          </span>
+                          <span className="text-xs tabular-nums tracking-[0.2em] text-fg-subtle">{String(i + 1).padStart(2, '0')}</span>
+                        </button>
+                        <div
+                          id={subId}
+                          aria-hidden={!isOpen}
+                          className={`grid transition-[grid-template-rows] duration-300 ease-out-soft motion-reduce:transition-none ${
+                            isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                          }`}
+                        >
+                          <div className="min-h-0 overflow-hidden">
+                            <ul className="space-y-0.5 pb-4 pl-1">
+                              {/* Research opens with "All" (the whole page), since its row now unfolds instead of navigating */}
+                              {(item.path === '/research' ? [{ path: item.path, label: 'All' }, ...item.children] : item.children).map((c) => (
+                                <li key={c.path}>
+                                  <Link
+                                    to={c.path}
+                                    tabIndex={open && isOpen ? 0 : -1}
+                                    onClick={() => setOpen(false)}
+                                    className="flex min-h-11 items-center py-1.5 text-[0.95rem] leading-snug text-fg-muted transition-colors hover:text-accent"
+                                  >
+                                    <span aria-hidden="true" className="mr-3 inline-block h-px w-3 shrink-0 bg-line-strong" />
+                                    {c.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </>
+                    )
+                  })()
+                ) : (
+                  <NavLink
+                    to={item.path}
+                    tabIndex={open ? 0 : -1}
+                    className={({ isActive }) =>
+                      `flex min-h-14 items-center justify-between py-4 font-display text-2xl font-medium tracking-tight ${isActive ? 'text-accent' : 'text-fg'}`
+                    }
+                  >
+                    {item.label}
+                    <span className="text-xs tabular-nums tracking-[0.2em] text-fg-subtle">{String(i + 1).padStart(2, '0')}</span>
+                  </NavLink>
                 )}
               </li>
             ))}

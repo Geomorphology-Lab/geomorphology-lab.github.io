@@ -156,26 +156,6 @@
     background-size: 240px 240px;
   }
 
-  /* Home: the end of the dark About section. Black passes to pure white so the Research Areas section below
-     starts without a visible edge. It sits after the text, never behind it.
-     Kept short (about 9rem): longer, it reads as haze rather than a soft edge. The mid-greys carry a faint
-     navy tint so they read as atmosphere, not dirty grey; the ends stay pure black and pure white.
-     The second declaration interpolates in OKLab (even perceived lightness); older browsers use the first. */
-  .about-fade {
-    height: clamp(6rem, 12vw, 9rem);
-    background-image: linear-gradient(to bottom, #000000 0%, #05080c 14%, #1a2330 34%, #5b6877 56%, #b8c2cb 77%, #eef1f4 91%, #ffffff 100%);
-    background-image: linear-gradient(
-      to bottom in oklab,
-      #000000 0%,
-      #05080c 14%,
-      #1a2330 34%,
-      #5b6877 56%,
-      #b8c2cb 77%,
-      #eef1f4 91%,
-      #ffffff 100%
-    );
-  }
-
   /* Filter tabs that sit on the bottom edge of the dark page hero.
      The active tab is white, so it continues straight into the white content below. */
   .page-tabs {
@@ -283,6 +263,28 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-slide-img.is-animating { animation: none; }
+}
+
+/* ------------------------------------------------------------------
+   Homepage Research Areas band: the image's soft bottom fade (mask works in all modern browsers)
+   ------------------------------------------------------------------ */
+.about-visual {
+  /* Fully visible down to ~65%, then dissolves into the (white) section background */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
+}
+.about-visual::after {
+  /* the top edge is pure black, so it joins the black About section above without a seam at any crop */
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 42%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.92) 12%, rgb(0 0 0 / 0.6) 40%, rgb(0 0 0 / 0.22) 72%, transparent 100%);
+}
+.about-visual-img { object-position: var(--pos-mobile, 50% 50%); }
+@media (min-width: 48rem) {
+  .about-visual-img { object-position: var(--pos-desktop, 50% 50%); }
 }
 
 /* Inner page header photographs: crop focus differs between mobile and desktop */

@@ -22,6 +22,14 @@ export const site = {
   },
 
   homeAbout: {
+    /** Atmospheric image at the top of the Research Areas band (files in public/images/about/) */
+    image: {
+      src: '/images/about/misty-ridges-1600.webp',
+      srcSet: '/images/about/misty-ridges-960.webp 960w, /images/about/misty-ridges-1600.webp 1600w, /images/about/misty-ridges-2560.webp 2560w',
+      alt: '어두운 안개 속에 겹겹이 이어지는 산 능선',
+      /** Which part stays visible when cropped: mobile / desktop */
+      position: { mobile: '50% 55%', desktop: '50% 55%' },
+    },
     heading: 'Studying the processes that shape the Earth’s surface',
     paragraphs: [
       'The Geomorphology Lab at Kyung Hee University investigates how landscapes form and change, and the mechanisms that turn surface processes into natural hazards. We reconstruct the evolution of landscapes across Quaternary glacial–interglacial cycles, quantify how rock coasts erode and collapse, and examine how agriculture, urbanization, wildfire, and climate change accelerate erosion today. Our study sites range from the rocky coasts and mountain slopes of the Korean Peninsula to the glaciated valleys of Wyoming and the arid landscapes of Arizona. Through national research programs, peer-reviewed publications, and international conferences, we aim to provide a scientific basis for understanding and responding to environmental change.',

@@ -288,6 +288,60 @@
   .about-visual-img { object-position: var(--pos-desktop, 50% 50%); }
 }
 
+/* Research Areas image band: quiet motion (driven by AboutVisual.tsx; --sr = daybreak progress 0..1,
+   1 = the final still, also used with reduced motion). Only opacity and transform change, so it stays smooth. */
+.about-visual { --sr: 1; --glow-x: 83%; --glow-y: 42%; }
+@media (min-width: 40rem) { .about-visual { --glow-x: 75%; --glow-y: 42%; } }
+@media (min-width: 64rem) { .about-visual { --glow-x: 75%; --glow-y: 35%; } }
+.about-visual-glow,
+.about-visual-dim,
+.about-visual-mist { position: absolute; inset: 0; pointer-events: none; }
+/* the light behind the ridge: grows a little as the band comes into view */
+.about-visual-glow {
+  background: radial-gradient(38% 30% at var(--glow-x) var(--glow-y), rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.14) 55%, transparent 80%);
+  mix-blend-mode: soft-light;
+  opacity: calc(0.12 + 0.63 * var(--sr)); /* final strength 0.75 */
+}
+/* faint dimming that lifts: never darker than 22% */
+.about-visual-dim { background: #000; opacity: calc((1 - var(--sr)) * 0.22); }
+/* drifting mist, kept to the band of ridges (not the black top, not the white bottom) */
+.about-visual-mist {
+  overflow: hidden;
+  opacity: 0.75;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 30%, #000 48%, #000 70%, transparent 88%);
+  mask-image: linear-gradient(to bottom, transparent 30%, #000 48%, #000 70%, transparent 88%);
+}
+.about-visual-mist-layer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 200%; /* two identical tiles side by side: sliding by one tile (-50%) loops seamlessly */
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
+  will-change: transform;
+  animation: mist-drift linear infinite;
+}
+.about-visual-mist-far {
+  background-image:
+    radial-gradient(16% 14% at 18% 56%, rgb(255 255 255 / 0.10), transparent 72%),
+    radial-gradient(14% 11% at 52% 50%, rgb(255 255 255 / 0.08), transparent 72%),
+    radial-gradient(17% 13% at 82% 60%, rgb(255 255 255 / 0.09), transparent 72%);
+  animation-duration: 220s;
+}
+.about-visual-mist-near {
+  background-image:
+    radial-gradient(18% 12% at 30% 66%, rgb(255 255 255 / 0.09), transparent 72%),
+    radial-gradient(16% 10% at 70% 62%, rgb(255 255 255 / 0.08), transparent 72%);
+  animation-duration: 140s;
+}
+@keyframes mist-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.about-visual[data-drift='off'] .about-visual-mist-layer { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .about-visual-mist-layer { animation: none; }
+}
+
 /* Inner page header photographs: crop focus differs between mobile and desktop */
 .page-header-img { object-position: var(--pos-mobile, 50% 50%); }
 @media (min-width: 48rem) {

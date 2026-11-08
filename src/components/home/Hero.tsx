@@ -11,7 +11,7 @@ export function Hero() {
       {/* Background photographs: cross-dissolve slideshow (config: src/content/heroSlides.ts) */}
       <HeroSlideshow />
       {/* Legibility overlays: left-to-right for the title, top & bottom for nav and transition */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,15,25,0.80)_0%,rgba(5,15,25,0.70)_32%,rgba(5,15,25,0.48)_55%,rgba(5,15,25,0.24)_78%,rgba(5,15,25,0.20)_100%)] max-md:bg-[linear-gradient(180deg,rgba(5,15,25,0.72)_0%,rgba(5,15,25,0.62)_35%,rgba(5,15,25,0.5)_60%,rgba(5,15,25,0.3)_100%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.80)_0%,rgba(0,0,0,0.70)_32%,rgba(0,0,0,0.48)_55%,rgba(0,0,0,0.24)_78%,rgba(0,0,0,0.20)_100%)] max-md:bg-[linear-gradient(180deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.62)_35%,rgba(0,0,0,0.5)_60%,rgba(0,0,0,0.3)_100%)]" />
       <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-ink-900/70 to-transparent" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-ink-900 to-transparent md:h-48" />
 

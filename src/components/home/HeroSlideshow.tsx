@@ -52,7 +52,8 @@ export const HeroSlideshow = memo(function HeroSlideshow() {
   /** Time already spent on the current slide before the latest pause */
   const elapsed = useRef(0)
 
-  const running = firstReady && !reduced && !paused && pageVisible && count > 1
+  const motionOn = firstReady && !reduced && !paused && pageVisible
+  const running = motionOn && count > 1
 
   /** Resolves once slide `i` is downloaded and decoded, so it never appears half-loaded. */
   const ensureReady = useCallback((i: number): Promise<boolean> => {
@@ -156,7 +157,7 @@ export const HeroSlideshow = memo(function HeroSlideshow() {
                     '--kb-x0': slide.motion.fromX ?? '0%',
                     '--kb-x1': slide.motion.toX ?? '0%',
                     '--kb-duration': `${KEN_BURNS_DURATION_MS}ms`,
-                    animationPlayState: running || !animate ? 'running' : 'paused',
+                    animationPlayState: motionOn || !animate ? 'running' : 'paused',
                   } as React.CSSProperties
                 }
               />

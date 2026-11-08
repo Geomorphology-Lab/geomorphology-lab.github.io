@@ -140,7 +140,7 @@ Edit the `contact` object in `site.ts`. The map is a Google Maps embed (no API k
 
 ### Homepage hero slideshow
 
-The homepage top shows three landscape photos as a cross-dissolve slideshow. All settings are in **`src/content/heroSlides.ts`**.
+The homepage top shows one landscape photo (the third of the original three) with the original entrance fade and slow zoom; it no longer switches. All settings are in **`src/content/heroSlides.ts`**; adding more entries there brings the cross-dissolve slideshow back.
 
 | Setting | Value | Meaning |
 | --- | --- | --- |
@@ -174,7 +174,7 @@ Using the same name overwrites the existing files, so no code change is needed. 
 
 ### About section contour map
 
-A pale-cyan topographic contour map (rotated 25° to the right) surfaces from the dark background behind the right side of "About the Laboratory" as you scroll, and fades back when scrolling up. The map itself never moves: it scrolls with the page like the background, only its visibility changes. Parts that stick out of the section are cropped, and its top and bottom edges fade into the navy, so it never touches the hero photo. The reveal runs while the heading scrolls from the lower part of the screen to the top (`START` and `END` at the top of `ContourReveal.tsx`; widen them to make it slower). The behaviour is in `src/components/home/ContourReveal.tsx` and the look is in the `.contour-*` rules at the end of `src/styles/index.css`:
+A navy topographic contour map (rotated 25° to the right) surfaces from the white background behind the right side of "About the Laboratory" as you scroll, and fades back when scrolling up. The map itself never moves: it scrolls with the page like the background, only its visibility changes. Parts that stick out of the section are cropped, and its top and bottom edges fade into the navy, so it never touches the hero photo. The reveal runs while the heading scrolls from the lower part of the screen to the top (`START` and `END` at the top of `ContourReveal.tsx`; widen them to make it slower). The behaviour is in `src/components/home/ContourReveal.tsx` and the look is in the `.contour-*` rules at the end of `src/styles/index.css`:
 
 - `--contour-max` is the final opacity (0.36 on desktop, lower on tablet and phone), `--contour-blur` the starting blur, `--contour-rotate` the angle, `--contour-w` the size, `--contour-gap` the space between the text and the map (on desktop the map is positioned from the end of the text column, so it never covers the words; tablet and phone use `--contour-right`).
 - The image (`src/assets/images/about/contour-map.webp`) is used as a mask, so only its alpha matters; the line colour is the site accent colour. To use another map, replace the file with a transparent PNG/WebP of any square shape.
@@ -186,7 +186,6 @@ Each Home research card reveals a photograph on hover or keyboard focus. The pho
 
 ### Homepage About image
 
-The braided-river photo is configured in `homeAbout.image` in `src/content/site.ts` (files in `public/images/about/`, created with `scripts/optimize-photo.py`).
 
 ### Research, people and news photos
 
@@ -233,7 +232,6 @@ scripts/           Build helper scripts
 ### Navigation drop-down, recruitment guide, header photo brightness
 
 - **Drop-down menu:** hovering (or tabbing to) *Research* or *Members* in the top bar opens a list of its sections. The links are the `children` of each item in `navigation` (`src/content/site.ts`); the Members links such as `/members#graduate` open that tab (the address after `#` is read by `MembersPage`); the Research list is built from `research.ts`, so it always matches the four research areas. The mobile menu shows the same links under each item.
-- **Prospective Students (Contact page):** the recruitment guide is `contact.prospective` in `src/content/site.ts`: three sections, each item a list of text pieces where `{ bold: '…' }` marks bold parts.
 - **Dimming a header photo:** set `dim` (e.g. `0.6`) on a photo in `src/content/pageImages.ts`; the News lava photo uses it.
 
 ### Browser-tab icon

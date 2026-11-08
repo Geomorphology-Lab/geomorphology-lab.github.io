@@ -6,16 +6,20 @@
    Design tokens
    ------------------------------------------------------------------ */
 @theme {
-  --color-ink-950: #08101a;
-  --color-ink-900: #0b1420; /* primary background */
-  --color-ink-800: #132433; /* secondary background */
-  --color-ink-700: #192b3b; /* surface */
-  --color-ink-600: #22394c;
-  --color-fg: #f5f7fa;      /* main text */
-  --color-fg-muted: #bbcad3; /* secondary text */
-  --color-fg-subtle: #94a9b6;
-  --color-accent: #71c7cb;
-  --color-accent-strong: #93dade;
+  /* Palette: black and white, with the lab's navy (#0b1420, the former page navy) as the accent.
+     Dark surfaces (navigation, hero, page headers, footer) are black; light content areas are white
+     (see .theme-paper) and use the navy as their accent. */
+  --color-navy: #0b1420;
+  --color-ink-950: #000000;
+  --color-ink-900: #000000; /* primary dark background */
+  --color-ink-800: #101010; /* secondary background */
+  --color-ink-700: #1a1a1a; /* surface */
+  --color-ink-600: #262626;
+  --color-fg: #ffffff;      /* main text */
+  --color-fg-muted: #cdcdcd; /* secondary text */
+  --color-fg-subtle: #a1a1a1;
+  --color-accent: #e4e4e4;  /* on dark surfaces the accent is a light grey (navy would vanish on black) */
+  --color-accent-strong: #ffffff;
   --color-line: rgb(255 255 255 / 0.1);
   --color-line-strong: rgb(255 255 255 / 0.18);
   --color-paper: #ffffff;   /* light content area (inner pages) and the active tab that joins it */
@@ -59,7 +63,7 @@
     text-wrap: balance;
   }
   p { text-wrap: pretty; }
-  ::selection { background: rgb(113 199 203 / 0.35); color: #fff; }
+  ::selection { background: rgb(255 255 255 / 0.3); color: #fff; }
 
   :focus-visible {
     outline: 2px solid var(--color-accent);
@@ -119,35 +123,42 @@
      Light content area (Research / Members / Publications / News / Contact).
      The same colour tokens, redefined for everything inside this element, so the
      markup keeps its class names (text-fg, text-accent, border-line, bg-ink-800 …).
-     Navy stays in the nav, the page hero and the footer.
+     The nav, the page hero and the footer stay dark.
        ink-900 → page background (white, identical to .page-tab[aria-pressed=true])
-       ink-800 / ink-700 → cards and image placeholders
-       accent → teal #167D8D, same hue as the cyan accent but dark enough for white (4.8:1)
-     Text colours are checked against #fff: fg 17:1, fg-muted 11:1, fg-subtle 7.7:1.
+       ink-800 / ink-700 → cards and image placeholders (light greys)
+       accent → the navy (#0b1420)
+     Text colours are checked against #fff: fg 21:1, fg-muted 12.6:1, fg-subtle 7:1.
      ------------------------------------------------------------------ */
   .theme-paper {
     --color-ink-900: var(--color-paper);
-    --color-ink-800: #e6f4f6;  /* light cyan (#B9E4E8 softened) for cards and callouts */
+    --color-ink-800: #f4f4f4;  /* light grey for cards and callouts */
     --color-ink-700: #eeeeee;  /* light grey for image placeholders */
-    --color-fg: #071b2b;
-    --color-fg-muted: #2b3844;
-    --color-fg-subtle: #465561;
-    --color-accent: #167d8d;
-    --color-accent-strong: #0f5f6c;
-    --color-line: rgb(7 27 43 / 0.12);
-    --color-line-strong: rgb(7 27 43 / 0.3);
+    --color-fg: #000000;
+    --color-fg-muted: #333333;
+    --color-fg-subtle: #595959;
+    --color-accent: var(--color-navy);
+    --color-accent-strong: #000000;
+    --color-line: rgb(0 0 0 / 0.12);
+    --color-line-strong: rgb(0 0 0 / 0.3);
     background-color: var(--color-paper);
     color: var(--color-fg);
     color-scheme: light;
   }
-  .theme-paper ::selection { background: rgb(185 228 232 / 0.8); color: inherit; }
-  /* The contour placeholder redrawn in the teal accent (the base one is cyan on navy) */
+  .theme-paper ::selection { background: rgb(11 20 32 / 0.16); color: inherit; }
+  /* The contour placeholder redrawn in the navy accent (the base one is light on black) */
   .theme-paper .topo-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23167D8D' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%230B1420' stroke-opacity='.2' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 240px 240px;
   }
 
-  /* Filter tabs that sit on the bottom edge of the navy page hero.
+  /* Home: the Research Areas section. The white About section above flows into this section's light grey
+     with a long vertical gradient, so there is no visible seam between the two. */
+  .research-areas-bg {
+    background-image: linear-gradient(to bottom, var(--color-paper) 0, var(--color-ink-800) 14rem);
+    background-color: var(--color-ink-800);
+  }
+
+  /* Filter tabs that sit on the bottom edge of the dark page hero.
      The active tab is white, so it continues straight into the white content below. */
   .page-tabs {
     display: flex;
@@ -175,7 +186,7 @@
   }
   .page-tab:focus-visible { outline-offset: -3px; border-radius: 0; }
 
-  /* Inner page hero: the photograph dissolves into navy, stays pure navy for the last
+  /* Inner page hero: the photograph dissolves into black, stays pure black for the last
      --solid of the hero, then the white content starts with a hard, undecorated edge. */
   .page-header-fade {
     --solid: 5.5rem;
@@ -195,8 +206,8 @@
   /* Subtle topographic contour texture used where no photograph exists yet */
   .topo-pattern {
     background-color: var(--color-ink-700);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%2371C7CB' stroke-opacity='.13' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E"),
-      radial-gradient(120% 80% at 80% 0%, rgb(113 199 203 / 0.10), transparent 60%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='.1' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E"),
+      radial-gradient(120% 80% at 80% 0%, rgb(255 255 255 / 0.06), transparent 60%);
     background-size: 240px 240px, cover;
   }
 }
@@ -256,19 +267,6 @@
   .hero-slide-img.is-animating { animation: none; }
 }
 
-/* ------------------------------------------------------------------
-   Homepage About image: soft bottom fade (mask works in all modern browsers)
-   ------------------------------------------------------------------ */
-.about-visual {
-  /* Fully visible down to ~65%, then dissolves into the section background */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 64%, rgb(0 0 0 / 0.8) 74%, rgb(0 0 0 / 0.45) 84%, rgb(0 0 0 / 0.15) 93%, transparent 100%);
-}
-.about-visual-img { object-position: var(--pos-mobile, 50% 50%); }
-@media (min-width: 48rem) {
-  .about-visual-img { object-position: var(--pos-desktop, 50% 50%); }
-}
-
 /* Inner page header photographs: crop focus differs between mobile and desktop */
 .page-header-img { object-position: var(--pos-mobile, 50% 50%); }
 @media (min-width: 48rem) {
@@ -296,10 +294,10 @@
    About section: topographic contour map that surfaces from the dark background on scroll.
    The PNG's alpha is used as a mask and the lines are filled with the accent colour, so the space
    between the lines is genuinely transparent. The map is rotated 25° clockwise (to the right) and is completely
-   still (it scrolls with the page like the navy background itself); only its visibility changes
+   still (it scrolls with the page like the section background itself); only its visibility changes
    with scroll: ContourReveal.tsx writes --o --b --rv (opacity, blur and radial reveal). The defaults
    below are the final, static state (also used for reduced motion). Whatever sticks out of the
-   section is cropped, and the top and bottom edges fade into the navy so nothing touches the hero.
+   section is cropped, and the top and bottom edges fade into the background so nothing touches the hero.
    ------------------------------------------------------------------ */
 .contour-layer {
   --contour-w: 55vw;      /* graphic width (the square image keeps its aspect ratio) */
@@ -314,7 +312,7 @@
   isolation: isolate;
   pointer-events: none;
   user-select: none;
-  /* long, soft top and bottom fades into the navy background (about 150px), so the cropped edges never show */
+  /* long, soft top and bottom fades into the background (about 150px), so the cropped edges never show */
   --edge: linear-gradient(to bottom, transparent 0, rgb(0 0 0 / 0.12) 36px, rgb(0 0 0 / 0.45) 80px, rgb(0 0 0 / 0.8) 120px, #000 155px, #000 calc(100% - 155px), rgb(0 0 0 / 0.8) calc(100% - 120px), rgb(0 0 0 / 0.45) calc(100% - 80px), rgb(0 0 0 / 0.12) calc(100% - 36px), transparent 100%);
   -webkit-mask-image: var(--edge);
   mask-image: var(--edge);
@@ -323,7 +321,7 @@
   --o: 1; --b: 0; --rv: 1.8;
   position: absolute;
   right: var(--contour-right);
-  top: calc(35% - var(--contour-w) / 2); /* high in the section: the rotated top is cropped by the section edge and fades into the navy */
+  top: calc(35% - var(--contour-w) / 2); /* high in the section: the rotated top is cropped by the section edge and fades into the background */
   width: var(--contour-w);
   aspect-ratio: 1 / 1;
   transform: rotate(var(--contour-rotate));

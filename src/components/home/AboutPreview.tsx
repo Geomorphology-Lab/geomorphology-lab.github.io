@@ -22,7 +22,7 @@ export function AboutPreview() {
         </Reveal>
       </div>
       {/* Black melts into white below the text, so the Research Areas section starts on white (no hard edge) */}
-      <div aria-hidden="true" className="about-fade relative z-10 mt-10 md:mt-14" />
+      <div aria-hidden="true" className="about-fade relative z-10 mt-[3.75rem] md:mt-[5.25rem]" />
     </section>
   )
 }

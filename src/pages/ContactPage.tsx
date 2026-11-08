@@ -10,7 +10,7 @@ const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 export default function ContactPage() {
   const rows = [
     { icon: MailIcon, label: 'Email', value: <EmailText value={contact.email} /> },
-    { icon: PinIcon, label: 'Location', value: <span lang="ko">{contact.location}</span> },
+    { icon: PinIcon, label: 'Location', value: <span lang="ko" className="select-text">{contact.location}</span> },
   ]
   return (
     <>
@@ -77,8 +77,8 @@ export default function ContactPage() {
               </div>
               <figcaption className="mt-4 flex flex-col gap-3 text-sm text-fg-muted sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                 <span>
-                  <span className="block text-fg">{contact.map.label}</span>
-                  <span className="mt-1 block">{contact.map.address}</span>
+                  <span className="block text-fg select-text">{contact.map.label}</span>
+                  <span className="mt-1 block select-text">{contact.map.address}</span>
                 </span>
                 <a
                   href={mapLink}

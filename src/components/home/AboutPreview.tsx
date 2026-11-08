@@ -5,7 +5,7 @@ import { ContourReveal } from './ContourReveal'
 /** About the Laboratory text block (sits on the dark background directly below the hero). */
 export function AboutPreview() {
   return (
-    <section id="about" aria-labelledby="about-preview-title" className="relative bg-ink-900 py-24 md:py-32">
+    <section id="about" aria-labelledby="about-preview-title" className="theme-paper relative py-24 md:py-32">
       {/* Decorative background: topographic contour map that surfaces on scroll (see ContourReveal) */}
       <ContourReveal />
       <div className="container-page relative z-10">

@@ -4,7 +4,8 @@
  * Images live in public/images/hero/ and are generated from the original
  * photographs by scripts/optimize-hero-photos.py (WebP, sRGB, 960/1600/2560 px).
  * To swap a photo: export new WebP files with the same names, or change the
- * `files` entries below to the new file names. Order here = order on screen.
+ * `files` entries below to the new file names. Only one photograph is listed, so there is no slideshow
+ * cycling (add more entries to bring the cross-dissolve back).
  */
 
 /** A transition starts every … ms (measured from the start of the previous one). */
@@ -31,28 +32,6 @@ export interface HeroSlide {
 const dir = '/images/hero/'
 
 export const heroSlides: HeroSlide[] = [
-  {
-    id: 'mountain-ridges',
-    alt: '구름바다 위로 이어지는 숲으로 덮인 산악 능선',
-    files: [
-      { width: 960, file: 'mountain-ridges-sea-of-clouds-960.webp' },
-      { width: 1600, file: 'mountain-ridges-sea-of-clouds-1600.webp' },
-      { width: 2560, file: 'mountain-ridges-sea-of-clouds-2560.webp' },
-    ],
-    position: { mobile: '42% 50%', desktop: '50% 50%' },
-    motion: { fromScale: 1, toScale: KEN_BURNS_MAX_SCALE }, // gentle zoom in
-  },
-  {
-    id: 'glacial-valley',
-    alt: '높은 산봉우리 사이로 깊게 파인 빙식곡과 산악 지형',
-    files: [
-      { width: 960, file: 'glacial-valley-960.webp' },
-      { width: 1600, file: 'glacial-valley-1600.webp' },
-      { width: 2560, file: 'glacial-valley-2560.webp' },
-    ],
-    position: { mobile: '50% 50%', desktop: '50% 45%' },
-    motion: { fromScale: KEN_BURNS_MAX_SCALE, toScale: 1 }, // gentle zoom out
-  },
   {
     id: 'river-canyon',
     alt: '석회암 절벽 협곡 사이를 흐르는 청록색 하천',

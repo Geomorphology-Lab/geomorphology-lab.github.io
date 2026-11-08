@@ -17,7 +17,7 @@ interface Props {
 
 /**
  * Top band for inner pages: a landscape photograph, cropped and darkened. It ends in a band of
- * pure navy, then the light content area starts with a hard edge (no shadow, line or second gradient).
+ * pure black, then the light content area starts with a hard edge (no shadow, line or second gradient).
  */
 export function PageHeader({ eyebrow, title, lead, photo, tabs }: Props) {
   // Real photographs get a lighter overlay than the dark fallback image so the landforms stay recognisable.
@@ -48,7 +48,7 @@ export function PageHeader({ eyebrow, title, lead, photo, tabs }: Props) {
         }
         onError={(e) => (e.currentTarget.style.display = 'none')}
       />
-      {/* Left-to-right shade keeps the title legible; the bottom-up fade (last, so it paints on top) ends in solid navy */}
+      {/* Left-to-right shade keeps the title legible; the bottom-up fade (last, so it paints on top) ends in solid black */}
       <div
         className={`absolute inset-0 -z-10 bg-gradient-to-r to-transparent ${
           level === 'light' ? 'from-ink-900/70 via-ink-900/10' : level === 'photo' ? 'from-ink-900/75 via-ink-900/20' : 'from-ink-900/80 via-ink-900/30'

@@ -21,6 +21,9 @@ export const ArrowUpRight = (p: SVGProps<SVGSVGElement>) => (
 export const ArrowDown = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base} {...p}><path d="M12 5v14M6 13l6 6 6-6" /></svg>
 )
+export const ChevronDown = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}><path d="m6 9 6 6 6-6" /></svg>
+)
 export const MenuIcon = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base} {...p}><path d="M4 7h16M4 12h16M4 17h16" /></svg>
 )

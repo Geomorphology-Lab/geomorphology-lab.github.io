@@ -13,7 +13,7 @@ const LINE_DEDICATION = '...and with a little extra love and admiration for Prof
 
 // One soft blue for all lines; mid-tone so it stays readable on both light and dark consoles.
 // All lines share one size and spacing; only the first is bold and only the last is italic.
-const BLUE = '#868cda'
+const BLUE = '#0d326f'
 const STYLE_SOFT = [`color: ${BLUE}`, 'font-size: 15px', 'line-height: 1.8']
 const STYLE_CREDIT = [...STYLE_SOFT, 'font-weight: 700'].join('; ')
 const STYLE_BY = STYLE_SOFT.join('; ')

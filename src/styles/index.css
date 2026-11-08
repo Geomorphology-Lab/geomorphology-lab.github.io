@@ -269,9 +269,10 @@
    Homepage Research Areas band: the image's soft bottom fade (mask works in all modern browsers)
    ------------------------------------------------------------------ */
 .about-visual {
-  /* Fully visible down to ~52%, then dissolves into the (white) section background; pure white from 96% */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgb(0 0 0 / 0.85) 62%, rgb(0 0 0 / 0.62) 72%, rgb(0 0 0 / 0.36) 82%, rgb(0 0 0 / 0.15) 90%, transparent 96%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgb(0 0 0 / 0.85) 62%, rgb(0 0 0 / 0.62) 72%, rgb(0 0 0 / 0.36) 82%, rgb(0 0 0 / 0.15) 90%, transparent 96%);
+  /* Fully visible down to ~48%, then dissolves into the (white) section background; pure white from 88%,
+     just above the Research Areas title at every screen width */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 48%, rgb(0 0 0 / 0.85) 57%, rgb(0 0 0 / 0.62) 66%, rgb(0 0 0 / 0.36) 75%, rgb(0 0 0 / 0.15) 83%, transparent 88%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 48%, rgb(0 0 0 / 0.85) 57%, rgb(0 0 0 / 0.62) 66%, rgb(0 0 0 / 0.36) 75%, rgb(0 0 0 / 0.15) 83%, transparent 88%);
 }
 .about-visual::after {
   /* the top edge is pure black, so it joins the black About section above without a seam at any crop */

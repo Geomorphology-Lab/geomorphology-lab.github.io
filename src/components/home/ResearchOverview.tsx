@@ -11,7 +11,7 @@ export function ResearchOverview() {
     <section
       id="research-areas"
       aria-labelledby="research-areas-title"
-      className="theme-paper research-areas-bg relative overflow-hidden border-b border-line py-24 md:py-32"
+      className="theme-paper relative overflow-hidden border-b border-line py-24 md:py-32"
     >
       <div className="container-page relative z-10">
         <SectionHeading

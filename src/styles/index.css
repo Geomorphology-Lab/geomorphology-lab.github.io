@@ -6,10 +6,10 @@
    Design tokens
    ------------------------------------------------------------------ */
 @theme {
-  /* Palette: black and white, with the lab's navy (#0b1420, the former page navy) as the accent.
+  /* Palette: black and white, with the lab's navy (#132433, the original navy used for cards and the card veil) as the accent.
      Dark surfaces (navigation, hero, page headers, footer) are black; light content areas are white
      (see .theme-paper) and use the navy as their accent. */
-  --color-navy: #0b1420;
+  --color-navy: #132433;
   --color-ink-950: #000000;
   --color-ink-900: #000000; /* primary dark background */
   --color-ink-800: #101010; /* secondary background */
@@ -126,12 +126,12 @@
      The nav, the page hero and the footer stay dark.
        ink-900 → page background (white, identical to .page-tab[aria-pressed=true])
        ink-800 / ink-700 → cards and image placeholders (light greys)
-       accent → the navy (#0b1420)
+       accent → the navy (#132433)
      Text colours are checked against #fff: fg 21:1, fg-muted 12.6:1, fg-subtle 7:1.
      ------------------------------------------------------------------ */
   .theme-paper {
     --color-ink-900: var(--color-paper);
-    --color-ink-800: #f4f4f4;  /* light grey for cards and callouts */
+    --color-ink-800: color-mix(in srgb, var(--color-navy) 6%, #ffffff); /* pale navy tint for cards and callouts (was light blue) */
     --color-ink-700: #eeeeee;  /* light grey for image placeholders */
     --color-fg: #000000;
     --color-fg-muted: #333333;
@@ -144,18 +144,28 @@
     color: var(--color-fg);
     color-scheme: light;
   }
-  .theme-paper ::selection { background: rgb(11 20 32 / 0.16); color: inherit; }
+  .theme-paper ::selection { background: rgb(19 36 51 / 0.16); color: inherit; }
   /* The contour placeholder redrawn in the navy accent (the base one is light on black) */
   .theme-paper .topo-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%230B1420' stroke-opacity='.2' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23132433' stroke-opacity='.2' stroke-width='1'%3E%3Cpath d='M-20 60c40-30 80-30 120 0s80 30 160 0'/%3E%3Cpath d='M-20 90c40-26 80-26 120 0s80 26 160 0'/%3E%3Cpath d='M-20 120c40-22 80-22 120 0s80 22 160 0'/%3E%3Cpath d='M-20 150c40-18 80-18 120 0s80 18 160 0'/%3E%3Cpath d='M-20 180c40-14 80-14 120 0s80 14 160 0'/%3E%3Cpath d='M-20 30c40-34 80-34 120 0s80 34 160 0'/%3E%3Cpath d='M-20 210c40-10 80-10 120 0s80 10 160 0'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 240px 240px;
   }
 
-  /* Home: the Research Areas section. The white About section above flows into this section's light grey
-     with a long vertical gradient, so there is no visible seam between the two. */
-  .research-areas-bg {
-    background-image: linear-gradient(to bottom, var(--color-paper) 0, var(--color-ink-800) 14rem);
-    background-color: var(--color-ink-800);
+  /* Home: the end of the dark About section. Black passes through neutral greys to pure white, so the white
+     Research Areas section below starts without a visible edge. It sits after the text, never behind it. */
+  .about-fade {
+    height: clamp(9rem, 22vw, 15rem);
+    background-image: linear-gradient(
+      to bottom,
+      #000000 0,
+      #0d0d0d 10%,
+      #262626 28%,
+      #5a5a5a 48%,
+      #9c9c9c 66%,
+      #d4d4d4 82%,
+      #f2f2f2 93%,
+      #ffffff 100%
+    );
   }
 
   /* Filter tabs that sit on the bottom edge of the dark page hero.

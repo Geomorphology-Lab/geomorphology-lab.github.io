@@ -51,6 +51,11 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
+  /* Text cannot be selected or copied (see also src/protect.ts for the photos). Exceptions stay selectable:
+     links (including mailto addresses), e-mail and address text (class select-text), and form fields. */
+  body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  a, .select-text, input, textarea { -webkit-user-select: text; user-select: text; }
+  img { -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; }
   /* Korean: break at word boundaries, never in the middle of a word */
   :lang(ko) {
     word-break: keep-all;

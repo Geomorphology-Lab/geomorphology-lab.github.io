@@ -12,11 +12,11 @@ import { MemberCard } from '../components/people/MemberCard'
 import { AlumniList } from '../components/people/AlumniList'
 import { SectionHeading } from '../components/common/SectionHeading'
 
-type Tab = 'professor' | 'students' | 'alumni'
+type Tab = 'professor' | 'current' | 'alumni'
 
 const tabOptions: { id: Tab; label: string }[] = [
   { id: 'professor', label: 'Professor' },
-  { id: 'students', label: 'Students' },
+  { id: 'current', label: 'Current Members' },
   { id: 'alumni', label: 'Alumni' },
 ]
 
@@ -152,8 +152,13 @@ export default function MembersPage() {
           </section>
           )}
 
-          {/* Graduate students first, then undergraduate researchers, in one list */}
-          {tab === 'students' && <MemberGrid id="students-title" title="Students" members={[...graduateStudents, ...undergraduateResearchers]} />}
+          {/* Current Members tab: graduate students first, then undergraduate researchers */}
+          {tab === 'current' && (
+            <>
+              <MemberGrid id="graduate-title" title="Graduate Students" members={graduateStudents} />
+              <MemberGrid id="undergraduate-title" title="Undergraduate Researchers" members={undergraduateResearchers} />
+            </>
+          )}
 
           {/* Alumni */}
           {tab === 'alumni' && alumni.length > 0 && (

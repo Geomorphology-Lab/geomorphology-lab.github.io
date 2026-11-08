@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { researchAreas, researchIntro } from '../../content/research'
+import { AboutVisual } from './AboutVisual'
 import { ArrowLink } from '../common/ArrowLink'
 import { ArrowUpRight } from '../common/Icons'
 import { Reveal } from '../common/Reveal'
@@ -11,9 +12,13 @@ export function ResearchOverview() {
     <section
       id="research-areas"
       aria-labelledby="research-areas-title"
-      className="theme-paper relative overflow-hidden border-b border-line pt-[4.5rem] pb-24 md:pt-24 md:pb-32"
+      className="theme-paper relative overflow-hidden border-b border-line pb-24 md:pb-32"
     >
-      <div className="container-page relative z-10">
+      {/* Background image: flush with the top edge, fading into the section background below */}
+      <AboutVisual />
+
+      {/* The heading overlaps the faded bottom of the image slightly */}
+      <div className="container-page relative z-10 -mt-[clamp(2.5rem,7vw,6rem)]">
         <SectionHeading
           id="research-areas-title"
           eyebrow="Research Areas"

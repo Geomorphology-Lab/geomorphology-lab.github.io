@@ -236,4 +236,4 @@ scripts/           Build helper scripts
 
 ### Browser-tab icon
 
-The icon shown in the browser tab is the university emblem with white and navy swapped (white emblem on a navy square). The files are `public/favicon.ico`, `favicon-32.png`, `favicon-192.png` and `apple-touch-icon.png`, created from the emblem image with `python3 scripts/make-favicon.py <emblem.png>` (the source image is not kept in the repository). Browsers cache tab icons for a long time, so after a change a hard refresh or a new private window may be needed to see it.
+The icon shown in the browser tab is the university emblem, white on black (white emblem on a black square). The files are `public/favicon.ico`, `favicon-32.png`, `favicon-192.png` and `apple-touch-icon.png`, created from the emblem image with `python3 scripts/make-favicon.py <emblem.png>` (the source image is not kept in the repository). Browsers cache tab icons for a long time, so after a change a hard refresh or a new private window may be needed to see it.

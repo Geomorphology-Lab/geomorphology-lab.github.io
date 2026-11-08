@@ -17,8 +17,8 @@ export function ResearchOverview() {
       {/* Background image: flush with the top edge, fading into the section background below */}
       <AboutVisual />
 
-      {/* The heading overlaps the faded bottom of the image slightly */}
-      <div className="container-page relative z-10 -mt-[clamp(2.5rem,7vw,6rem)]">
+      {/* The heading overlaps the image's (already white) bottom edge slightly */}
+      <div className="container-page relative z-10 -mt-[clamp(1rem,2.4vw,2.25rem)]">
         <SectionHeading
           id="research-areas-title"
           eyebrow="Research Areas"

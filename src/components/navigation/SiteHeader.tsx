@@ -117,7 +117,7 @@ export function SiteHeader() {
                     className="invisible absolute top-full left-1/2 z-50 -translate-x-1/2 pt-2 opacity-0 transition-[opacity,visibility,transform] duration-200 group-focus-within/nav:visible group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:opacity-100 motion-reduce:transition-none">
                     <ul
                       aria-label={`${item.label} sections`}
-                      className="w-max min-w-[15rem] max-w-[22rem] border border-line-strong bg-ink-900/88 py-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-lg [@media(prefers-reduced-transparency:reduce)]:bg-ink-900"
+                      className="w-max min-w-[15rem] max-w-[22rem] border border-line-strong bg-ink-900/80 py-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-lg [@media(prefers-reduced-transparency:reduce)]:bg-ink-900"
                     >
                       {item.children.map((c) => (
                         <li key={c.path}>

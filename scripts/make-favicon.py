@@ -1,7 +1,7 @@
 """Create the browser-tab icons from the university emblem (navy emblem on white).
 
 Usage: python3 scripts/make-favicon.py <emblem.png>
-The emblem's colours are swapped (white emblem on a navy square) and the result is written to
+The emblem's colours are swapped (white emblem on a black square) and the result is written to
 public/favicon.ico (16/32/48 px), public/favicon-32.png and public/favicon-192.png (rounded corners,
 transparent outside them) and public/apple-touch-icon.png (180 px, square: iOS rounds it itself).
 The source file is not modified.
@@ -32,9 +32,9 @@ def swapped_square(src: str, size: int = 1024, pad: float = 0.05) -> Image.Image
     canvas[y0 : y0 + h, x0 : x0 + w] = t
     cov = Image.fromarray((canvas * 255).astype("uint8"), "L").resize((size, size), Image.LANCZOS)
     c = np.asarray(cov, float)[..., None] / 255.0
-    bg = navy.reshape(1, 1, 3)
+    bg = np.zeros((1, 1, 3))  # black background
     white = np.array([255.0, 255.0, 255.0]).reshape(1, 1, 3)
-    out = bg * (1 - c) + white * c  # navy background, white emblem
+    out = bg * (1 - c) + white * c  # black background, white emblem
     return Image.fromarray(out.astype("uint8"), "RGB"), tuple(int(round(v)) for v in navy)
 
 

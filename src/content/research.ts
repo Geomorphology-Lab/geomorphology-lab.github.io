@@ -4,7 +4,7 @@ export const researchIntro = {
   title: 'Research',
   /** Shown on the Home page above the research cards and on the Research page */
   lead: 'We study Earth-surface processes across timescales from millennia to years, linking long-term landscape history with present-day hazards and human impacts.',
-  /** Korean version of the lead (Research page, Korean mode) */
+  /** Korean version of the lead (Home Research Areas section and Research page, Korean mode) */
   leadKo: '수천 년에서 수년에 이르는 다양한 시간 규모에서 지표 과정을 연구하며, 장기적인 지형 발달사를 오늘날의 자연재해 및 인간 활동의 영향과 연결합니다.',
 }
 
@@ -46,6 +46,8 @@ export const researchAreas: ResearchArea[] = [
     ],
     relatedPublications: ['Jeong et al. (2026), Earth-Sci. Rev.', 'Jeong et al. (2024), Mar. Geol.', 'Jeong et al. (2021), J. Geol. Soc. Korea'],
     ko: {
+      summary:
+        '중기 홀로세부터 현재까지 한반도 암석 해안의 침식을 정량화합니다. UAV-SfM 측량, 우주기원 핵종, 유한요소 모델링을 결합하여 시스택과 해안 절벽의 붕괴 임계점과 잔존 수명을 예측합니다.',
       question: '암석 해안은 얼마나 빠르게 침식되며, 시스택과 같은 해안 지형은 언제 붕괴 임계점에 도달할까?',
       description: [
         '암석 해안은 한국 해안선의 상당 부분을 차지하지만, 해안이 얼마나 빠르게 후퇴하고 해안 지형이 언제 붕괴하는지는 아직 잘 알려져 있지 않습니다. 우리는 UAV-SfM 3차원 측량, 우주기원 방사성 핵종 연대측정, 유한요소 모델링을 결합하여 중기 홀로세 이후의 해안 침식을 복원하고, 시스택이 붕괴하는 임계 조건을 규명합니다.',
@@ -92,6 +94,8 @@ export const researchAreas: ResearchArea[] = [
       'Jeong et al. (2018), Quat. Sci. Rev.',
     ],
     ko: {
+      summary:
+        '우주기원 방사성 핵종 연대측정과 LiDAR 기반 지형 분석으로 빙하 지형, 하안단구, 구조 지형의 형성사를 복원합니다. 제4기 빙기–간빙기 주기와 과거 기후 변화에 지표가 어떻게 반응했는지 탐구합니다.',
       question: '오늘날의 지형은 언제 형성되었으며, 과거 빙기–간빙기 기후 변화에 어떻게 반응했을까?',
       description: [
         '빙퇴석과 하안단구 같은 지형에는 제4기 기후 변화에 지표가 어떻게 반응했는지가 기록되어 있지만, 이 기록을 읽어 내려면 신뢰할 수 있는 연대가 필요합니다. 우리는 심도 프로파일 방법을 포함한 우주기원 방사성 핵종(¹⁰Be) 연대측정과 광여기루미네선스(OSL) 연대측정으로 지형의 연대를 구하고, LiDAR와 드론 측량으로 지형을 정밀하게 매핑합니다.',
@@ -131,6 +135,8 @@ export const researchAreas: ResearchArea[] = [
       'Jeong & Dorn (2019), Land Degrad. Dev.',
     ],
     ko: {
+      summary:
+        '농업, 도시화, 토지 이용 변화가 사면 침식과 토양 유실을 얼마나 가속했는지 측정합니다. 한국의 역사적 농경 경관에서부터 도시화가 진행 중인 애리조나의 건조 지역까지 아우르며, 지표 과정을 그 사회적 결과와 연결합니다.',
       question: '사람이 농사를 짓고, 건물을 세우고, 땅을 개발하면 사면 침식은 얼마나 빨라질까?',
       description: [
         '인간 활동은 오늘날 지표를 변화시키는 가장 강력한 요인 중 하나가 되었지만, 그 영향을 측정하려면 인간이 등장하기 이전에 지형이 얼마나 빠르게 침식되었는지를 알아야 합니다. 우리는 우주기원 ¹⁰Be를 이용해 자연 상태의 배경 침식률을 구하고, 이를 농업, 건설, 도시 개발이 이루어지는 현재의 침식률과 비교합니다.',
@@ -162,6 +168,8 @@ export const researchAreas: ResearchArea[] = [
     relatedProjects: [{ title: 'Post-Fire Landscape and Soil Microbiome Change after the 2025 Gyeongbuk Wildfires' }],
     relatedPublications: ['Jeong et al., in preparation'],
     ko: {
+      summary:
+        '지형학과 미생물생태학을 결합하여 극한 사건에 지형과 토양 생태계가 함께 어떻게 반응하는지 연구합니다. 현재는 2025년 경북 산불로 불탄 사면에서 산불 이후의 토양 침식과 토양 미생물 군집의 변화를 추적하고 있습니다.',
       question: '극한 산불 이후 불탄 지형과 토양 생태계는 어떻게 회복될까?',
       description: [
         '산불은 식생을 없애고 토양을 변화시켜 사면을 급격한 침식에 취약하게 만들지만, 산불 이후 지형과 토양 유실, 토양 생물 사이의 관계는 아직 잘 밝혀지지 않았습니다. 우리는 지형학과 미생물생태학을 잇는 연구로, 현장 조사와 고해상도 지형 매핑을 토양 미생물 군집 분석과 결합합니다.',

@@ -218,6 +218,15 @@
   0%, 100% { transform: translateY(0); opacity: 0.5; }
   50% { transform: translateY(6px); opacity: 1; }
 }
+/* Language switch: while <html data-swapping> is set (see i18n.tsx), translated text fades in softly */
+@keyframes lang-swap-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+html[data-swapping] .lang-swap { animation: lang-swap-in 0.5s var(--ease-out-soft) both; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-swapping] .lang-swap { animation: none; }
+}
 .animate-rise { animation: rise-in 0.9s var(--ease-out-soft) both; }
 .animate-cue { animation: cue 2.4s ease-in-out infinite; }
 

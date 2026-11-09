@@ -72,7 +72,7 @@ export default function MembersPage() {
                 <MediaFrame image={pi.photo} aspect="aspect-[4/5]" variant="portrait" eager />
               </div>
               <div className="min-w-0">
-                <h2 id="pi-title" lang={piName.lang} className={`font-semibold ${piName.lang === 'ko' ? 'text-[clamp(1.6rem,1.2rem+1.6vw,2.5rem)]' : 'text-[clamp(2rem,1.5rem+1.95vw,3.125rem)]'}`}>{piName.value}</h2>
+                <h2 id="pi-title" lang={piName.lang} className={`lang-swap font-semibold ${piName.lang === 'ko' ? 'text-[clamp(1.6rem,1.2rem+1.6vw,2.5rem)]' : 'text-[clamp(2rem,1.5rem+1.95vw,3.125rem)]'}`}>{piName.value}</h2>
                 <p lang="en" className="mt-3 text-[1.0625rem] text-accent">{pi.affiliation}</p>
                 {pi.email && (
                   <p className="mt-5 flex items-start gap-2.5 text-sm text-fg-muted">
@@ -127,7 +127,7 @@ export default function MembersPage() {
               <div>
                 <dt className="eyebrow mb-4 text-fg-subtle">Education</dt>
                 {education.value.map((e, i) => (
-                  <dd key={`${education.lang}-${i}`} lang={education.lang} className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
+                  <dd key={`${education.lang}-${i}`} lang={education.lang} className="lang-swap border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
                     <span className="block font-display text-[0.8125rem] font-medium tracking-wide text-accent">
                       {e.degree} · <span className="tabular-nums">{e.years}</span>
                     </span>
@@ -141,7 +141,7 @@ export default function MembersPage() {
                   // "2025.03–Present: Title, Institution" (Korean: "2025.03–현재: …") → date shown on its own line (text unchanged)
                   const m = t.match(/^(\d{4}\.\d{2}\s*[–-]\s*(?:\d{4}\.\d{2}|Present|현재)):\s*(.+)$/)
                   return (
-                    <dd key={`${career.lang}-${i}`} lang={career.lang} className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
+                    <dd key={`${career.lang}-${i}`} lang={career.lang} className="lang-swap border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
                       {m ? (
                         <>
                           <span className="block font-display text-[0.8125rem] font-medium tabular-nums tracking-wide text-accent">{m[1]}</span>

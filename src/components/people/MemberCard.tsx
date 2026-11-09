@@ -21,10 +21,10 @@ export function MemberCard({ person: base }: { person: Person }) {
         <MediaFrame image={person.photo} aspect="aspect-[4/5]" variant="portrait" className="w-full" still />
       </div>
       <div className="flex min-w-0 flex-1 flex-col [overflow-wrap:anywhere]">
-        <h3 lang={isKorean(person.name) ? 'ko' : 'en'} className="text-lg leading-snug font-semibold text-fg md:text-xl">{person.name}</h3>
-        <p lang={isKorean(person.position) ? 'ko' : 'en'} className="mt-1.5 text-sm leading-relaxed text-accent md:text-[0.9375rem]">{person.position}</p>
+        <h3 lang={isKorean(person.name) ? 'ko' : 'en'} className="lang-swap text-lg leading-snug font-semibold text-fg md:text-xl">{person.name}</h3>
+        <p lang={isKorean(person.position) ? 'ko' : 'en'} className="lang-swap mt-1.5 text-sm leading-relaxed text-accent md:text-[0.9375rem]">{person.position}</p>
         {person.affiliation && (
-          <p lang={isKorean(person.affiliation) ? 'ko' : 'en'} className="mt-1 text-sm leading-relaxed text-fg-muted">{person.affiliation}</p>
+          <p lang={isKorean(person.affiliation) ? 'ko' : 'en'} className="lang-swap mt-1 text-sm leading-relaxed text-fg-muted">{person.affiliation}</p>
         )}
         {person.researchInterests && (
           <div className="mt-4">

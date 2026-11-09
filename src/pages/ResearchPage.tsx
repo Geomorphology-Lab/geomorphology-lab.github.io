@@ -30,7 +30,7 @@ export default function ResearchPage() {
       />
       <section className="theme-paper pt-10 pb-8 md:pt-14">
         <div className="container-page grid gap-10 lg:grid-cols-12">
-          <p lang={lead.lang} className="prose-body lg:col-span-7">{lead.value}</p>
+          <p lang={lead.lang} className="prose-body lang-swap lg:col-span-7">{lead.value}</p>
           {showAll && (
             <nav aria-label="Research areas" className="lg:col-span-4 lg:col-start-9">
               <p className="eyebrow mb-4 text-fg-subtle">On this page</p>

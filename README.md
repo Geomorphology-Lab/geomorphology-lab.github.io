@@ -1,18 +1,18 @@
 # geomorphology-lab.github.io
 
-Website for **Geomorphology Lab, Kyung Hee University** (경희대학교 지형학 연구실).
+**경희대학교 지형학 연구실(Geomorphology Lab, Kyung Hee University)** 웹사이트입니다.
 
-- Public address: <https://geomorphology.khu.ac.kr>
-- GitHub Pages address: <https://geomorphology-lab.github.io>
-- Stack: React 18 · TypeScript · Vite · Tailwind CSS v4 · GitHub Actions → GitHub Pages
+- 공개 주소: <https://geomorphology.khu.ac.kr>
+- GitHub Pages 주소: <https://geomorphology-lab.github.io>
+- 기술 스택: React 18 · TypeScript · Vite · Tailwind CSS v4 · GitHub Actions → GitHub Pages
 
-> **Status: first design prototype.** Most text is temporary Korean wording that describes what will go there, for example "이곳에는 … 이 들어갑니다". It uses the same styling as the final content, so the layout already looks finished. Replace this text with verified information as it becomes available (see below).
+> **상태: 첫 디자인 프로토타입.** 대부분의 문구는 그 자리에 들어갈 내용을 설명하는 임시 한국어 문구입니다(예: "이곳에는 … 이 들어갑니다"). 최종 콘텐츠와 같은 스타일을 쓰기 때문에 레이아웃은 이미 완성된 것처럼 보입니다. 확인된 정보가 생기는 대로 이 문구를 교체하세요(아래 참고).
 
 ---
 
 ## 1. Run locally
 
-You need Node.js 20 or newer (22 recommended).
+Node.js 20 이상이 필요합니다(22 권장).
 
 ```bash
 npm install
@@ -22,7 +22,7 @@ npm install
 npm run dev
 ```
 
-Open the address printed in the terminal (usually <http://localhost:5173>).
+터미널에 표시되는 주소(보통 <http://localhost:5173>)를 여세요.
 
 ## 2. Build and check
 
@@ -34,13 +34,13 @@ npm run lint
 npm run build
 ```
 
-`npm run build` does three things:
+`npm run build`는 세 가지 작업을 합니다.
 
-1. Type-checks with TypeScript.
-2. Builds the static site into `dist/`.
-3. Runs `scripts/postbuild.mjs`, which copies `index.html` to `dist/<route>/index.html` and `dist/404.html`. That lets URLs such as `/research` load directly and survive a page refresh on GitHub Pages. The script also stops the build if `CNAME` is missing.
+1. TypeScript로 타입을 검사합니다.
+2. 정적 사이트를 `dist/`에 빌드합니다.
+3. `scripts/postbuild.mjs`를 실행해 `index.html`을 `dist/<route>/index.html`과 `dist/404.html`로 복사합니다. 덕분에 `/research` 같은 주소를 바로 열거나 새로고침해도 GitHub Pages에서 페이지가 정상적으로 열립니다. 이 스크립트는 `CNAME`이 없으면 빌드를 중단합니다.
 
-To preview the production build:
+배포용 빌드를 미리 보려면 다음을 실행하세요.
 
 ```bash
 npm run preview
@@ -48,85 +48,85 @@ npm run preview
 
 ## 3. Deploy
 
-Deployment is automatic. Every push to `main` runs `.github/workflows/deploy.yml`, which lints, builds and publishes `dist/` to GitHub Pages. It works on a free GitHub plan.
+배포는 자동입니다. `main`에 push할 때마다 `.github/workflows/deploy.yml`이 실행되어 lint와 빌드를 거친 뒤 `dist/`를 GitHub Pages에 게시합니다. 무료 GitHub 요금제에서도 동작합니다.
 
-**One-time setup (an organization owner must do this before the first merge):**
+**최초 1회 설정(첫 머지 전에 조직 소유자가 해야 함):**
 
-1. Open the repository's **Settings → Pages**.
-2. Under **Build and deployment → Source**, choose **GitHub Actions**. Until this changes, Pages keeps serving the raw files from the branch. After the merge that would be the unbuilt `index.html`, and the site would show a blank page.
-3. Under **Custom domain**, confirm the domain is still `geomorphology.khu.ac.kr`, and enable **Enforce HTTPS** once GitHub has issued the certificate.
+1. 저장소의 **Settings → Pages**를 엽니다.
+2. **Build and deployment → Source**에서 **GitHub Actions**를 선택합니다. 이 설정을 바꾸기 전까지 Pages는 브랜치의 원본 파일을 그대로 보여 줍니다. 그러면 머지 후에는 빌드되지 않은 `index.html`이 게시되어 빈 화면이 나옵니다.
+3. **Custom domain**에서 도메인이 여전히 `geomorphology.khu.ac.kr`인지 확인하고, GitHub가 인증서를 발급하면 **Enforce HTTPS**를 켭니다.
 
-The custom domain is kept by `public/CNAME`, which is copied into every build. The root `CNAME` is also kept for compatibility. The university manages the DNS record, so no DNS changes are needed.
+사용자 지정 도메인은 모든 빌드에 복사되는 `public/CNAME`으로 유지됩니다. 호환성을 위해 루트의 `CNAME`도 남겨 두었습니다. DNS 레코드는 학교에서 관리하므로 DNS를 바꿀 필요는 없습니다.
 
-You can also start a deployment manually: **Actions → Deploy to GitHub Pages → Run workflow**.
+배포를 직접 시작할 수도 있습니다: **Actions → Deploy to GitHub Pages → Run workflow**.
 
 ## 4. Where the content lives
 
-All replaceable text and data are in `src/content/`. You do not need to edit any component code.
+바꿀 수 있는 문구와 데이터는 모두 `src/content/`에 있습니다. 컴포넌트 코드는 수정하지 않아도 됩니다.
 
-| File | Contents |
+| 파일 | 내용 |
 | --- | --- |
-| `site.ts` | Lab name, hero text, homepage About text, footer, Contact page (location and map), navigation menu |
-| `research.ts` | Research areas (title, summary, description, image, related projects and publications) |
-| `people.ts` | Principal investigator, graduate students, undergraduate researchers, alumni (shown on the Members page) |
-| `publications.ts` | All publications (grouped by year on the page) |
-| `news.ts` | News and gallery items, news categories |
-| `heroSlides.ts` | Homepage hero slideshow (photos, order, timing) |
-| `pageImages.ts` | Header photographs for Research, Members, Publications, News and Contact |
-| `images.ts` | Fallback header image (404 page) |
-| `types.ts` | Field definitions for every content type (reference) |
+| `site.ts` | 연구실 이름, 히어로 문구, 홈 About 문구, 푸터, Contact 페이지(위치와 지도), 내비게이션 메뉴 |
+| `research.ts` | 연구 분야(제목, 요약, 설명, 이미지, 관련 과제와 논문) |
+| `people.ts` | 책임연구자, 대학원생, 학부연구생, 졸업생(Members 페이지에 표시) |
+| `publications.ts` | 전체 논문 목록(페이지에서는 연도별로 묶어 표시) |
+| `news.ts` | 소식과 갤러리 항목, 소식 분류 |
+| `heroSlides.ts` | 홈 히어로 슬라이드쇼(사진, 순서, 타이밍) |
+| `pageImages.ts` | Research, Members, Publications, News, Contact의 헤더 사진 |
+| `images.ts` | 예비 헤더 이미지(404 페이지) |
+| `types.ts` | 모든 콘텐츠 유형의 필드 정의(참고용) |
 
 ### Replacing temporary text
 
-Find a sentence such as `'이곳에는 … 들어갑니다.'` in the files above and overwrite it with the real text. Keep the quotes `'…'` and the trailing commas. The new text appears with exactly the same design.
+위 파일에서 `'이곳에는 … 들어갑니다.'` 같은 문장을 찾아 실제 문구로 덮어쓰세요. 따옴표 `'…'`와 줄 끝의 쉼표는 그대로 두어야 합니다. 새 문구는 같은 디자인으로 그대로 표시됩니다.
 
 ### Adding a research area
 
-In the `researchAreas` array in `research.ts`, copy one `{ … }` block, paste it, and change its `id` to a new value (for example `'area-5'`). Numbers (01, 02 …) are assigned automatically in order. The homepage cards and the Research page update together.
+`research.ts`의 `researchAreas` 배열에서 `{ … }` 블록 하나를 복사해 붙여 넣고, `id`를 새 값(예: `'area-5'`)으로 바꾸세요. 번호(01, 02 …)는 순서대로 자동으로 붙습니다. 홈의 카드와 Research 페이지가 함께 바뀝니다.
 
 ### Adding a lab member
 
-Add an entry to the appropriate array in `people.ts`:
+`people.ts`의 해당 배열에 항목을 추가하세요.
 
 ```ts
 {
   name: '홍길동',
   position: '박사과정',
   researchInterests: '하천 지형 변화, 퇴적물 이동',
-  email: 'name@khu.ac.kr',            // Only when the member has approved public disclosure. A real address becomes a mailto link; placeholder text is shown as plain text.
+  email: 'name@khu.ac.kr',            // 본인이 공개에 동의한 경우에만. 실제 주소는 mailto 링크가 되고, 임시 문구는 일반 텍스트로 표시됩니다.
   photo: { src: '/images/people/hong.jpg', alt: '홍길동 사진' },
 },
 ```
 
-- Photos go in `public/images/people/`. A 4:5 portrait ratio around 800×1000 px is recommended.
-- If you omit `photo.src`, a neutral portrait image is shown.
-- `email` becomes a mailto link automatically only when it is a valid email address.
-- When a member graduates, move them to `alumni` in the form `{ name, degree, year, currentPosition }`.
+- 사진은 `public/images/people/`에 넣습니다. 약 800×1000 px의 4:5 세로 비율을 권장합니다.
+- `photo.src`를 생략하면 중립적인 인물 이미지가 표시됩니다.
+- `email`은 올바른 이메일 주소일 때만 자동으로 mailto 링크가 됩니다.
+- 구성원이 졸업하면 `{ name, degree, year, currentPosition }` 형식으로 `alumni`로 옮기세요.
 
 ### Adding a publication
 
-Add an entry to the `publications` array in `publications.ts` (the file's header comment explains each field). Titles stay plain text; isotope names such as 10Be are set with superscripts automatically; the page adds the `&` before the last author.
+`publications.ts`의 `publications` 배열에 항목을 추가하세요(각 필드 설명은 파일 맨 위 주석에 있습니다). 제목은 일반 텍스트로 쓰면 되고, 10Be 같은 동위원소 이름은 자동으로 위첨자 처리되며, 마지막 저자 앞의 `&`도 페이지에서 자동으로 붙습니다.
 
 ```ts
 {
-  id: 'hong-2025-geomorphology',   // Any unique key
-  year: 2025,                      // A number; the year filter is built from these
+  id: 'hong-2025-geomorphology',   // 겹치지 않는 아무 키
+  year: 2025,                      // 숫자. 연도 필터가 이 값으로 만들어집니다
   title: 'Title of the article',
   authors: ['Hong, G.-D.', 'Kim, C.-S.'],
   venue: 'Geomorphology',
-  volume: '450',                   // Optional
-  issue: '2',                      // Optional
-  pages: '109000',                 // Optional
-  doi: '10.1016/j.geomorph.2025.109000', // Optional, without the https://doi.org/ prefix
-  type: 'journal',                 // Optional, not shown on the page
+  volume: '450',                   // 선택
+  issue: '2',                      // 선택
+  pages: '109000',                 // 선택
+  doi: '10.1016/j.geomorph.2025.109000', // 선택. https://doi.org/ 접두어 없이
+  type: 'journal',                 // 선택. 페이지에는 표시되지 않음
 },
 ```
 
-The page groups entries by year (newest first) and shows an **All** button plus one button per year that has entries. Within a year, entries appear in the order they are listed. If there is no DOI, use `url: 'https://…'` instead. Enter only verified records.
+페이지는 항목을 연도별로(최신순) 묶고, **All** 버튼과 항목이 있는 연도마다 버튼을 하나씩 보여 줍니다. 같은 연도 안에서는 목록에 적힌 순서대로 나옵니다. DOI가 없으면 대신 `url: 'https://…'`을 쓰세요. 확인된 기록만 입력하세요.
 
 ### Adding news or gallery items
 
-Add an item to the top of the `news` array in `news.ts`. `category` must be one of `'Fieldwork' | 'Conference' | 'Award' | 'Research'`. Photos go in `public/images/news/`, using a 3:2 ratio:
+`news.ts`의 `news` 배열 맨 위에 항목을 추가하세요. `category`는 `'Fieldwork' | 'Conference' | 'Award' | 'Research'` 중 하나여야 합니다. 사진은 3:2 비율로 `public/images/news/`에 넣습니다.
 
 ```ts
 image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모습' },
@@ -134,113 +134,112 @@ image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모�
 
 ### Contact information and map
 
-Edit the `contact` object in `site.ts`. The map is a Google Maps embed (no API key) built from `contact.map.query`; the "Open in Google Maps" link uses the same query. If the marker lands on the wrong building, change `query` to a more specific place name.
+`site.ts`의 `contact` 객체를 수정하세요. 지도는 `contact.map.query`로 만드는 Google 지도 임베드(API 키 불필요)이고, "Open in Google Maps" 링크도 같은 검색어를 씁니다. 표시가 엉뚱한 건물에 찍히면 `query`를 더 구체적인 장소 이름으로 바꾸세요. 푸터의 연구실 주소도 같은 `contact` 내용을 그대로 씁니다.
 
 ## 5. Replacing the photographs
 
 ### Korean mode (한국어 버튼)
 
-The button at the right end of the navigation bar switches selected body text to Korean; the site opens in English.
-Only the Home **About** paragraphs (`homeAbout.paragraphsKo` in `src/content/site.ts`) and the **Research** page body
-(`researchIntro.leadKo` and each area's `ko` field in `src/content/research.ts`) have Korean versions. Headings, titles,
-navigation and all other pages stay in English. The visitor's choice is remembered in their browser (`src/i18n.tsx`, `src/lang.ts`).
+내비게이션 바 오른쪽 끝의 버튼을 누르면 일부 본문이 한국어로 바뀝니다. 사이트는 영어로 열립니다.
+한국어 버전이 있는 곳은 홈 **About** 문단(`src/content/site.ts`의 `homeAbout.paragraphsKo`), 홈 **Research Areas** 소개 문장과 카드 본문, **Research** 페이지 본문(`src/content/research.ts`의 `researchIntro.leadKo`와 각 분야의 `ko` 필드: `summary`, `question`, `description`)뿐입니다. 한국어 모드에서는 메인 제목 아래에 "경희대학교 지형학 실험실" 소제목(`hero.subtitleKo`)도 나타납니다.
+제목, 소제목, 내비게이션과 그 밖의 모든 페이지는 영어로 유지됩니다. 방문자가 고른 언어는 그 브라우저에 기억됩니다(`src/i18n.tsx`, `src/lang.ts`).
 
 ### Homepage hero slideshow
 
-The homepage top shows one landscape photo (the third of the original three) with the original entrance fade and slow zoom; it no longer switches. All settings are in **`src/content/heroSlides.ts`**; adding more entries there brings the cross-dissolve slideshow back.
+홈 맨 위에는 풍경 사진 한 장(원래 세 장 중 세 번째)이 처음 나타날 때의 페이드와 느린 줌과 함께 표시되며, 더 이상 바뀌지 않습니다. 모든 설정은 **`src/content/heroSlides.ts`**에 있습니다. 여기에 항목을 더 추가하면 크로스 디졸브 슬라이드쇼가 다시 동작합니다.
 
-| Setting | Value | Meaning |
+| 설정 | 값 | 의미 |
 | --- | --- | --- |
-| `SLIDE_INTERVAL_MS` | 3000 | A new transition starts every 3 seconds |
-| `CROSSFADE_DURATION_MS` | 1100 | Each cross-dissolve takes 1.1 seconds |
-| `KEN_BURNS_MAX_SCALE` | 1.035 | Maximum scale of the slow zoom |
+| `SLIDE_INTERVAL_MS` | 3000 | 3초마다 새 전환이 시작됨 |
+| `CROSSFADE_DURATION_MS` | 1100 | 크로스 디졸브 한 번에 1.1초 |
+| `KEN_BURNS_MAX_SCALE` | 1.035 | 느린 줌의 최대 배율 |
 
-- The order of the `heroSlides` array is the order on screen: ① mountain ridges and sea of clouds → ② glacial valley → ③ canyon river.
-- Each slide's `position` sets the crop focus separately for mobile and desktop, and `motion` sets its zoom direction.
-- When the user's system has "reduce motion" enabled, only the first photo is shown, with no transitions or zoom. The pause button at the bottom left stops the slideshow.
+- `heroSlides` 배열의 순서가 화면에 나오는 순서입니다: ① 구름바다 위 산 능선 → ② 빙식곡 → ③ 협곡 하천.
+- 각 슬라이드의 `position`은 모바일과 데스크톱의 잘림 기준점을 따로 정하고, `motion`은 줌 방향을 정합니다.
+- 사용자 시스템에서 "동작 줄이기"가 켜져 있으면 첫 번째 사진만 전환과 줌 없이 표시됩니다. 왼쪽 아래의 일시정지 버튼으로 슬라이드쇼를 멈출 수 있습니다.
 
-**To replace or add a photo:**
+**사진을 교체하거나 추가하려면:**
 
-1. Prepare the source photos (use only images whose copyright you own or have permission to use).
-2. Run the following with the photos in the order they should appear. The script converts colour to sRGB, removes metadata (EXIF), and creates 960/1600/2560 px WebP files in `public/images/hero/`. Smaller originals are never upscaled.
+1. 원본 사진을 준비합니다(저작권을 보유했거나 사용 허가를 받은 이미지만 사용).
+2. 보여 줄 순서대로 사진을 넣어 다음을 실행합니다. 스크립트가 색 공간을 sRGB로 바꾸고 메타데이터(EXIF)를 지운 뒤 `public/images/hero/`에 960/1600/2560 px WebP 파일을 만듭니다. 원본보다 크게 늘리지는 않습니다.
    ```bash
    python3 scripts/optimize-hero-photos.py ridges.jpg valley.jpg canyon.jpg
    ```
-3. If the file names change, update `files` and `alt` in `heroSlides.ts`. Also update the preload paths in `index.html` (the `hero-preload` comment marks them) to match the first photo.
-4. Run `npm run build` to confirm there are no errors.
+3. 파일 이름이 바뀌면 `heroSlides.ts`의 `files`와 `alt`를 고치세요. `index.html`의 미리 불러오기 경로(`hero-preload` 주석이 표시된 곳)도 첫 번째 사진에 맞게 고쳐야 합니다.
+4. `npm run build`를 실행해 오류가 없는지 확인합니다.
 
 ### Inner page header photos
 
-Research, Members, Publications, News and Contact each have their own header photo, configured in `src/content/pageImages.ts` (files in `public/images/headers/`). To replace one:
+Research, Members, Publications, News, Contact에는 각각 헤더 사진이 있으며, `src/content/pageImages.ts`에서 설정합니다(파일은 `public/images/headers/`). 교체하려면:
 
 ```bash
 python3 scripts/optimize-photo.py new-photo.jpg public/images/headers research-glacier
 ```
 
-Using the same name overwrites the existing files, so no code change is needed. Adjust `position` (mobile / desktop) if an important feature is cropped. The 404 page still uses the code-rendered landscape in `src/assets/images/hero/`.
+같은 이름을 쓰면 기존 파일을 덮어쓰므로 코드는 고치지 않아도 됩니다. 중요한 부분이 잘리면 `position`(모바일 / 데스크톱)을 조정하세요. 404 페이지는 여전히 `src/assets/images/hero/`의 코드로 그린 풍경 이미지를 씁니다.
 
 ### About section contour map
 
-A navy topographic contour map (rotated 25° to the right) surfaces from the white background behind the right side of "About the Laboratory" as you scroll, and fades back when scrolling up. The map itself never moves: it scrolls with the page like the background, only its visibility changes. Parts that stick out of the section are cropped, and its top and bottom edges fade into the navy, so it never touches the hero photo. The reveal runs while the heading scrolls from the lower part of the screen to the top (`START` and `END` at the top of `ContourReveal.tsx`; widen them to make it slower). The behaviour is in `src/components/home/ContourReveal.tsx` and the look is in the `.contour-*` rules at the end of `src/styles/index.css`:
+"About the Laboratory" 오른쪽 뒤편에 남색 지형 등고선도(오른쪽으로 25° 회전)가 스크롤에 따라 흰 배경에서 떠오르고, 위로 스크롤하면 다시 사라집니다. 지도 자체는 움직이지 않고 배경처럼 페이지와 함께 스크롤되며, 보이는 정도만 바뀝니다. 섹션 밖으로 나가는 부분은 잘리고 위아래 가장자리는 남색으로 흐려지므로 히어로 사진에 닿지 않습니다. 떠오르는 효과는 제목이 화면 아래쪽에서 맨 위로 스크롤되는 동안 진행됩니다(`ContourReveal.tsx` 맨 위의 `START`와 `END`. 범위를 넓히면 더 느려집니다). 동작은 `src/components/home/ContourReveal.tsx`에, 모양은 `src/styles/index.css` 끝부분의 `.contour-*` 규칙에 있습니다.
 
-- `--contour-max` is the final opacity (0.36 on desktop, lower on tablet and phone), `--contour-blur` the starting blur, `--contour-rotate` the angle, `--contour-w` the size, `--contour-gap` the space between the text and the map (on desktop the map is positioned from the end of the text column, so it never covers the words; tablet and phone use `--contour-right`).
-- The image (`src/assets/images/about/contour-map.webp`) is used as a mask, so only its alpha matters; the line colour is the site accent colour. To use another map, replace the file with a transparent PNG/WebP of any square shape.
-- With "reduce motion" enabled in the system, a static, faint version is shown instead.
+- `--contour-max`는 최종 불투명도(데스크톱 0.36, 태블릿과 휴대폰은 더 낮음), `--contour-blur`는 시작할 때의 흐림, `--contour-rotate`는 각도, `--contour-w`는 크기, `--contour-gap`은 글과 지도 사이 간격입니다(데스크톱에서는 지도가 글 단의 끝에서부터 배치되어 글자를 가리지 않고, 태블릿과 휴대폰은 `--contour-right`를 씁니다).
+- 이미지(`src/assets/images/about/contour-map.webp`)는 마스크로 쓰이므로 알파 채널만 의미가 있고, 선 색은 사이트 강조색입니다. 다른 지도를 쓰려면 아무 정사각형 모양의 투명 PNG/WebP로 파일을 바꾸면 됩니다.
+- 시스템에서 "동작 줄이기"가 켜져 있으면 움직임 없이 옅은 정지 화면이 표시됩니다.
 
 ### Research card hover photos
 
-Each Home research card reveals a photograph on hover or keyboard focus. The photos are set per area as `cardPhoto` in `src/content/research.ts` (files in `public/images/research/card-*`); `position` chooses which part stays visible in the card crop. Create new sizes with `python3 scripts/optimize-content-image.py <photo> public/images/research <name> 1000 600`. Touch devices never download these photos.
+홈의 각 연구 카드는 마우스를 올리거나 키보드로 초점을 옮기면 사진이 나타납니다. 사진은 `src/content/research.ts`에서 분야별 `cardPhoto`로 설정합니다(파일은 `public/images/research/card-*`). `position`은 카드에서 잘릴 때 보일 부분을 정합니다. 새 크기는 `python3 scripts/optimize-content-image.py <photo> public/images/research <name> 1000 600`으로 만드세요. 터치 기기에서는 이 사진들을 내려받지 않습니다.
 
 ### Homepage About image
 
 
 ### Research, people and news photos
 
-Put files under `public/images/…` and add `src` and `alt` to the matching content entry. Where there is no photo, a topographic-contour pattern is shown in the same frame size.
+파일을 `public/images/…` 아래에 넣고, 해당 콘텐츠 항목에 `src`와 `alt`를 추가하세요. 사진이 없는 곳에는 같은 크기의 프레임에 지형 등고선 무늬가 표시됩니다.
 
 ## 6. Project structure
 
 ```
 src/
   components/
-    common/        Shared components (headings, image frame, icons, etc.)
-    layout/        Layout, footer
-    navigation/    Header and mobile menu
-    home/          Homepage sections (Hero, About text, Research Areas over the river image)
-    research/      Research page blocks
-    people/        Member cards
-    publications/  Publication items
-    news/          News cards
-  content/         ← Content to edit
-  pages/           Page components
-  assets/images/   Hero image
-  styles/          Global styles and design tokens (colors, fonts)
-public/            Files copied as-is (CNAME, favicon, member and news photos)
-scripts/           Build helper scripts
-.github/workflows/ Automatic deployment
+    common/        공통 컴포넌트(제목, 이미지 프레임, 아이콘 등)
+    layout/        레이아웃, 푸터
+    navigation/    헤더와 모바일 메뉴
+    home/          홈 섹션(Hero, About 문구, 하천 이미지 위의 Research Areas)
+    research/      Research 페이지 블록
+    people/        구성원 카드
+    publications/  논문 항목
+    news/          소식 카드
+  content/         ← 수정할 콘텐츠
+  pages/           페이지 컴포넌트
+  assets/images/   히어로 이미지
+  styles/          전역 스타일과 디자인 토큰(색, 글꼴)
+public/            그대로 복사되는 파일(CNAME, 파비콘, 구성원·소식 사진)
+scripts/           빌드 보조 스크립트
+.github/workflows/ 자동 배포
 ```
 
 ### Adding a new page
 
-1. Write a component in `src/pages/`.
-2. Add a `<Route>` in `src/App.tsx`.
-3. Add a menu item to `navigation` in `src/content/site.ts`.
-4. Add the path to the `routes` array in `scripts/postbuild.mjs`.
+1. `src/pages/`에 컴포넌트를 작성합니다.
+2. `src/App.tsx`에 `<Route>`를 추가합니다.
+3. `src/content/site.ts`의 `navigation`에 메뉴 항목을 추가합니다.
+4. `scripts/postbuild.mjs`의 `routes` 배열에 경로를 추가합니다.
 
 ## 7. Notes for future maintainers
 
-- **Only verified information**: do not publish publications, member details or contact details until they are confirmed.
-- **Image licensing**: use only photos the lab owns or has permission to use. Do not hotlink images found in search results.
-- **Accessibility**: always add an `alt` description to new images.
-- **Before you push**: run `npm run build` locally to confirm there are no errors. If the build fails on `main`, the site is not updated, and the previous version stays live.
-- Design tokens (colors, fonts) are in the `@theme` block of `src/styles/index.css`.
-- Fonts (Inter and Pretendard) are bundled through npm packages, so the site does not depend on an external font CDN.
+- **확인된 정보만**: 논문, 구성원 정보, 연락처는 확인되기 전까지 게시하지 마세요.
+- **이미지 저작권**: 연구실이 보유했거나 사용 허가를 받은 사진만 쓰세요. 검색 결과에서 찾은 이미지를 직접 링크하지 마세요.
+- **접근성**: 새 이미지에는 항상 `alt` 설명을 넣으세요.
+- **push하기 전에**: 로컬에서 `npm run build`를 실행해 오류가 없는지 확인하세요. `main`에서 빌드가 실패하면 사이트는 갱신되지 않고 이전 버전이 그대로 유지됩니다.
+- 디자인 토큰(색, 글꼴)은 `src/styles/index.css`의 `@theme` 블록에 있습니다.
+- 글꼴(Inter와 Pretendard)은 npm 패키지로 함께 번들되므로 외부 글꼴 CDN에 의존하지 않습니다.
 
 ### Navigation drop-down, recruitment guide, header photo brightness
 
-- **Drop-down menu:** hovering (or tabbing to) *Research* or *Members* in the top bar opens a list of its sections. The links are the `children` of each item in `navigation` (`src/content/site.ts`); the Members links such as `/members#graduate` open that tab (the address after `#` is read by `MembersPage`); the Research list is built from `research.ts`, so it always matches the four research areas. The mobile menu shows the same links under each item.
-- **Dimming a header photo:** set `dim` (e.g. `0.6`) on a photo in `src/content/pageImages.ts`; the News lava photo uses it.
+- **드롭다운 메뉴:** 상단 바의 *Research*나 *Members*에 마우스를 올리거나 Tab 키로 이동하면 하위 항목 목록이 열립니다. 링크는 `navigation`(`src/content/site.ts`) 각 항목의 `children`입니다. `/members#graduate` 같은 Members 링크는 해당 탭을 엽니다(`#` 뒤의 주소를 `MembersPage`가 읽습니다). Research 목록은 `research.ts`에서 만들어지므로 항상 네 연구 분야와 일치합니다. 모바일 메뉴도 각 항목 아래에 같은 링크를 보여 줍니다.
+- **헤더 사진 어둡게 하기:** `src/content/pageImages.ts`에서 사진에 `dim`(예: `0.6`)을 설정하세요. News의 용암 사진이 이 설정을 씁니다.
 
 ### Browser-tab icon
 
-The icon shown in the browser tab is the university emblem, white on black (white emblem on a black square). The files are `public/favicon.ico`, `favicon-32.png`, `favicon-192.png` and `apple-touch-icon.png`, created from the emblem image with `python3 scripts/make-favicon.py <emblem.png>` (the source image is not kept in the repository). Browsers cache tab icons for a long time, so after a change a hard refresh or a new private window may be needed to see it.
+브라우저 탭에 보이는 아이콘은 학교 엠블럼을 검정 바탕에 흰색으로 넣은 것입니다(검정 정사각형 위의 흰 엠블럼). 파일은 `public/favicon.ico`, `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`이며, 엠블럼 이미지로 `python3 scripts/make-favicon.py <emblem.png>`를 실행해 만듭니다(원본 이미지는 저장소에 보관하지 않음). 브라우저는 탭 아이콘을 오래 캐시하므로, 바꾼 뒤에는 강력 새로고침이나 새 비공개 창이 필요할 수 있습니다.

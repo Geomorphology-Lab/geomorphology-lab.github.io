@@ -6,8 +6,12 @@ import { ArrowUpRight } from '../common/Icons'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
 import { CardPhotoReveal } from './CardPhotoReveal'
+import { pick, useLang } from '../../lang'
 
 export function ResearchOverview() {
+  // Korean mode: the lead and the card summaries switch; the headings and card titles stay English
+  const { lang } = useLang()
+  const lead = pick(lang, researchIntro.lead, researchIntro.leadKo)
   return (
     <section
       id="research-areas"
@@ -23,12 +27,14 @@ export function ResearchOverview() {
           id="research-areas-title"
           eyebrow="Research Areas"
           title="Research Areas"
-          description={researchIntro.lead}
-          descriptionLang="en"
+          description={lead.value}
+          descriptionLang={lead.lang}
           action={<ArrowLink to="/research">All research</ArrowLink>}
         />
         <ol className="grid border-t border-l border-line sm:grid-cols-2 xl:grid-cols-4">
-          {researchAreas.map((area, i) => (
+          {researchAreas.map((area, i) => {
+            const summary = pick(lang, area.summary, area.ko?.summary)
+            return (
             <li key={area.id} className="border-r border-b border-line">
               <Reveal delay={i * 80} className="h-full">
                 <Link
@@ -44,13 +50,14 @@ export function ResearchOverview() {
                   </div>
                   <div className="pt-8 md:pt-10">
                     <h3 lang="en" className="text-xl font-semibold text-fg transition-colors duration-500 md:text-[1.375rem]">{area.title}</h3>
-                    <p lang="en" className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted transition-colors duration-500">{area.summary}</p>
+                    <p lang={summary.lang} className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted transition-colors duration-500">{summary.value}</p>
                   </div>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
                 </Link>
               </Reveal>
             </li>
-          ))}
+            )
+          })}
         </ol>
       </div>
     </section>

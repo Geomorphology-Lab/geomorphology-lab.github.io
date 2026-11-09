@@ -78,7 +78,7 @@ export interface ResearchArea {
   /** Short citation lines such as 'Jeong et al. (2026), Earth-Sci. Rev.' */
   relatedPublications: string[]
   /** Korean version of the Research page body text (shown when the site is switched to Korean). Titles stay English. */
-  ko?: { question?: string; description: string[] }
+  ko?: { summary?: string; question?: string; description: string[] }
 }
 
 export interface Person {

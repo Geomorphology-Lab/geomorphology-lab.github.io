@@ -72,7 +72,7 @@ export default function MembersPage() {
                 <MediaFrame image={pi.photo} aspect="aspect-[4/5]" variant="portrait" eager />
               </div>
               <div className="min-w-0">
-                <h2 id="pi-title" lang={piName.lang} className="text-[clamp(2rem,1.5rem+1.95vw,3.125rem)] font-semibold">{piName.value}</h2>
+                <h2 id="pi-title" lang={piName.lang} className={`font-semibold ${piName.lang === 'ko' ? 'text-[clamp(1.6rem,1.2rem+1.6vw,2.5rem)]' : 'text-[clamp(2rem,1.5rem+1.95vw,3.125rem)]'}`}>{piName.value}</h2>
                 <p lang="en" className="mt-3 text-[1.0625rem] text-accent">{pi.affiliation}</p>
                 {pi.email && (
                   <p className="mt-5 flex items-start gap-2.5 text-sm text-fg-muted">

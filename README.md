@@ -1,14 +1,11 @@
 # geomorphology-lab.github.io
 
-**경희대학교 지형학 연구실(Geomorphology Lab, Kyung Hee University)** 웹사이트입니다.
+**경희대학교 지형학 연구실(Geomorphology Lab, Kyung Hee University)** 랩 홈페이지입니다.
+유지/보수 중 문제가 생기면 2026-2학기 학부연구생 김소현(010-5729-1044, shkim030811@gmail.com)으로 언제든 연락주세요! 
 
 - 공개 주소: <https://geomorphology.khu.ac.kr>
 - GitHub Pages 주소: <https://geomorphology-lab.github.io>
 - 기술 스택: React 18 · TypeScript · Vite · Tailwind CSS v4 · GitHub Actions → GitHub Pages
-
-> **상태:** 홈, Research, Members(교수님), Contact는 실제 내용으로 채워져 있습니다. Publications 목록은 공개 자료로 정리한 초안이며 교수님의 최종 확인이 필요합니다(`publications.ts` 맨 위 주석). Gallery 항목과 일부 구성원 정보처럼 아직 정해지지 않은 곳에는 그 자리에 들어갈 내용을 설명하는 임시 한국어 문구(예: "이곳에는 … 이 들어갑니다")가 남아 있습니다(`news.ts`, `people.ts` 등). 최종 콘텐츠와 같은 스타일이라 레이아웃은 완성된 모습으로 보입니다. 확인된 정보가 생기는 대로 교체하세요(아래 참고).
-
-**사이트 구성:** Home · Research · Members(Professor / Current Members / Alumni 탭) · Publications · Gallery · Contact. 색은 검정·흰색을 기본으로 하고, 남색(`#132433`, `--color-navy`)을 강조색으로 씁니다.
 
 ---
 

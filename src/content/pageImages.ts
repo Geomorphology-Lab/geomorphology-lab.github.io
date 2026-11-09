@@ -13,7 +13,7 @@ export const headerPhotos = {
     alt: '',
     files: set('research-glacier', [960, 1600]),
     aspect: 1600 / 1200,
-    position: { mobile: '55% 78%', desktop: '50% 80%' },
+    position: { mobile: '55% 78%', desktop: '50% 24%' },
   },
   members: {
     alt: '',

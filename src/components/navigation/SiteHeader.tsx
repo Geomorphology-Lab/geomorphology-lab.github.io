@@ -15,20 +15,32 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
   )
 }
 
-/** Switches the Korean body text on and off (the label names the language it switches to). */
+/** Language switch "ENG / KOR": the current language is white with an underline (like the active menu item). */
 function LangToggle() {
   const { lang, setLang } = useLang()
-  const toKo = lang === 'en'
+  const item = (code: 'en' | 'ko', label: string, name: string) => {
+    const active = lang === code
+    return (
+      <button
+        type="button"
+        onClick={() => setLang(code)}
+        aria-pressed={active}
+        aria-label={name}
+        lang={code}
+        className={`relative inline-flex h-9 items-center px-1 text-[0.75rem] font-medium tracking-[0.14em] transition-colors after:absolute after:inset-x-1 after:bottom-1.5 after:h-px after:bg-fg after:transition-opacity ${
+          active ? 'text-fg after:opacity-100' : 'text-fg-muted after:opacity-0 hover:text-fg'
+        }`}
+      >
+        {label}
+      </button>
+    )
+  }
   return (
-    <button
-      type="button"
-      onClick={() => setLang(toKo ? 'ko' : 'en')}
-      lang={toKo ? 'ko' : 'en'}
-      aria-label={toKo ? '한국어로 보기 (View in Korean)' : 'View in English (영어로 보기)'}
-      className="inline-flex h-9 min-w-[4.75rem] items-center justify-center rounded-full border border-line-strong px-3.5 text-[0.8125rem] font-medium tracking-wide text-fg-muted transition-colors hover:border-fg/60 hover:text-fg"
-    >
-      {toKo ? '한국어' : 'English'}
-    </button>
+    <div role="group" aria-label="Language" className="flex items-center">
+      {item('en', 'ENG', 'English')}
+      <span aria-hidden="true" className="px-0.5 text-[0.75rem] text-fg-subtle">/</span>
+      {item('ko', 'KOR', '한국어 (Korean)')}
+    </div>
   )
 }
 

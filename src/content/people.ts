@@ -38,6 +38,22 @@ export const principalInvestigator: PrincipalInvestigator = {
     '2020.01–2020.12: Full-time Researcher, Institute of Geologic Hazard and Industrial Resources, Pusan National University',
     '2019.07–2020.01: Postdoctoral Research Scholar and Lecturer, Arizona State University, USA',
   ],
+  piKo: {
+    name: '정아라 교수',
+    education: [
+      { degree: '박사', years: '2015–2019', institution: 'Arizona State University, School of Geographical Sciences and Urban Planning' },
+      { degree: '석사', years: '2013–2015', institution: '고려대학교 지리학과' },
+      { degree: '학사', years: '2009–2013', institution: '고려대학교 지리교육과, 지구환경과학과' },
+    ],
+    career: [
+      '2025.03–현재: 경희대학교 지리학과, 조교수',
+      '2022.02–2025.02: 육군사관학교 토목환경학과, 조교수',
+      '2021.07–2021.12: 부산대학교 지질재해 산업자원 연구소, 전임연구원',
+      '2020.07–2021.06: 고려대학교 미래국토연구소, 연구교수',
+      '2020.01–2020.12: 부산대학교 지질재해 산업자원 연구소, 전임연구원',
+      '2019.07–2020.01: Arizona State University, Post Doctoral Research Scholar',
+    ],
+  },
 }
 
 /** Graduate students. Copy an entry to add a member; delete it to remove. Optional fields can simply be left out. */
@@ -46,6 +62,7 @@ export const graduateStudents: Person[] = [
     name: 'Eungi Cho',
     position: 'M.S. student',
     email: 'dmsrlwh@khu.ac.kr',
+    ko: { name: '조은기', position: '석사과정' },
     photo: { alt: 'Eungi Cho 프로필 사진 (사진 준비 중)' },
   },
 ]
@@ -55,6 +72,7 @@ export const undergraduateResearchers: Person[] = [
     name: 'Sohyeon Kim',
     position: 'Undergraduate researcher',
     affiliation: 'Department of Chemistry and Department of Geography, Kyung Hee University',
+    ko: { name: '김소현', position: '학부연구생', affiliation: '경희대학교 화학과 / 지리학과' },
     researchInterests: 'Biogeochemistry, Environmental Remote Sensing, Earth System Data Analysis',
     email: 'nhye03@khu.ac.kr',
     photo: {

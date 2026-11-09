@@ -2,6 +2,7 @@ import type { Person } from '../../content/types'
 import { EmailText } from '../common/EmailText'
 import { MailIcon } from '../common/Icons'
 import { MediaFrame } from '../common/MediaFrame'
+import { useLang } from '../../lang'
 
 const isKorean = (s: string) => /[가-힣]/.test(s)
 
@@ -10,7 +11,10 @@ const isKorean = (s: string) => /[가-힣]/.test(s)
  * Below ~384 px (very narrow phones) the photo stacks above the details.
  * The photo is always a 4:5 box, narrower than the PI portrait.
  */
-export function MemberCard({ person }: { person: Person }) {
+export function MemberCard({ person: base }: { person: Person }) {
+  // Korean mode: name, position and affiliation switch when a Korean version exists (everything else stays)
+  const { lang } = useLang()
+  const person = lang === 'ko' && base.ko ? { ...base, ...base.ko } : base
   return (
     <article className="group flex h-full flex-col gap-5 border border-line p-5 transition-colors duration-500 hover:border-line-strong min-[24rem]:flex-row min-[24rem]:gap-6 md:p-6">
       <div className="w-[7.5rem] shrink-0 sm:w-36 xl:w-[10.5rem]">

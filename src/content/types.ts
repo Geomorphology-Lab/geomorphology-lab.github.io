@@ -91,6 +91,8 @@ export interface Person {
   photo?: ImageRef
   /** Optional line shown between the position and the research interests (e.g. department) */
   affiliation?: string
+  /** Korean version shown when the site is switched to Korean (fields left out stay English) */
+  ko?: { name?: string; position?: string; affiliation?: string }
 }
 
 /** One degree: shown as "Degree · Years" with the institution on the next line */
@@ -111,6 +113,8 @@ export interface PrincipalInvestigator extends Omit<Person, 'position' | 'resear
   biography?: string[]
   education: EducationEntry[]
   career: string[]
+  /** Korean version (Korean mode): name, education and career; fields left out stay English */
+  piKo?: { name?: string; education?: EducationEntry[]; career?: string[] }
 }
 
 export interface Alumnus {

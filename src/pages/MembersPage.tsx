@@ -11,6 +11,7 @@ import { ArrowUpRight, MailIcon } from '../components/common/Icons'
 import { MemberCard } from '../components/people/MemberCard'
 import { AlumniList } from '../components/people/AlumniList'
 import { SectionHeading } from '../components/common/SectionHeading'
+import { pick, useLang } from '../lang'
 
 type Tab = 'professor' | 'current' | 'alumni'
 
@@ -40,6 +41,11 @@ const tabFromHash = (hash: string): Tab | undefined => tabOptions.find((o) => `#
 export default function MembersPage() {
   const { hash, key } = useLocation()
   const [tab, setTab] = useState<Tab>(tabFromHash(hash) ?? 'professor')
+  // Korean mode: the PI's name, education and career switch; headings and the rest stay English
+  const { lang } = useLang()
+  const piName = pick(lang, pi.name, pi.piKo?.name)
+  const education = pick(lang, pi.education, pi.piKo?.education)
+  const career = pick(lang, pi.career, pi.piKo?.career)
   // Also react when the link is followed while already on this page (even to the same address)
   useEffect(() => {
     const t = tabFromHash(hash)
@@ -66,7 +72,7 @@ export default function MembersPage() {
                 <MediaFrame image={pi.photo} aspect="aspect-[4/5]" variant="portrait" eager />
               </div>
               <div className="min-w-0">
-                <h2 id="pi-title" lang="en" className="text-[clamp(2rem,1.5rem+1.95vw,3.125rem)] font-semibold">{pi.name}</h2>
+                <h2 id="pi-title" lang={piName.lang} className="text-[clamp(2rem,1.5rem+1.95vw,3.125rem)] font-semibold">{piName.value}</h2>
                 <p lang="en" className="mt-3 text-[1.0625rem] text-accent">{pi.affiliation}</p>
                 {pi.email && (
                   <p className="mt-5 flex items-start gap-2.5 text-sm text-fg-muted">
@@ -120,8 +126,8 @@ export default function MembersPage() {
               </div>
               <div>
                 <dt className="eyebrow mb-4 text-fg-subtle">Education</dt>
-                {pi.education.map((e, i) => (
-                  <dd key={i} lang="en" className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
+                {education.value.map((e, i) => (
+                  <dd key={`${education.lang}-${i}`} lang={education.lang} className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
                     <span className="block font-display text-[0.8125rem] font-medium tracking-wide text-accent">
                       {e.degree} · <span className="tabular-nums">{e.years}</span>
                     </span>
@@ -131,11 +137,11 @@ export default function MembersPage() {
               </div>
               <div className="md:col-span-2">
                 <dt className="eyebrow mb-4 text-fg-subtle">Career</dt>
-                {pi.career.map((t, i) => {
-                  // "2025.03–Present: Title, Institution" → date shown on its own line (text unchanged)
-                  const m = t.match(/^(\d{4}\.\d{2}\s*[–-]\s*(?:\d{4}\.\d{2}|Present)):\s*(.+)$/)
+                {career.value.map((t, i) => {
+                  // "2025.03–Present: Title, Institution" (Korean: "2025.03–현재: …") → date shown on its own line (text unchanged)
+                  const m = t.match(/^(\d{4}\.\d{2}\s*[–-]\s*(?:\d{4}\.\d{2}|Present|현재)):\s*(.+)$/)
                   return (
-                    <dd key={i} lang="en" className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
+                    <dd key={`${career.lang}-${i}`} lang={career.lang} className="border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
                       {m ? (
                         <>
                           <span className="block font-display text-[0.8125rem] font-medium tabular-nums tracking-wide text-accent">{m[1]}</span>

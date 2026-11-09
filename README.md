@@ -1,6 +1,7 @@
 # geomorphology-lab.github.io
 
 **경희대학교 지형학 연구실(Geomorphology Lab, Kyung Hee University)** 랩 홈페이지입니다.
+
 유지/보수 중 문제가 생기면 2026-2학기 학부연구생 김소현(010-5729-1044, shkim030811@gmail.com)으로 언제든 연락주세요! 
 
 - 공개 주소: <https://geomorphology.khu.ac.kr>

@@ -1,6 +1,7 @@
 import type { ResearchArea } from '../../content/types'
 import { MediaFrame } from '../common/MediaFrame'
 import { Reveal } from '../common/Reveal'
+import { pick, useLang } from '../../lang'
 
 /**
  * Keeps each half of a "First part & Second part" title together, so the heading can only wrap
@@ -19,6 +20,10 @@ function HeadingText({ title }: { title: string }) {
 
 export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: number }) {
   const num = String(index + 1).padStart(2, '0')
+  // Titles and labels stay English; the question and paragraphs follow the site language
+  const { lang } = useLang()
+  const question = pick(lang, area.question, area.ko?.question)
+  const description = pick(lang, area.description, area.ko?.description)
   const flip = index % 2 === 1
   const wide = Boolean(area.image?.wide)
   const photo = (
@@ -47,14 +52,14 @@ export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: 
           <h2 id={`${area.id}-title`} lang="en" className="mt-4 text-[clamp(1.6rem,1.25rem+1.4vw,2.4rem)] font-semibold text-fg">
             <HeadingText title={area.title} />
           </h2>
-          {area.question && (
-            <p lang="en" className="mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">
-              {area.question}
+          {question.value && (
+            <p lang={question.lang} className="mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">
+              {question.value}
             </p>
           )}
           <div className="mt-6 space-y-4">
-            {area.description.map((p, i) => (
-              <p key={i} lang="en" className="prose-body">{p}</p>
+            {description.value.map((p, i) => (
+              <p key={`${description.lang}-${i}`} lang={description.lang} className="prose-body">{p}</p>
             ))}
           </div>
 

@@ -53,13 +53,13 @@ export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: 
             <HeadingText title={area.title} />
           </h2>
           {question.value && (
-            <p lang={question.lang} className="mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">
+            <p lang={question.lang} className="lang-swap mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">
               {question.value}
             </p>
           )}
           <div className="mt-6 space-y-4">
             {description.value.map((p, i) => (
-              <p key={`${description.lang}-${i}`} lang={description.lang} className="prose-body">{p}</p>
+              <p key={`${description.lang}-${i}`} lang={description.lang} className="prose-body lang-swap">{p}</p>
             ))}
           </div>
 

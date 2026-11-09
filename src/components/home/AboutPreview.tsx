@@ -20,7 +20,7 @@ export function AboutPreview() {
           </h2>
           <div className="mt-8 space-y-5">
             {body.value.map((p, i) => (
-              <p key={`${body.lang}-${i}`} lang={body.lang} className="prose-body">{p}</p>
+              <p key={`${body.lang}-${i}`} lang={body.lang} className="prose-body lang-swap">{p}</p>
             ))}
           </div>
         </Reveal>

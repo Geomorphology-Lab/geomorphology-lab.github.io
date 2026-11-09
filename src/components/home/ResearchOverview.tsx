@@ -29,6 +29,7 @@ export function ResearchOverview() {
           title="Research Areas"
           description={lead.value}
           descriptionLang={lead.lang}
+          swap
           action={<ArrowLink to="/research">All research</ArrowLink>}
         />
         <ol className="grid border-t border-l border-line sm:grid-cols-2 xl:grid-cols-4">
@@ -50,7 +51,7 @@ export function ResearchOverview() {
                   </div>
                   <div className="pt-8 md:pt-10">
                     <h3 lang="en" className="text-xl font-semibold text-fg transition-colors duration-500 md:text-[1.375rem]">{area.title}</h3>
-                    <p lang={summary.lang} className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted transition-colors duration-500">{summary.value}</p>
+                    <p lang={summary.lang} className="lang-swap mt-4 text-[0.95rem] leading-[1.75] text-fg-muted transition-colors duration-500">{summary.value}</p>
                   </div>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
                 </Link>

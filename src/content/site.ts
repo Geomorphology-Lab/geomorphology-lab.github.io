@@ -14,6 +14,8 @@ export const site = {
   hero: {
     eyebrow: 'Kyung Hee University',
     title: 'Geomorphology Lab',
+    /** Small Korean subtitle under the title (shown in both languages) */
+    subtitleKo: '경희대학교 지형학 실험실',
     description:
       'Exploring the processes that shape Earth’s surface and transform landscapes.',
     /** Scrolls to the About section further down the homepage */
@@ -34,6 +36,11 @@ export const site = {
     paragraphs: [
       'The Geomorphology Lab at Kyung Hee University investigates how landscapes form and change, and the mechanisms that turn surface processes into natural hazards. We reconstruct the evolution of landscapes across Quaternary glacial–interglacial cycles, quantify how rock coasts erode and collapse, and examine how agriculture, urbanization, wildfire, and climate change accelerate erosion today. Our study sites range from the rocky coasts and mountain slopes of the Korean Peninsula to the glaciated valleys of Wyoming and the arid landscapes of Arizona. Through national research programs, peer-reviewed publications, and international conferences, we aim to provide a scientific basis for understanding and responding to environmental change.',
       'Our research begins in the field and is completed with numbers. We pair detailed field surveys with high-resolution 3D mapping from UAV-SfM and LiDAR, cosmogenic radionuclide (CRN) dating, and numerical modeling such as finite element analysis (FEA). By integrating these approaches, we connect what a landscape looks like today with how fast it has changed in the past and how it is likely to respond in the future.',
+    ],
+    /** Korean version of the paragraphs (Korean mode). The eyebrow and heading stay English. */
+    paragraphsKo: [
+      '경희대학교 지형학 실험실은 지형이 어떻게 형성되고 변화하는지, 그리고 지표 과정이 자연재해로 이어지는 메커니즘을 연구합니다. 제4기 빙기–간빙기 주기에 걸친 지형 발달사를 복원하고, 암석 해안이 얼마나 빠르게 침식되고 붕괴하는지 정량화하며, 농업·도시화·산불·기후 변화가 오늘날의 침식을 어떻게 가속하는지 분석합니다. 연구 지역은 한반도의 암석 해안과 산지 사면에서부터 미국 와이오밍의 빙하 계곡과 애리조나의 건조 지형에 이릅니다. 국가 연구 과제와 동료 심사 학술 논문, 국제 학술대회를 통해 환경 변화를 이해하고 대응하기 위한 과학적 기반을 마련하고자 합니다.',
+      '우리의 연구는 현장에서 시작해 숫자로 완성됩니다. 정밀한 현장 조사에 UAV-SfM과 LiDAR 기반의 고해상도 3차원 지형 측량, 우주기원 방사성 핵종(CRN) 연대측정, 유한요소해석(FEA) 같은 수치 모델링을 결합합니다. 이러한 접근법을 통합하여 오늘날 지형의 모습을 과거의 변화 속도, 그리고 앞으로 예상되는 반응과 연결합니다.',
     ],
   },
 

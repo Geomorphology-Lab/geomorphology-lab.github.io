@@ -30,6 +30,12 @@ export function Hero() {
             ))}
           </h1>
           <p
+            lang="ko"
+            className="animate-rise mt-5 text-[clamp(1rem,0.92rem+0.45vw,1.35rem)] font-medium tracking-[0.06em] text-fg/80 [animation-delay:280ms] md:mt-6"
+          >
+            {hero.subtitleKo}
+          </p>
+          <p
             lang="en"
             className="animate-rise mt-8 max-w-xl text-[clamp(1.05rem,0.95rem+0.45vw,1.3rem)] leading-[1.75] text-fg/85 [animation-delay:350ms] md:mt-10"
           >

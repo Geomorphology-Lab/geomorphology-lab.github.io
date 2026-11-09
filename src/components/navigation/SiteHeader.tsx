@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { navigation, site } from '../../content/site'
 import { ChevronDown, CloseIcon, MenuIcon } from '../common/Icons'
+import { useLang } from '../../lang'
 
 function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
@@ -11,6 +12,23 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
         {site.institution}
       </span>
     </Link>
+  )
+}
+
+/** Switches the Korean body text on and off (the label names the language it switches to). */
+function LangToggle() {
+  const { lang, setLang } = useLang()
+  const toKo = lang === 'en'
+  return (
+    <button
+      type="button"
+      onClick={() => setLang(toKo ? 'ko' : 'en')}
+      lang={toKo ? 'ko' : 'en'}
+      aria-label={toKo ? '한국어로 보기 (View in Korean)' : 'View in English (영어로 보기)'}
+      className="inline-flex h-9 min-w-[4.75rem] items-center justify-center rounded-full border border-line-strong px-3.5 text-[0.8125rem] font-medium tracking-wide text-fg-muted transition-colors hover:border-fg/60 hover:text-fg"
+    >
+      {toKo ? '한국어' : 'English'}
+    </button>
   )
 }
 
@@ -89,6 +107,7 @@ export function SiteHeader() {
       <div className={`container-page flex items-center justify-between transition-[height] duration-500 ${scrolled ? 'h-16' : 'h-20'}`}>
         <Wordmark onClick={() => setOpen(false)} />
 
+        <div className="flex items-center">
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {navigation.map((item) => (
@@ -138,6 +157,10 @@ export function SiteHeader() {
           </ul>
         </nav>
 
+        <div className="mr-2 lg:mr-0 lg:ml-4 lg:border-l lg:border-line lg:pl-5">
+          <LangToggle />
+        </div>
+
         <button
           ref={toggleRef}
           type="button"
@@ -149,6 +172,7 @@ export function SiteHeader() {
         >
           {open ? <CloseIcon className="size-6" /> : <MenuIcon className="size-6" />}
         </button>
+        </div>
       </div>
 
     </header>

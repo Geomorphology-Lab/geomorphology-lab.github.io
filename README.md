@@ -138,6 +138,13 @@ Edit the `contact` object in `site.ts`. The map is a Google Maps embed (no API k
 
 ## 5. Replacing the photographs
 
+### Korean mode (한국어 버튼)
+
+The button at the right end of the navigation bar switches selected body text to Korean; the site opens in English.
+Only the Home **About** paragraphs (`homeAbout.paragraphsKo` in `src/content/site.ts`) and the **Research** page body
+(`researchIntro.leadKo` and each area's `ko` field in `src/content/research.ts`) have Korean versions. Headings, titles,
+navigation and all other pages stay in English. The visitor's choice is remembered in their browser (`src/i18n.tsx`, `src/lang.ts`).
+
 ### Homepage hero slideshow
 
 The homepage top shows one landscape photo (the third of the original three) with the original entrance fade and slow zoom; it no longer switches. All settings are in **`src/content/heroSlides.ts`**; adding more entries there brings the cross-dissolve slideshow back.

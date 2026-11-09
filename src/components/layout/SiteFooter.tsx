@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { navigation, site } from '../../content/site'
+import { contact, navigation, site } from '../../content/site'
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
@@ -11,6 +11,11 @@ export function SiteFooter() {
           <p className="mt-2 text-xs font-medium uppercase tracking-[0.24em] text-fg-subtle">
             {site.institution} · {site.institutionKo}
           </p>
+          {/* Lab address (same text as the Contact page) */}
+          <address className="mt-8 text-sm leading-relaxed text-fg-muted not-italic select-text">
+            <span className="block">{contact.location}</span>
+            <span className="block">{contact.map.address}</span>
+          </address>
         </div>
         <nav aria-label="Footer" className="md:col-span-4">
           <p className="eyebrow mb-5">Navigate</p>

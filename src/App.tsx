@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
+import { LangProvider } from './i18n'
 import HomePage from './pages/HomePage'
 import ResearchPage from './pages/ResearchPage'
 import MembersPage from './pages/MembersPage'
@@ -15,6 +16,7 @@ import NotFoundPage from './pages/NotFoundPage'
  */
 export default function App() {
   return (
+    <LangProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
@@ -29,5 +31,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </LangProvider>
   )
 }

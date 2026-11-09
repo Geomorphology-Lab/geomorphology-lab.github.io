@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import { site } from '../../content/site'
 import { HeroSlideshow } from './HeroSlideshow'
 import { ArrowDown, ArrowRight } from '../common/Icons'
+import { useLang } from '../../lang'
 
 export function Hero() {
   const { hero } = site
+  const { lang } = useLang()
 
   return (
     <section aria-labelledby="hero-title" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink-900">
@@ -29,12 +31,15 @@ export function Hero() {
               <span key={i} className="block">{word}</span>
             ))}
           </h1>
+          {/* Korean subtitle: Korean mode only (the English page is unchanged) */}
+          {lang === 'ko' && (
           <p
             lang="ko"
             className="animate-rise mt-5 text-[clamp(1rem,0.92rem+0.45vw,1.35rem)] font-medium tracking-[0.06em] text-fg/80 [animation-delay:280ms] md:mt-6"
           >
             {hero.subtitleKo}
           </p>
+          )}
           <p
             lang="en"
             className="animate-rise mt-8 max-w-xl text-[clamp(1.05rem,0.95rem+0.45vw,1.3rem)] leading-[1.75] text-fg/85 [animation-delay:350ms] md:mt-10"

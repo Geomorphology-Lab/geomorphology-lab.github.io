@@ -14,7 +14,7 @@ export const site = {
   hero: {
     eyebrow: 'Kyung Hee University',
     title: 'Geomorphology Lab',
-    /** Small Korean subtitle under the title (shown in both languages) */
+    /** Small Korean subtitle under the title (Korean mode only) */
     subtitleKo: '경희대학교 지형학 실험실',
     description:
       'Exploring the processes that shape Earth’s surface and transform landscapes.',

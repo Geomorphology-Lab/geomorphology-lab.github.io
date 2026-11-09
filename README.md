@@ -6,7 +6,9 @@
 - GitHub Pages 주소: <https://geomorphology-lab.github.io>
 - 기술 스택: React 18 · TypeScript · Vite · Tailwind CSS v4 · GitHub Actions → GitHub Pages
 
-> **상태: 첫 디자인 프로토타입.** 대부분의 문구는 그 자리에 들어갈 내용을 설명하는 임시 한국어 문구입니다(예: "이곳에는 … 이 들어갑니다"). 최종 콘텐츠와 같은 스타일을 쓰기 때문에 레이아웃은 이미 완성된 것처럼 보입니다. 확인된 정보가 생기는 대로 이 문구를 교체하세요(아래 참고).
+> **상태:** 홈, Research, Members(교수님), Contact는 실제 내용으로 채워져 있습니다. Publications 목록은 공개 자료로 정리한 초안이며 교수님의 최종 확인이 필요합니다(`publications.ts` 맨 위 주석). Gallery 항목과 일부 구성원 정보처럼 아직 정해지지 않은 곳에는 그 자리에 들어갈 내용을 설명하는 임시 한국어 문구(예: "이곳에는 … 이 들어갑니다")가 남아 있습니다(`news.ts`, `people.ts` 등). 최종 콘텐츠와 같은 스타일이라 레이아웃은 완성된 모습으로 보입니다. 확인된 정보가 생기는 대로 교체하세요(아래 참고).
+
+**사이트 구성:** Home · Research · Members(Professor / Current Members / Alumni 탭) · Publications · Gallery · Contact. 색은 검정·흰색을 기본으로 하고, 남색(`#132433`, `--color-navy`)을 강조색으로 씁니다.
 
 ---
 
@@ -66,14 +68,14 @@ npm run preview
 
 | 파일 | 내용 |
 | --- | --- |
-| `site.ts` | 연구실 이름, 히어로 문구, 홈 About 문구, 푸터, Contact 페이지(위치와 지도), 내비게이션 메뉴 |
+| `site.ts` | 연구실 이름, 히어로 문구, 홈 About 문구와 Research Areas 위 이미지, Contact 페이지(위치, 지도, 학부연구생 모집 안내), 푸터 주소, 내비게이션 메뉴 |
 | `research.ts` | 연구 분야(제목, 요약, 설명, 이미지, 관련 과제와 논문) |
-| `people.ts` | 책임연구자, 대학원생, 학부연구생, 졸업생(Members 페이지에 표시) |
+| `people.ts` | 책임연구자, 대학원생, 학부연구생, 졸업생(Members 페이지에 표시. 대학원생과 학부연구생은 Current Members 탭에 한 목록으로 이어서 표시) |
 | `publications.ts` | 전체 논문 목록(페이지에서는 연도별로 묶어 표시) |
-| `news.ts` | 소식과 갤러리 항목, 소식 분류 |
-| `heroSlides.ts` | 홈 히어로 슬라이드쇼(사진, 순서, 타이밍) |
-| `pageImages.ts` | Research, Members, Publications, News, Contact의 헤더 사진 |
-| `images.ts` | 예비 헤더 이미지(404 페이지) |
+| `news.ts` | Gallery 페이지 항목(소식과 사진), 항목 분류 |
+| `heroSlides.ts` | 홈 히어로 사진(현재 한 장)과 슬라이드쇼 설정 |
+| `pageImages.ts` | Research, Members, Publications, Gallery, Contact의 헤더 사진 |
+| `images.ts` | 예비 헤더 이미지(404 페이지, 헤더 사진을 불러오지 못할 때) |
 | `types.ts` | 모든 콘텐츠 유형의 필드 정의(참고용) |
 
 ### Replacing temporary text
@@ -126,7 +128,7 @@ npm run preview
 
 ### Adding news or gallery items
 
-`news.ts`의 `news` 배열 맨 위에 항목을 추가하세요. `category`는 `'Fieldwork' | 'Conference' | 'Award' | 'Research'` 중 하나여야 합니다. 사진은 3:2 비율로 `public/images/news/`에 넣습니다.
+Gallery 페이지(주소 `/news`)는 모든 항목을 분류 탭 없이 한 목록으로 보여 줍니다. `news.ts`의 `news` 배열 맨 위에 항목을 추가하세요(위에 있을수록 먼저 표시). `category`는 카드에 작은 라벨로만 표시되며 `'Fieldwork' | 'Conference' | 'Award' | 'Research'` 중 하나여야 합니다. 사진은 3:2 비율로 `public/images/news/`에 넣습니다.
 
 ```ts
 image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모습' },
@@ -134,7 +136,9 @@ image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모�
 
 ### Contact information and map
 
-`site.ts`의 `contact` 객체를 수정하세요. 지도는 `contact.map.query`로 만드는 Google 지도 임베드(API 키 불필요)이고, "Open in Google Maps" 링크도 같은 검색어를 씁니다. 표시가 엉뚱한 건물에 찍히면 `query`를 더 구체적인 장소 이름으로 바꾸세요. 푸터의 연구실 주소도 같은 `contact` 내용을 그대로 씁니다.
+`site.ts`의 `contact` 객체를 수정하세요. 지도는 `contact.map.query`로 만드는 Google 지도 임베드(API 키 불필요)이고, "Open in Google Maps" 링크도 같은 검색어를 씁니다. 표시가 엉뚱한 건물에 찍히면 `query`를 더 구체적인 장소 이름으로 바꾸세요. 푸터의 연구실 주소도 같은 `contact` 내용(`location`, `map.address`)을 그대로 씁니다.
+
+Contact 페이지 왼쪽의 학부연구생 모집 안내("Join Us | Undergraduate Researchers")는 `contact.prospective`에 있습니다. 섹션마다 항목 목록이 있고, 각 항목은 글 조각의 배열이며 `{ bold: '…' }`로 쓴 조각은 굵게 표시됩니다.
 
 ## 5. Replacing the photographs
 
@@ -146,7 +150,7 @@ image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모�
 
 ### Homepage hero slideshow
 
-홈 맨 위에는 풍경 사진 한 장(원래 세 장 중 세 번째)이 처음 나타날 때의 페이드와 느린 줌과 함께 표시되며, 더 이상 바뀌지 않습니다. 모든 설정은 **`src/content/heroSlides.ts`**에 있습니다. 여기에 항목을 더 추가하면 크로스 디졸브 슬라이드쇼가 다시 동작합니다.
+홈 맨 위에는 협곡 하천 사진 한 장(`river-canyon`, 원래 슬라이드 세 장 중 세 번째)이 처음 나타날 때의 페이드와 아주 느린 줌과 함께 표시되며, 다른 사진으로 바뀌지 않습니다. 사진이 한 장일 때는 진행 표시와 일시정지 버튼도 나오지 않습니다. 모든 설정은 **`src/content/heroSlides.ts`**에 있고, `heroSlides` 배열에 항목을 더 추가하면 아래 설정대로 크로스 디졸브 슬라이드쇼가 다시 동작합니다. 예전 슬라이드 사진 두 장(`mountain-ridges-sea-of-clouds`, `glacial-valley`)은 `public/images/hero/`에 남아 있습니다.
 
 | 설정 | 값 | 의미 |
 | --- | --- | --- |
@@ -154,9 +158,9 @@ image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모�
 | `CROSSFADE_DURATION_MS` | 1100 | 크로스 디졸브 한 번에 1.1초 |
 | `KEN_BURNS_MAX_SCALE` | 1.035 | 느린 줌의 최대 배율 |
 
-- `heroSlides` 배열의 순서가 화면에 나오는 순서입니다: ① 구름바다 위 산 능선 → ② 빙식곡 → ③ 협곡 하천.
+- `heroSlides` 배열의 순서가 화면에 나오는 순서입니다(현재는 협곡 하천 한 장).
 - 각 슬라이드의 `position`은 모바일과 데스크톱의 잘림 기준점을 따로 정하고, `motion`은 줌 방향을 정합니다.
-- 사용자 시스템에서 "동작 줄이기"가 켜져 있으면 첫 번째 사진만 전환과 줌 없이 표시됩니다. 왼쪽 아래의 일시정지 버튼으로 슬라이드쇼를 멈출 수 있습니다.
+- 사용자 시스템에서 "동작 줄이기"가 켜져 있으면 첫 번째 사진만 전환과 줌 없이 표시됩니다. 슬라이드가 두 장 이상이면 왼쪽 아래에 진행 표시와 일시정지 버튼이 나타납니다.
 
 **사진을 교체하거나 추가하려면:**
 
@@ -165,12 +169,13 @@ image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모�
    ```bash
    python3 scripts/optimize-hero-photos.py ridges.jpg valley.jpg canyon.jpg
    ```
-3. 파일 이름이 바뀌면 `heroSlides.ts`의 `files`와 `alt`를 고치세요. `index.html`의 미리 불러오기 경로(`hero-preload` 주석이 표시된 곳)도 첫 번째 사진에 맞게 고쳐야 합니다.
+   (스크립트 안의 `NAMES`가 출력 파일 이름입니다. 다른 이름을 쓰려면 그 목록을 고치세요.)
+3. 파일 이름이 바뀌면 `heroSlides.ts`의 `files`와 `alt`를 고치세요. `index.html`의 미리 불러오기 경로(`hero-preload` 주석이 표시된 곳)도 화면에 처음 보이는 사진에 맞게 고쳐야 합니다. 지금은 `river-canyon` 사진을 미리 불러옵니다.
 4. `npm run build`를 실행해 오류가 없는지 확인합니다.
 
 ### Inner page header photos
 
-Research, Members, Publications, News, Contact에는 각각 헤더 사진이 있으며, `src/content/pageImages.ts`에서 설정합니다(파일은 `public/images/headers/`). 교체하려면:
+Research, Members, Publications, Gallery, Contact에는 각각 헤더 사진이 있으며, `src/content/pageImages.ts`에서 설정합니다(파일은 `public/images/headers/`). 교체하려면:
 
 ```bash
 python3 scripts/optimize-photo.py new-photo.jpg public/images/headers research-glacier
@@ -180,18 +185,23 @@ python3 scripts/optimize-photo.py new-photo.jpg public/images/headers research-g
 
 ### About section contour map
 
-"About the Laboratory" 오른쪽 뒤편에 남색 지형 등고선도(오른쪽으로 25° 회전)가 스크롤에 따라 흰 배경에서 떠오르고, 위로 스크롤하면 다시 사라집니다. 지도 자체는 움직이지 않고 배경처럼 페이지와 함께 스크롤되며, 보이는 정도만 바뀝니다. 섹션 밖으로 나가는 부분은 잘리고 위아래 가장자리는 남색으로 흐려지므로 히어로 사진에 닿지 않습니다. 떠오르는 효과는 제목이 화면 아래쪽에서 맨 위로 스크롤되는 동안 진행됩니다(`ContourReveal.tsx` 맨 위의 `START`와 `END`. 범위를 넓히면 더 느려집니다). 동작은 `src/components/home/ContourReveal.tsx`에, 모양은 `src/styles/index.css` 끝부분의 `.contour-*` 규칙에 있습니다.
+홈의 About 섹션은 히어로와 이어지는 검정 배경이고(제목은 흰색, 본문은 밝은 회색), "About the Laboratory" 오른쪽 뒤편에 옅은 회색 지형 등고선도(오른쪽으로 25° 회전)가 스크롤에 따라 떠오르고, 위로 스크롤하면 다시 사라집니다. 지도 자체는 움직이지 않고 배경처럼 페이지와 함께 스크롤되며, 보이는 정도만 바뀝니다. 섹션 밖으로 나가는 부분은 잘리고 위아래 가장자리는 검정 배경으로 흐려지므로 히어로 사진에 닿지 않습니다. 떠오르는 효과는 제목이 화면 아래쪽에서 맨 위로 스크롤되는 동안 진행됩니다(`ContourReveal.tsx` 맨 위의 `START`와 `END`. 범위를 넓히면 더 느려집니다). 동작은 `src/components/home/ContourReveal.tsx`에, 모양은 `src/styles/index.css` 끝부분의 `.contour-*` 규칙에 있습니다.
 
 - `--contour-max`는 최종 불투명도(데스크톱 0.36, 태블릿과 휴대폰은 더 낮음), `--contour-blur`는 시작할 때의 흐림, `--contour-rotate`는 각도, `--contour-w`는 크기, `--contour-gap`은 글과 지도 사이 간격입니다(데스크톱에서는 지도가 글 단의 끝에서부터 배치되어 글자를 가리지 않고, 태블릿과 휴대폰은 `--contour-right`를 씁니다).
-- 이미지(`src/assets/images/about/contour-map.webp`)는 마스크로 쓰이므로 알파 채널만 의미가 있고, 선 색은 사이트 강조색입니다. 다른 지도를 쓰려면 아무 정사각형 모양의 투명 PNG/WebP로 파일을 바꾸면 됩니다.
+- 이미지(`src/assets/images/about/contour-map.webp`)는 마스크로 쓰이므로 알파 채널만 의미가 있고, 선 색은 어두운 배경에서의 강조색(옅은 회색 `#e4e4e4`)입니다. 다른 지도를 쓰려면 아무 정사각형 모양의 투명 PNG/WebP로 파일을 바꾸면 됩니다.
 - 시스템에서 "동작 줄이기"가 켜져 있으면 움직임 없이 옅은 정지 화면이 표시됩니다.
 
 ### Research card hover photos
 
-홈의 각 연구 카드는 마우스를 올리거나 키보드로 초점을 옮기면 사진이 나타납니다. 사진은 `src/content/research.ts`에서 분야별 `cardPhoto`로 설정합니다(파일은 `public/images/research/card-*`). `position`은 카드에서 잘릴 때 보일 부분을 정합니다. 새 크기는 `python3 scripts/optimize-content-image.py <photo> public/images/research <name> 1000 600`으로 만드세요. 터치 기기에서는 이 사진들을 내려받지 않습니다.
+홈의 각 연구 카드는 마우스를 올리거나 키보드로 초점을 옮기면 사진이 나타납니다. 사진은 `src/content/research.ts`에서 분야별 `cardPhoto`로 설정합니다(파일은 `public/images/research/card-*`). 사진 위에는 검정 반투명 막이 깔리고 카드 글자가 흰색으로 바뀝니다. `position`은 카드에서 잘릴 때 보일 부분을 정합니다. 새 크기는 `python3 scripts/optimize-content-image.py <photo> public/images/research <name> 1000 600`으로 만드세요. 터치 기기에서는 이 사진들을 내려받지 않습니다.
 
 ### Homepage About image
 
+About 섹션과 흰 Research Areas 섹션 사이에는 폭 전체를 채우는 산 능선 이미지 띠가 있습니다(`src/components/home/AboutVisual.tsx`, 설정은 `site.ts`의 `homeAbout.image`).
+
+- **이미지:** 처음 사이트를 만들 때 쓰던 예비 풍경 이미지(`src/assets/images/hero/hero-2560.jpg`)를 흑백으로 바꾸고 어두운 부분에만 남색을 남긴 것입니다. `python3 scripts/tone-about-image.py`를 실행하면 `public/images/about/misty-ridges-{960,1600,2560}.webp`가 다시 만들어집니다.
+- **이어짐:** 위쪽은 검정으로 흐려져 About 섹션과 경계 없이 이어지고(`.about-visual::after`), 아래쪽은 이미지 높이의 46%부터 흰색이 섞여 93%에서 완전히 흰색이 됩니다(`.about-visual` 마스크). "RESEARCH AREAS"와 제목은 완전히 흰 바탕에 놓입니다.
+- **모션:** 이미지가 화면에 들어오면 옅은 어두움이 걷히며 능선 뒤 빛이 은은하게 커진 뒤 멈추고(스크롤 연동), 능선 사이 옅은 안개 두 겹이 아주 느리게 옆으로 흐릅니다(220초 / 140초에 한 바퀴, 화면 밖에서는 멈춤). 세기는 `index.css`의 `.about-visual-glow`, `.about-visual-dim`, `.about-visual-mist*` 규칙에서 조정합니다. "동작 줄이기"가 켜져 있으면 움직임 없이 빛이 다 떠오른 정지 화면이 보입니다.
 
 ### Research, people and news photos
 
@@ -205,16 +215,16 @@ src/
     common/        공통 컴포넌트(제목, 이미지 프레임, 아이콘 등)
     layout/        레이아웃, 푸터
     navigation/    헤더와 모바일 메뉴
-    home/          홈 섹션(Hero, About 문구, 하천 이미지 위의 Research Areas)
+    home/          홈 섹션(Hero, About 문구와 등고선, 산 이미지 띠, Research Areas)
     research/      Research 페이지 블록
     people/        구성원 카드
     publications/  논문 항목
     news/          소식 카드
   content/         ← 수정할 콘텐츠
   pages/           페이지 컴포넌트
-  assets/images/   히어로 이미지
+  assets/images/   예비 풍경 이미지, 등고선도 마스크
   styles/          전역 스타일과 디자인 토큰(색, 글꼴)
-public/            그대로 복사되는 파일(CNAME, 파비콘, 구성원·소식 사진)
+public/            그대로 복사되는 파일(CNAME, 파비콘, 히어로·헤더·연구·구성원 사진)
 scripts/           빌드 보조 스크립트
 .github/workflows/ 자동 배포
 ```
@@ -232,13 +242,15 @@ scripts/           빌드 보조 스크립트
 - **이미지 저작권**: 연구실이 보유했거나 사용 허가를 받은 사진만 쓰세요. 검색 결과에서 찾은 이미지를 직접 링크하지 마세요.
 - **접근성**: 새 이미지에는 항상 `alt` 설명을 넣으세요.
 - **push하기 전에**: 로컬에서 `npm run build`를 실행해 오류가 없는지 확인하세요. `main`에서 빌드가 실패하면 사이트는 갱신되지 않고 이전 버전이 그대로 유지됩니다.
-- 디자인 토큰(색, 글꼴)은 `src/styles/index.css`의 `@theme` 블록에 있습니다.
+- 디자인 토큰(색, 글꼴)은 `src/styles/index.css`의 `@theme` 블록에 있습니다. 어두운 영역(메뉴, 히어로, 헤더, 푸터)은 검정, 내용 영역은 흰색(`.theme-paper`)이며, 흰 바탕에서의 강조색은 `--color-navy`(`#132433`)입니다.
+- **복사·저장 방지:** 본문 텍스트는 드래그로 선택되지 않고(`index.css`의 `body { user-select: none }`), 사진은 끌어서 저장하거나 우클릭 저장을 할 수 없습니다(`src/protect.ts`). 이메일, 주소, 링크는 복사할 수 있습니다(`select-text` 클래스). 소스 보기나 스크린샷으로는 여전히 복사할 수 있는 가벼운 장치입니다.
 - 글꼴(Inter와 Pretendard)은 npm 패키지로 함께 번들되므로 외부 글꼴 CDN에 의존하지 않습니다.
 
 ### Navigation drop-down, recruitment guide, header photo brightness
 
-- **드롭다운 메뉴:** 상단 바의 *Research*나 *Members*에 마우스를 올리거나 Tab 키로 이동하면 하위 항목 목록이 열립니다. 링크는 `navigation`(`src/content/site.ts`) 각 항목의 `children`입니다. `/members#graduate` 같은 Members 링크는 해당 탭을 엽니다(`#` 뒤의 주소를 `MembersPage`가 읽습니다). Research 목록은 `research.ts`에서 만들어지므로 항상 네 연구 분야와 일치합니다. 모바일 메뉴도 각 항목 아래에 같은 링크를 보여 줍니다.
-- **헤더 사진 어둡게 하기:** `src/content/pageImages.ts`에서 사진에 `dim`(예: `0.6`)을 설정하세요. News의 용암 사진이 이 설정을 씁니다.
+- **드롭다운 메뉴:** 상단 바의 *Research*나 *Members*에 마우스를 올리거나 Tab 키로 이동하면 하위 항목 목록이 열립니다. 링크는 `navigation`(`src/content/site.ts`) 각 항목의 `children`입니다. `/members#current` 같은 Members 링크는 해당 탭을 엽니다(`#` 뒤의 주소를 `MembersPage`가 읽습니다. `#professor`, `#current`, `#alumni`). Research 목록은 `research.ts`에서 만들어지므로 항상 네 연구 분야와 일치합니다. 모바일 메뉴도 각 항목 아래에 같은 링크를 보여 줍니다. 드롭다운 패널은 불투명도 80%의 검정에 뒤쪽을 흐리게 비추는 유리 효과를 씁니다(`SiteHeader.tsx`).
+- **학부연구생 모집 안내:** Contact 페이지의 모집 안내 문구는 `site.ts`의 `contact.prospective`에서 고칩니다(위 "Contact information and map" 참고).
+- **헤더 사진 어둡게 하기:** `src/content/pageImages.ts`에서 사진에 `dim`(예: `0.6`)을 설정하세요. Gallery의 용암 사진이 이 설정을 씁니다.
 
 ### Browser-tab icon
 

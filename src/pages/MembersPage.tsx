@@ -21,12 +21,26 @@ const tabOptions: { id: Tab; label: string }[] = [
   { id: 'alumni', label: 'Alumni' },
 ]
 
-function MemberGrid({ id, title, members, eyebrow }: { id: string; title: string; members: Person[]; eyebrow?: string }) {
+function MemberGrid({
+  id,
+  title,
+  members,
+  eyebrow,
+  spacing = 'pt-10 pb-16 md:pt-14 md:pb-24',
+}: {
+  id: string
+  title: string
+  members: Person[]
+  eyebrow?: string
+  /** Vertical padding of the section (the gap between the two groups is set from the two sections that meet there) */
+  spacing?: string
+}) {
   if (members.length === 0) return null
   return (
-    <section aria-labelledby={id} className="pt-10 pb-16 md:pt-14 md:pb-24">
+    <section aria-labelledby={id} className={spacing}>
       <SectionHeading id={id} eyebrow={eyebrow} title={title} />
-      <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {/* One member per row, each card across the full content width */}
+      <ul className="grid grid-cols-1 gap-6">
         {members.map((m, i) => (
           <li key={i}><MemberCard person={m} /></li>
         ))}
@@ -161,8 +175,20 @@ export default function MembersPage() {
           {/* Current Members tab: graduate students first, then undergraduate researchers */}
           {tab === 'current' && (
             <>
-              <MemberGrid id="graduate-title" eyebrow="Members" title="Graduate Students" members={graduateStudents} />
-              <MemberGrid id="undergraduate-title" title="Undergraduate Researchers" members={undergraduateResearchers} />
+              {/* The gap between the two groups is 70% of the default (bottom of this section + top of the next) */}
+              <MemberGrid
+                id="graduate-title"
+                eyebrow="Members"
+                title="Graduate Students"
+                members={graduateStudents}
+                spacing="pt-10 pb-[2.8rem] md:pt-14 md:pb-[4.2rem]"
+              />
+              <MemberGrid
+                id="undergraduate-title"
+                title="Undergraduate Researchers"
+                members={undergraduateResearchers}
+                spacing="pt-[1.75rem] pb-16 md:pt-[2.45rem] md:pb-24"
+              />
             </>
           )}
 

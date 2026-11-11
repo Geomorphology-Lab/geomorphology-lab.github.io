@@ -21,21 +21,21 @@ export function MemberCard({ person: base }: { person: Person }) {
         <MediaFrame image={person.photo} aspect="aspect-[4/5]" variant="portrait" className="w-full" still />
       </div>
       <div className="flex min-w-0 flex-1 flex-col [overflow-wrap:anywhere]">
-        <h3 lang={isKorean(person.name) ? 'ko' : 'en'} className="lang-swap text-lg leading-snug font-semibold text-fg md:text-xl">{person.name}</h3>
-        <p lang={isKorean(person.position) ? 'ko' : 'en'} className="lang-swap mt-1.5 text-sm leading-relaxed text-accent md:text-[0.9375rem]">{person.position}</p>
+        <h3 lang={isKorean(person.name) ? 'ko' : 'en'} className="lang-swap text-[calc(1.125rem_+_2pt)] leading-snug font-semibold text-fg md:text-[calc(1.25rem_+_2pt)]">{person.name}</h3>
+        <p lang={isKorean(person.position) ? 'ko' : 'en'} className="lang-swap mt-1.5 text-[calc(0.875rem_+_2pt)] leading-relaxed text-accent md:text-[calc(0.9375rem_+_2pt)]">{person.position}</p>
         {person.affiliation && (
-          <p lang={isKorean(person.affiliation) ? 'ko' : 'en'} className="lang-swap mt-1 text-sm leading-relaxed text-fg-muted">{person.affiliation}</p>
+          <p lang={isKorean(person.affiliation) ? 'ko' : 'en'} className="lang-swap mt-1 text-[0.95rem] leading-relaxed text-fg-muted">{person.affiliation}</p>
         )}
         {person.education?.map((e) => (
           <div key={e.degree + e.institution} className="mt-4">
             <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">{e.degree}</p>
-            <p lang={isKorean(e.institution) ? 'ko' : 'en'} className="text-[0.95rem] leading-[1.7] text-fg-muted">{e.institution}</p>
+            <p lang={isKorean(e.institution) ? 'ko' : 'en'} className="text-sm leading-[1.7] text-fg-muted">{e.institution}</p>
           </div>
         ))}
         {person.researchInterests && (
           <div className="mt-4">
             <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">Research Interests</p>
-            <p lang={isKorean(person.researchInterests) ? 'ko' : 'en'} className="text-[0.95rem] leading-[1.7] text-fg-muted">{person.researchInterests}</p>
+            <p lang={isKorean(person.researchInterests) ? 'ko' : 'en'} className="text-sm leading-[1.7] text-fg-muted">{person.researchInterests}</p>
           </div>
         )}
         {person.email && (

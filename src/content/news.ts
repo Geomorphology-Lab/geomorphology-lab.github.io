@@ -6,6 +6,7 @@ import type { NewsItem } from './types'
  * thumbnail gets a small "+" mark. Photos live in /public/images/gallery/ (created with
  * scripts/optimize-photo.py <photo> public/images/gallery <name>); `width` and `height` are the pixel size of the
  * largest file. An item without photos is shown as a plain card.
+ * A title may contain \n to choose where a long title breaks into lines on its card (the photo page shows it on one line).
  */
 export const news: NewsItem[] = [
   {
@@ -49,7 +50,7 @@ export const news: NewsItem[] = [
   },
   {
     id: 'ybra-90th',
-    title: 'YBRA 90th Anniversary 참여 및 Mt. Beartooth 현장 조사',
+    title: 'YBRA 90th Anniversary 참여 및\nMt. Beartooth 현장 조사',
     image: {
       src: '/images/gallery/ybra-90th-thumb-1600.webp',
       srcSet: '/images/gallery/ybra-90th-thumb-960.webp 960w, /images/gallery/ybra-90th-thumb-1600.webp 1600w',

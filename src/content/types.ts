@@ -91,8 +91,10 @@ export interface Person {
   photo?: ImageRef
   /** Optional line shown between the position and the research interests (e.g. department) */
   affiliation?: string
+  /** Optional degrees: each shows a small label (e.g. "B.S.") with the institution below, like Research Interests */
+  education?: { degree: string; institution: string }[]
   /** Korean version shown when the site is switched to Korean (fields left out stay English) */
-  ko?: { name?: string; position?: string; affiliation?: string }
+  ko?: { name?: string; position?: string; affiliation?: string; education?: { degree: string; institution: string }[] }
 }
 
 /** One degree: shown as "Degree · Years" with the institution on the next line */

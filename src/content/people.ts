@@ -63,9 +63,19 @@ export const graduateStudents: Person[] = [
     position: 'M.S. course',
     affiliation: 'Department of Climate-Social Science Convergence, Kyung Hee University',
     email: 'dmsrlwh@khu.ac.kr',
-    ko: { name: '조은기', position: '석사과정', affiliation: '경희대학교 기후사회과학융합학과' },
+    ko: {
+      name: '조은기',
+      position: '석사과정',
+      affiliation: '경희대학교 기후사회과학융합학과',
+      education: [{ degree: 'B.S.', institution: '경희대학교 지리학과' }],
+    },
+    education: [{ degree: 'B.S.', institution: 'Department of Geography, Kyung Hee University' }],
     researchInterests: 'Geochronology, Geological Engineering, Remote sensing, Anthropocene',
-    photo: { alt: 'Eungi Cho 프로필 사진 (사진 준비 중)' },
+    photo: {
+      src: '/images/people/eungi-cho-600.webp',
+      srcSet: '/images/people/eungi-cho-600.webp 600w, /images/people/eungi-cho-800.webp 800w',
+      alt: 'Eungi Cho의 사진. 푸른 하늘과 산악 지형이 보이는 전망대에서 하늘색 상의를 입고 서 있다.',
+    },
   },
 ]
 

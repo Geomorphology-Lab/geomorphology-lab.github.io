@@ -6,8 +6,9 @@ import { join } from 'node:path'
 
 const dist = join(process.cwd(), 'dist')
 const index = join(dist, 'index.html')
-// Keep this list in sync with the routes in src/content/site.ts
-const routes = ['research', 'members', 'publications', 'news', 'contact']
+// Keep this list in sync with the routes in src/content/site.ts, plus one page for every gallery item that has photos
+// (the ids in src/content/news.ts), so a direct visit or a refresh of /news/<id> works.
+const routes = ['research', 'members', 'publications', 'news', 'contact', 'news/icamg-10', 'news/ybra-90th']
 
 if (!existsSync(index)) throw new Error('dist/index.html not found - run vite build first')
 // Inner pages do not show the slideshow, so drop the homepage image preload there.

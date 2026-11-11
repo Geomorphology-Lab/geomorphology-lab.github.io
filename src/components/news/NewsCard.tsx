@@ -1,21 +1,39 @@
+import { Link } from 'react-router-dom'
 import type { NewsItem } from '../../content/types'
-import { newsCategories } from '../../content/news'
 import { MediaFrame } from '../common/MediaFrame'
 
+/** Small square with a plus (white border, half-transparent white fill): marks a thumbnail that opens a page with more photographs */
+function MoreMark() {
+  return (
+    <span
+      aria-hidden="true"
+      className="absolute right-3 bottom-3 inline-flex size-8 items-center justify-center border border-white bg-white/50 text-black transition-colors duration-300 group-hover:bg-black/60 group-hover:text-white"
+    >
+      <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square">
+        <path d="M8 3v10M3 8h10" />
+      </svg>
+    </span>
+  )
+}
+
 export function NewsCard({ item }: { item: NewsItem }) {
-  const label = newsCategories.find((c) => c.id === item.category)?.label ?? item.category
+  const hasPhotos = Boolean(item.photos?.length)
   const body = (
     <>
-      <MediaFrame image={item.image} aspect="aspect-[3/2]" />
-      <div className="mt-6 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.16em]">
-        <span className="text-accent">{label}</span>
-        <span className="h-px w-4 bg-line-strong" aria-hidden="true" />
-        <span lang="ko" className="text-fg-subtle normal-case tracking-normal">{item.date}</span>
+      <div className="relative">
+        <MediaFrame image={item.image} aspect="aspect-[3/2]" />
+        {hasPhotos && <MoreMark />}
       </div>
-      <h3 lang="ko" className="mt-4 text-lg leading-snug font-semibold text-fg transition-colors group-hover:text-accent">{item.title}</h3>
-      <p lang="ko" className="mt-3 text-[0.95rem] leading-[1.75] text-fg-muted">{item.summary}</p>
+      <h3 lang="ko" className="mt-6 text-lg leading-snug font-semibold text-fg transition-colors group-hover:text-accent">{item.title}</h3>
     </>
   )
+  if (hasPhotos) {
+    return (
+      <Link to={`/news/${item.id}`} className="group block" aria-label={`${item.title} (사진 ${item.photos!.length}장 보기)`}>
+        {body}
+      </Link>
+    )
+  }
   return item.link ? (
     <a href={item.link} className="group block">{body}</a>
   ) : (

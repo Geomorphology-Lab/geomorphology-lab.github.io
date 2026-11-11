@@ -154,16 +154,19 @@ export interface Publication {
   type?: string
 }
 
-export type NewsCategory = 'Fieldwork' | 'Conference' | 'Award' | 'Research'
+/** One photograph of a gallery item: an ImageRef plus its pixel size (keeps the page from jumping while photos load) */
+export interface GalleryPhoto extends ImageRef {
+  width: number
+  height: number
+}
 
 export interface NewsItem {
   id: string
-  category: NewsCategory
-  /** Displayed as written, e.g. '2026.03.15' */
-  date: string
   title: string
-  summary: string
+  /** Thumbnail shown on the Gallery page */
   image?: ImageRef
+  /** Photographs shown one after another on the item's own page (/news/<id>); the thumbnail then gets a "+" mark */
+  photos?: GalleryPhoto[]
   link?: string
 }
 

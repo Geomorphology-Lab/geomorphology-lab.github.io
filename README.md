@@ -71,7 +71,7 @@ npm run preview
 | `research.ts` | 연구 분야(제목, 요약, 설명, 이미지, 관련 과제와 논문) |
 | `people.ts` | 책임연구자, 대학원생, 학부연구생, 졸업생(Members 페이지에 표시. Current Members 탭에서 Graduate Students, Undergraduate Researchers 두 소제목 아래에 차례로 표시) |
 | `publications.ts` | 전체 논문 목록(페이지에서는 연도별로 묶어 표시) |
-| `news.ts` | Gallery 페이지 항목(소식과 사진), 항목 분류 |
+| `news.ts` | Gallery 페이지 항목(썸네일, 제목, 항목별 사진 목록) |
 | `heroSlides.ts` | 홈 히어로 사진(현재 한 장)과 슬라이드쇼 설정 |
 | `pageImages.ts` | Research, Members, Publications, Gallery, Contact의 헤더 사진 |
 | `images.ts` | 예비 헤더 이미지(404 페이지, 헤더 사진을 불러오지 못할 때) |
@@ -128,11 +128,11 @@ npm run preview
 
 ### Adding news or gallery items
 
-Gallery 페이지(주소 `/news`)는 모든 항목을 분류 탭 없이 한 목록으로 보여 줍니다. `news.ts`의 `news` 배열 맨 위에 항목을 추가하세요(위에 있을수록 먼저 표시). `category`는 카드에 작은 라벨로만 표시되며 `'Fieldwork' | 'Conference' | 'Award' | 'Research'` 중 하나여야 합니다. 사진은 3:2 비율로 `public/images/news/`에 넣습니다.
+Gallery 페이지(주소 `/news`)는 모든 항목을 분류 탭이나 분류 글자 없이 한 목록으로 보여 줍니다. 카드에는 썸네일 사진과 제목만 나옵니다. `news.ts`의 `news` 배열에서 위에 있을수록 먼저 표시됩니다(최신 항목을 맨 위에).
 
-```ts
-image: { src: '/images/news/field-2026-05.jpg', alt: '하천 현장 조사 모습' },
-```
+- **사진이 여러 장인 항목:** `photos` 배열에 사진을 넣으면 썸네일 오른쪽 아래에 작은 흰색 "+" 표시가 붙고, 썸네일을 누르면 `/news/<id>`(예: `/news/icamg-10`)에 사진이 위에서 아래로 차례로 나열된 페이지가 열립니다. 각 사진에는 `width`·`height`(가장 큰 파일의 픽셀 크기)와 `alt` 설명이 필요합니다.
+- **새 항목 추가 순서:** ① 사진을 `python3 scripts/optimize-photo.py <사진> public/images/gallery <이름>`으로 변환(960/1600/2560 px WebP, 촬영 정보 등 메타데이터는 제거됨) ② `news.ts`에 항목 추가(`id`는 영문 소문자와 하이픈) ③ `scripts/postbuild.mjs`의 `routes` 배열에 `'news/<id>'` 추가(직접 주소로 들어오거나 새로고침해도 열리게 하는 용도).
+- **사진이 없는 항목:** `image`(썸네일)만 있으면 눌러도 이동하지 않는 일반 카드로 표시됩니다.
 
 ### Contact information and map
 

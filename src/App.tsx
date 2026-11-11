@@ -6,6 +6,7 @@ import ResearchPage from './pages/ResearchPage'
 import MembersPage from './pages/MembersPage'
 import PublicationsPage from './pages/PublicationsPage'
 import NewsPage from './pages/NewsPage'
+import GalleryItemPage from './pages/GalleryItemPage'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="people" element={<Navigate to="/members" replace />} />
           <Route path="publications" element={<PublicationsPage />} />
           <Route path="news" element={<NewsPage />} />
+          <Route path="news/:id" element={<GalleryItemPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

@@ -158,8 +158,13 @@ export default function MembersPage() {
           </section>
           )}
 
-          {/* Graduate students first, then undergraduate researchers, in one list */}
-          {tab === 'current' && <MemberGrid id="current-title" title="Current Members" members={[...graduateStudents, ...undergraduateResearchers]} />}
+          {/* Current Members tab: graduate students first, then undergraduate researchers */}
+          {tab === 'current' && (
+            <>
+              <MemberGrid id="graduate-title" title="Graduate Students" members={graduateStudents} />
+              <MemberGrid id="undergraduate-title" title="Undergraduate Researchers" members={undergraduateResearchers} />
+            </>
+          )}
 
           {/* Alumni */}
           {tab === 'alumni' && alumni.length > 0 && (

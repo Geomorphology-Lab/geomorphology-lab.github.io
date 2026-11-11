@@ -20,9 +20,8 @@ function HeadingText({ title }: { title: string }) {
 
 export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: number }) {
   const num = String(index + 1).padStart(2, '0')
-  // Titles and labels stay English; the question and paragraphs follow the site language
+  // Titles, labels and the guiding question stay English; the paragraphs follow the site language
   const { lang } = useLang()
-  const question = pick(lang, area.question, area.ko?.question)
   const description = pick(lang, area.description, area.ko?.description)
   const flip = index % 2 === 1
   const wide = Boolean(area.image?.wide)
@@ -52,9 +51,9 @@ export function ResearchAreaBlock({ area, index }: { area: ResearchArea; index: 
           <h2 id={`${area.id}-title`} lang="en" className="mt-4 text-[clamp(1.6rem,1.25rem+1.4vw,2.4rem)] font-semibold text-fg">
             <HeadingText title={area.title} />
           </h2>
-          {question.value && (
-            <p lang={question.lang} className="lang-swap mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">
-              {question.value}
+          {area.question && (
+            <p lang="en" className="mt-5 border-l-2 border-accent/60 pl-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.75] text-fg">
+              {area.question}
             </p>
           )}
           <div className="mt-6 space-y-4">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { alumni, graduateStudents, principalInvestigator as pi, undergraduateResearchers } from '../content/people'
+import { alumni, SHOW_ALUMNI, graduateStudents, principalInvestigator as pi, undergraduateResearchers } from '../content/people'
 import { headerPhotos } from '../content/pageImages'
 import type { Person } from '../content/types'
 import { PageHeader } from '../components/common/PageHeader'
@@ -18,14 +18,14 @@ type Tab = 'professor' | 'current' | 'alumni'
 const tabOptions: { id: Tab; label: string }[] = [
   { id: 'professor', label: 'Professor' },
   { id: 'current', label: 'Current Members' },
-  { id: 'alumni', label: 'Alumni' },
+  ...(SHOW_ALUMNI ? [{ id: 'alumni' as const, label: 'Alumni' }] : []), // hidden until there are real records (see people.ts)
 ]
 
 function MemberGrid({ id, title, members }: { id: string; title: string; members: Person[] }) {
   if (members.length === 0) return null
   return (
     <section aria-labelledby={id} className="pt-10 pb-16 md:pt-14 md:pb-24">
-      <SectionHeading id={id} eyebrow="Members" title={title} />
+      <SectionHeading id={id} title={title} />
       <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {members.map((m, i) => (
           <li key={i}><MemberCard person={m} /></li>
@@ -138,8 +138,8 @@ export default function MembersPage() {
               <div className="md:col-span-2">
                 <dt className="eyebrow mb-4 text-fg-subtle">Career</dt>
                 {career.value.map((t, i) => {
-                  // "2025.03–Present: Title, Institution" (Korean: "2025.03–현재: …") → date shown on its own line (text unchanged)
-                  const m = t.match(/^(\d{4}\.\d{2}\s*[–-]\s*(?:\d{4}\.\d{2}|Present|현재)):\s*(.+)$/)
+                  // "2025.03–Present: Title, Institution" → date shown on its own line (text unchanged)
+                  const m = t.match(/^(\d{4}\.\d{2}\s*[–-]\s*(?:\d{4}\.\d{2}|Present)):\s*(.+)$/)
                   return (
                     <dd key={`${career.lang}-${i}`} lang={career.lang} className="lang-swap border-t border-line py-3.5 text-[0.975rem] leading-[1.7] text-fg-muted first-of-type:border-t-0 first-of-type:pt-0">
                       {m ? (
@@ -167,9 +167,9 @@ export default function MembersPage() {
           )}
 
           {/* Alumni */}
-          {tab === 'alumni' && alumni.length > 0 && (
+          {SHOW_ALUMNI && tab === 'alumni' && alumni.length > 0 && (
             <section aria-labelledby="alumni-title" className="pt-10 pb-16 md:pt-14 md:pb-24">
-              <SectionHeading id="alumni-title" eyebrow="Members" title="Alumni" />
+              <SectionHeading id="alumni-title" title="Alumni" />
               <AlumniList alumni={alumni} />
             </section>
           )}

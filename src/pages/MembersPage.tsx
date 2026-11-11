@@ -21,11 +21,11 @@ const tabOptions: { id: Tab; label: string }[] = [
   { id: 'alumni', label: 'Alumni' },
 ]
 
-function MemberGrid({ id, title, members }: { id: string; title: string; members: Person[] }) {
+function MemberGrid({ id, title, members, eyebrow }: { id: string; title: string; members: Person[]; eyebrow?: string }) {
   if (members.length === 0) return null
   return (
     <section aria-labelledby={id} className="pt-10 pb-16 md:pt-14 md:pb-24">
-      <SectionHeading id={id} title={title} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} />
       <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {members.map((m, i) => (
           <li key={i}><MemberCard person={m} /></li>
@@ -161,18 +161,17 @@ export default function MembersPage() {
           {/* Current Members tab: graduate students first, then undergraduate researchers */}
           {tab === 'current' && (
             <>
-              <MemberGrid id="graduate-title" title="Graduate Students" members={graduateStudents} />
+              <MemberGrid id="graduate-title" eyebrow="Members" title="Graduate Students" members={graduateStudents} />
               <MemberGrid id="undergraduate-title" title="Undergraduate Researchers" members={undergraduateResearchers} />
             </>
           )}
 
           {/* Alumni */}
-          {/* The tab opens a blank page until there are real records (SHOW_ALUMNI in people.ts) */}
-          {tab === 'alumni' && !SHOW_ALUMNI && <section aria-label="Alumni" className="min-h-[20rem] pt-10 pb-16 md:min-h-[24rem] md:pt-14 md:pb-24" />}
-          {tab === 'alumni' && SHOW_ALUMNI && alumni.length > 0 && (
-            <section aria-labelledby="alumni-title" className="pt-10 pb-16 md:pt-14 md:pb-24">
-              <SectionHeading id="alumni-title" title="Alumni" />
-              <AlumniList alumni={alumni} />
+          {/* Alumni: only the heading until there are real records (SHOW_ALUMNI in people.ts) */}
+          {tab === 'alumni' && (
+            <section aria-labelledby="alumni-title" className="min-h-[20rem] pt-10 pb-16 md:min-h-[24rem] md:pt-14 md:pb-24">
+              <SectionHeading id="alumni-title" eyebrow="Members" title="Alumni" />
+              {SHOW_ALUMNI && alumni.length > 0 && <AlumniList alumni={alumni} />}
             </section>
           )}
         </div>

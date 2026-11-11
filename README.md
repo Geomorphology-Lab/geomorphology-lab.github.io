@@ -103,6 +103,7 @@ npm run preview
 - `photo.src`를 생략하면 중립적인 인물 이미지가 표시됩니다.
 - `email`은 올바른 이메일 주소일 때만 자동으로 mailto 링크가 됩니다.
 - 구성원이 졸업하면 `{ name, degree, year, currentPosition }` 형식으로 `alumni`로 옮기세요.
+- Alumni 탭과 메뉴 링크는 그대로 있지만, 실제 졸업생 기록이 생기기 전까지 탭 안은 빈 페이지로 보입니다(데이터와 화면 코드는 그대로). 기록을 채운 뒤 `people.ts`의 `SHOW_ALUMNI`를 `true`로 바꾸면 졸업생 목록이 나타납니다.
 
 ### Adding a publication
 
@@ -144,7 +145,7 @@ Contact 페이지 왼쪽의 학부연구생 모집 안내("Join Us | Undergradua
 ### Korean mode (한국어 버튼)
 
 내비게이션 바 오른쪽 끝의 버튼을 누르면 일부 본문이 한국어로 바뀝니다. 사이트는 영어로 열립니다.
-한국어 버전이 있는 곳은 홈 **About** 문단(`src/content/site.ts`의 `homeAbout.paragraphsKo`), 홈 **Research Areas** 소개 문장과 카드 본문, **Research** 페이지 본문(`src/content/research.ts`의 `researchIntro.leadKo`와 각 분야의 `ko` 필드: `summary`, `description`)과 Members의 교수님 이름·학력·경력, 구성원 이름·과정·소속뿐입니다. 홈 메인 화면은 영어와 같고, 각 연구 분야의 연구 질문(제목 아래 한 줄)도 영어로 유지됩니다.
+한국어 버전이 있는 곳은 홈 **About** 문단(`src/content/site.ts`의 `homeAbout.paragraphsKo`), 홈 **Research Areas** 카드 본문, **Research** 페이지 본문(`src/content/research.ts`의 각 분야 `ko` 필드: `summary`, `description`)과 Members의 교수님 이름·학력·경력, 구성원 이름·과정·소속뿐입니다. 홈 메인 화면은 영어와 같고, Research 페이지 맨 위 소개 문장("We study …")과 각 연구 분야의 연구 질문(제목 아래 한 줄)도 영어로 유지됩니다.
 제목, 소제목, 내비게이션과 그 밖의 모든 페이지는 영어로 유지됩니다. 방문자가 고른 언어는 그 브라우저에 기억됩니다(`src/i18n.tsx`, `src/lang.ts`).
 
 ### Homepage hero slideshow

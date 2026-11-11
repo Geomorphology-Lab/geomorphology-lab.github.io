@@ -41,12 +41,12 @@ export const principalInvestigator: PrincipalInvestigator = {
   piKo: {
     name: '정아라 교수',
     education: [
-      { degree: '박사', years: '2015–2019', institution: 'Arizona State University, School of Geographical Sciences and Urban Planning' },
-      { degree: '석사', years: '2013–2015', institution: '고려대학교 지리학과' },
-      { degree: '학사', years: '2009–2013', institution: '고려대학교 지리교육과, 지구환경과학과' },
+      { degree: 'Ph.D.', years: '2015–2019', institution: 'Arizona State University, School of Geographical Sciences and Urban Planning' },
+      { degree: 'Master’s Degree', years: '2013–2015', institution: '고려대학교 지리학과' },
+      { degree: 'Bachelor’s Degree', years: '2009–2013', institution: '고려대학교 지리교육과, 지구환경과학과' },
     ],
     career: [
-      '2025.03–현재: 경희대학교 지리학과, 조교수',
+      '2025.03–Present: 경희대학교 지리학과, 조교수',
       '2022.02–2025.02: 육군사관학교 토목환경학과, 조교수',
       '2021.07–2021.12: 부산대학교 지질재해 산업자원 연구소, 전임연구원',
       '2020.07–2021.06: 고려대학교 미래국토연구소, 연구교수',
@@ -82,6 +82,12 @@ export const undergraduateResearchers: Person[] = [
     },
   },
 ]
+
+/**
+ * The Alumni tab and its menu link stay, but the page is left blank until there are real records:
+ * the list below is not shown. Set this to true once it holds real entries; nothing else needs to change.
+ */
+export const SHOW_ALUMNI = false
 
 export const alumni: Alumnus[] = [
   {

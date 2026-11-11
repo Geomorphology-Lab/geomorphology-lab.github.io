@@ -4,8 +4,6 @@ export const researchIntro = {
   title: 'Research',
   /** Shown on the Home page above the research cards and on the Research page */
   lead: 'We study Earth-surface processes across timescales from millennia to years, linking long-term landscape history with present-day hazards and human impacts.',
-  /** Korean version of the lead (Home Research Areas section and Research page, Korean mode) */
-  leadKo: '수천 년에서 수년에 이르는 다양한 시간 규모에서 지표 과정을 연구하며, 장기적인 지형 발달사를 오늘날의 자연재해 및 인간 활동의 영향과 연결합니다.',
 }
 
 /**

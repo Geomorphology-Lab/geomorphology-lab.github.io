@@ -9,9 +9,8 @@ import { CardPhotoReveal } from './CardPhotoReveal'
 import { pick, useLang } from '../../lang'
 
 export function ResearchOverview() {
-  // Korean mode: the lead and the card summaries switch; the headings and card titles stay English
+  // Korean mode: only the card summaries switch; the headings, the lead and the card titles stay English
   const { lang } = useLang()
-  const lead = pick(lang, researchIntro.lead, researchIntro.leadKo)
   return (
     <section
       id="research-areas"
@@ -27,9 +26,8 @@ export function ResearchOverview() {
           id="research-areas-title"
           eyebrow="Research Areas"
           title="Research Areas"
-          description={lead.value}
-          descriptionLang={lead.lang}
-          swap
+          description={researchIntro.lead}
+          descriptionLang="en"
           action={<ArrowLink to="/research">All research</ArrowLink>}
         />
         <ol className="grid border-t border-l border-line sm:grid-cols-2 xl:grid-cols-4">

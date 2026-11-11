@@ -145,7 +145,7 @@ Contact 페이지 왼쪽의 학부연구생 모집 안내("Join Us | Undergradua
 ### Korean mode (한국어 버튼)
 
 내비게이션 바 오른쪽 끝의 버튼을 누르면 일부 본문이 한국어로 바뀝니다. 사이트는 영어로 열립니다.
-한국어 버전이 있는 곳은 홈 **About** 문단(`src/content/site.ts`의 `homeAbout.paragraphsKo`), 홈 **Research Areas** 소개 문장과 카드 본문, **Research** 페이지 본문(`src/content/research.ts`의 `researchIntro.leadKo`와 각 분야의 `ko` 필드: `summary`, `description`)과 Members의 교수님 이름·학력·경력, 구성원 이름·과정·소속뿐입니다. 홈 메인 화면은 영어와 같고, 각 연구 분야의 연구 질문(제목 아래 한 줄)도 영어로 유지됩니다.
+한국어 버전이 있는 곳은 홈 **About** 문단(`src/content/site.ts`의 `homeAbout.paragraphsKo`), 홈 **Research Areas** 카드 본문, **Research** 페이지 본문(`src/content/research.ts`의 각 분야 `ko` 필드: `summary`, `description`)과 Members의 교수님 이름·학력·경력, 구성원 이름·과정·소속뿐입니다. 홈 메인 화면은 영어와 같고, Research 페이지 맨 위 소개 문장("We study …")과 각 연구 분야의 연구 질문(제목 아래 한 줄)도 영어로 유지됩니다.
 제목, 소제목, 내비게이션과 그 밖의 모든 페이지는 영어로 유지됩니다. 방문자가 고른 언어는 그 브라우저에 기억됩니다(`src/i18n.tsx`, `src/lang.ts`).
 
 ### Homepage hero slideshow

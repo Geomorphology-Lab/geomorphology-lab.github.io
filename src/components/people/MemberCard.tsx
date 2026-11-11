@@ -26,6 +26,12 @@ export function MemberCard({ person: base }: { person: Person }) {
         {person.affiliation && (
           <p lang={isKorean(person.affiliation) ? 'ko' : 'en'} className="lang-swap mt-1 text-sm leading-relaxed text-fg-muted">{person.affiliation}</p>
         )}
+        {person.education?.map((e) => (
+          <div key={e.degree + e.institution} className="mt-4">
+            <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">{e.degree}</p>
+            <p lang={isKorean(e.institution) ? 'ko' : 'en'} className="text-[0.95rem] leading-[1.7] text-fg-muted">{e.institution}</p>
+          </div>
+        ))}
         {person.researchInterests && (
           <div className="mt-4">
             <p className="eyebrow mb-1.5 text-[0.6875rem] tracking-[0.14em] text-fg-subtle">Research Interests</p>

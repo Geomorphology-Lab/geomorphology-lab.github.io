@@ -103,7 +103,7 @@ npm run preview
 - `photo.src`를 생략하면 중립적인 인물 이미지가 표시됩니다.
 - `email`은 올바른 이메일 주소일 때만 자동으로 mailto 링크가 됩니다.
 - 구성원이 졸업하면 `{ name, degree, year, currentPosition }` 형식으로 `alumni`로 옮기세요.
-- Alumni 탭과 메뉴 링크는 실제 졸업생 기록이 생기기 전까지 사이트에서 숨겨져 있습니다(데이터와 코드는 그대로). 기록을 채운 뒤 `people.ts`의 `SHOW_ALUMNI`를 `true`로 바꾸면 다시 나타납니다.
+- Alumni 탭과 메뉴 링크는 그대로 있지만, 실제 졸업생 기록이 생기기 전까지 탭 안은 빈 페이지로 보입니다(데이터와 화면 코드는 그대로). 기록을 채운 뒤 `people.ts`의 `SHOW_ALUMNI`를 `true`로 바꾸면 졸업생 목록이 나타납니다.
 
 ### Adding a publication
 

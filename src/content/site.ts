@@ -1,6 +1,5 @@
 import type { NavItem, ProspectiveInfo } from './types'
 import { researchAreas } from './research'
-import { SHOW_ALUMNI } from './people'
 
 /**
  * Site-wide information. Text marked "이곳에는 …" is temporary and should be
@@ -59,7 +58,7 @@ export const navigation: NavItem[] = [
       // the Members page shows one group at a time; the address after # chooses the tab (see MembersPage)
       { label: 'Professor', path: '/members#professor' },
       { label: 'Current Members', path: '/members#current' },
-      ...(SHOW_ALUMNI ? [{ label: 'Alumni', path: '/members#alumni' }] : []), // hidden until there are real records (see people.ts)
+      { label: 'Alumni', path: '/members#alumni' },
     ],
   },
   { label: 'Publications', path: '/publications' },

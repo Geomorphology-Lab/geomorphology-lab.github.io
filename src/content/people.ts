@@ -84,8 +84,8 @@ export const undergraduateResearchers: Person[] = [
 ]
 
 /**
- * Alumni are not shown on the site yet (no real records): the tab and the menu link are hidden.
- * Set this to true once the list below holds real entries; nothing else needs to change.
+ * The Alumni tab and its menu link stay, but the page is left blank until there are real records:
+ * the list below is not shown. Set this to true once it holds real entries; nothing else needs to change.
  */
 export const SHOW_ALUMNI = false
 

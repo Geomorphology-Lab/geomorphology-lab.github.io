@@ -18,7 +18,7 @@ type Tab = 'professor' | 'current' | 'alumni'
 const tabOptions: { id: Tab; label: string }[] = [
   { id: 'professor', label: 'Professor' },
   { id: 'current', label: 'Current Members' },
-  ...(SHOW_ALUMNI ? [{ id: 'alumni' as const, label: 'Alumni' }] : []), // hidden until there are real records (see people.ts)
+  { id: 'alumni', label: 'Alumni' },
 ]
 
 function MemberGrid({ id, title, members }: { id: string; title: string; members: Person[] }) {
@@ -167,7 +167,9 @@ export default function MembersPage() {
           )}
 
           {/* Alumni */}
-          {SHOW_ALUMNI && tab === 'alumni' && alumni.length > 0 && (
+          {/* The tab opens a blank page until there are real records (SHOW_ALUMNI in people.ts) */}
+          {tab === 'alumni' && !SHOW_ALUMNI && <section aria-label="Alumni" className="min-h-[20rem] pt-10 pb-16 md:min-h-[24rem] md:pt-14 md:pb-24" />}
+          {tab === 'alumni' && SHOW_ALUMNI && alumni.length > 0 && (
             <section aria-labelledby="alumni-title" className="pt-10 pb-16 md:pt-14 md:pb-24">
               <SectionHeading id="alumni-title" title="Alumni" />
               <AlumniList alumni={alumni} />

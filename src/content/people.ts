@@ -60,7 +60,7 @@ export const principalInvestigator: PrincipalInvestigator = {
 export const graduateStudents: Person[] = [
   {
     name: 'Eungi Cho',
-    position: 'M.S. student',
+    position: 'M.S. course',
     email: 'dmsrlwh@khu.ac.kr',
     ko: { name: '조은기', position: '석사과정' },
     photo: { alt: 'Eungi Cho 프로필 사진 (사진 준비 중)' },

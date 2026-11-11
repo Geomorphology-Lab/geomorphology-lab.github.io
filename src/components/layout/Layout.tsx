@@ -34,7 +34,7 @@ function useRouteEffects() {
 
   useEffect(() => {
     const clean = pathname.replace(/\/+$/, '') || '/'
-    const page = navigation.find((n) => n.path === clean)
+    const page = navigation.find((n) => n.path === clean || clean.startsWith(`${n.path}/`))
     document.title = page ? `${page.label} | ${site.name}, ${site.institution}` : `${site.name} | ${site.institution}`
   }, [pathname])
 }

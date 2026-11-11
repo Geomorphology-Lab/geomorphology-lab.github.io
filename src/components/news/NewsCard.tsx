@@ -24,12 +24,12 @@ export function NewsCard({ item }: { item: NewsItem }) {
         <MediaFrame image={item.image} aspect="aspect-[3/2]" />
         {hasPhotos && <MoreMark />}
       </div>
-      <h3 lang="ko" className="mt-6 text-lg leading-snug font-semibold text-fg transition-colors group-hover:text-accent">{item.title}</h3>
+      <h3 lang="ko" className="mt-6 text-lg leading-snug font-semibold whitespace-pre-line text-fg transition-colors group-hover:text-accent">{item.title}</h3>
     </>
   )
   if (hasPhotos) {
     return (
-      <Link to={`/news/${item.id}`} className="group block" aria-label={`${item.title} (사진 ${item.photos!.length}장 보기)`}>
+      <Link to={`/news/${item.id}`} className="group block" aria-label={`${item.title.replace('\n', ' ')} (사진 ${item.photos!.length}장 보기)`}>
         {body}
       </Link>
     )

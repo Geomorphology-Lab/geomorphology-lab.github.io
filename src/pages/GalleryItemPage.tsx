@@ -22,7 +22,7 @@ export default function GalleryItemPage() {
             <span aria-hidden="true">←</span> Gallery
           </Link>
           <h2 lang="ko" className="mt-6 max-w-4xl text-[clamp(1.5rem,1.2rem+1.3vw,2.25rem)] leading-snug font-semibold text-fg">
-            {item.title}
+            {item.title.replace('\n', ' ')}
           </h2>
           <ul className="mt-10 flex flex-col items-center gap-8 md:mt-14 md:gap-12">
             {item.photos!.map((p, i) => (

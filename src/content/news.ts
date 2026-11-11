@@ -18,13 +18,6 @@ export const news: NewsItem[] = [
     },
     photos: [
       {
-        src: '/images/gallery/icamg-10-01-1600.webp',
-        srcSet: '/images/gallery/icamg-10-01-960.webp 960w, /images/gallery/icamg-10-01-1600.webp 1600w, /images/gallery/icamg-10-01-2560.webp 2560w',
-        width: 2560,
-        height: 1707,
-        alt: '레스토랑 실내의 식사 자리에 일행이 앉아 있다.',
-      },
-      {
         src: '/images/gallery/icamg-10-02-1600.webp',
         srcSet: '/images/gallery/icamg-10-02-960.webp 960w, /images/gallery/icamg-10-02-1600.webp 1600w, /images/gallery/icamg-10-02-2560.webp 2560w',
         width: 2560,
@@ -38,6 +31,13 @@ export const news: NewsItem[] = [
         height: 1920,
         alt: 'ICAMG-10 현수막이 걸린 발표장 무대 앞에 두 사람이 서 있다.',
       },
+      {
+        src: '/images/gallery/icamg-10-01-1600.webp',
+        srcSet: '/images/gallery/icamg-10-01-960.webp 960w, /images/gallery/icamg-10-01-1600.webp 1600w, /images/gallery/icamg-10-01-2560.webp 2560w',
+        width: 2560,
+        height: 1707,
+        alt: '레스토랑 실내의 식사 자리에 일행이 앉아 있다.',
+      }
     ],
   },
   {

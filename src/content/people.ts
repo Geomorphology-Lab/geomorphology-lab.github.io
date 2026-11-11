@@ -63,7 +63,7 @@ export const graduateStudents: Person[] = [
     position: 'M.S. course',
     affiliation: 'Department of Climate-Social Science Convergence, Kyung Hee University',
     email: 'dmsrlwh@khu.ac.kr',
-    ko: { name: '조은기', position: '석사과정', affiliation: '경희대학교 기후사회과학웅합학과' },
+    ko: { name: '조은기', position: '석사과정', affiliation: '경희대학교 기후사회과학융합학과' },
     researchInterests: 'Geochronology, Geological Engineering, Remote sensing, Anthropocene',
     photo: { alt: 'Eungi Cho 프로필 사진 (사진 준비 중)' },
   },

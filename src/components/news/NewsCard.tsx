@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom'
 import type { NewsItem } from '../../content/types'
 import { MediaFrame } from '../common/MediaFrame'
 
-/** Small white square with a plus: marks a thumbnail that opens a page with more photographs */
+/** Small square with a plus (white border, half-transparent white fill): marks a thumbnail that opens a page with more photographs */
 function MoreMark() {
   return (
     <span
       aria-hidden="true"
-      className="absolute right-3 bottom-3 inline-flex size-8 items-center justify-center bg-white text-black shadow-[0_2px_10px_rgb(0_0_0/0.25)] transition-colors duration-300 group-hover:bg-black group-hover:text-white"
+      className="absolute right-3 bottom-3 inline-flex size-8 items-center justify-center border border-white bg-white/50 text-black transition-colors duration-300 group-hover:bg-black/60 group-hover:text-white"
     >
       <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square">
         <path d="M8 3v10M3 8h10" />

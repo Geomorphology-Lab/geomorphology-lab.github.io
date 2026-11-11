@@ -40,6 +40,13 @@ export const news: NewsItem[] = [
         alt: 'ICAMG-10 현수막이 걸린 발표장 무대 앞에 두 사람이 서 있다.',
       },
       {
+        src: '/images/gallery/ybra-90th-07-1600.webp',
+        srcSet: '/images/gallery/ybra-90th-07-960.webp 960w, /images/gallery/ybra-90th-07-1600.webp 1600w, /images/gallery/ybra-90th-07-2560.webp 2560w',
+        width: 2560,
+        height: 1707,
+        alt: '넓은 연회장에서 참석자들이 원탁에 앉아 손을 들어 인사하고 있다.',
+      },
+      {
         src: '/images/gallery/icamg-10-01-1600.webp',
         srcSet: '/images/gallery/icamg-10-01-960.webp 960w, /images/gallery/icamg-10-01-1600.webp 1600w, /images/gallery/icamg-10-01-2560.webp 2560w',
         width: 2560,
@@ -106,14 +113,7 @@ export const news: NewsItem[] = [
         width: 2560,
         height: 1920,
         alt: '온천 침전물 지형이 보이는 나무 난간 앞에 세 사람이 앉고 서 있다.',
-      },
-      {
-        src: '/images/gallery/ybra-90th-07-1600.webp',
-        srcSet: '/images/gallery/ybra-90th-07-960.webp 960w, /images/gallery/ybra-90th-07-1600.webp 1600w, /images/gallery/ybra-90th-07-2560.webp 2560w',
-        width: 2560,
-        height: 1707,
-        alt: '넓은 연회장에서 참석자들이 원탁에 앉아 손을 들어 인사하고 있다.',
-      },
+      }
     ],
   },
 ]

@@ -18,6 +18,13 @@ export const news: NewsItem[] = [
     },
     photos: [
       {
+        src: '/images/gallery/icamg-10-thumb-1600.webp',
+        srcSet: '/images/gallery/icamg-10-thumb-960.webp 960w, /images/gallery/icamg-10-thumb-1600.webp 1600w',
+        width: 1600,
+        height: 1200,
+        alt: '발표 슬라이드가 비치는 스크린 옆에서 발표하는 모습',
+      },
+      {
         src: '/images/gallery/icamg-10-02-1600.webp',
         srcSet: '/images/gallery/icamg-10-02-960.webp 960w, /images/gallery/icamg-10-02-1600.webp 1600w, /images/gallery/icamg-10-02-2560.webp 2560w',
         width: 2560,
@@ -50,6 +57,13 @@ export const news: NewsItem[] = [
       position: '40% 50%',
     },
     photos: [
+      {
+        src: '/images/gallery/ybra-90th-thumb-1600.webp',
+        srcSet: '/images/gallery/ybra-90th-thumb-960.webp 960w, /images/gallery/ybra-90th-thumb-1600.webp 1600w',
+        width: 1600,
+        height: 554,
+        alt: '“90” 표지판 뒤로 참가자들이 야외에 모여 선 단체 사진',
+      },
       {
         src: '/images/gallery/ybra-90th-01-1600.webp',
         srcSet: '/images/gallery/ybra-90th-01-960.webp 960w, /images/gallery/ybra-90th-01-1600.webp 1600w, /images/gallery/ybra-90th-01-2560.webp 2560w',

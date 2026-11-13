@@ -229,7 +229,6 @@ export function SiteHeader() {
                               className={`size-5 text-fg-subtle transition-transform duration-300 motion-reduce:transition-none ${isOpen ? 'rotate-180' : ''}`}
                             />
                           </span>
-                          <span className="text-xs tabular-nums tracking-[0.2em] text-fg-subtle">{String(i + 1).padStart(2, '0')}</span>
                         </button>
                         <div
                           id={subId}
@@ -269,7 +268,6 @@ export function SiteHeader() {
                     }
                   >
                     {item.label}
-                    <span className="text-xs tabular-nums tracking-[0.2em] text-fg-subtle">{String(i + 1).padStart(2, '0')}</span>
                   </NavLink>
                 )}
               </li>

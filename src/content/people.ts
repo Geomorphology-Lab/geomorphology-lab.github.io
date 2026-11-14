@@ -85,7 +85,7 @@ export const undergraduateResearchers: Person[] = [
     position: 'Undergraduate researcher',
     affiliation: 'Department of Chemistry and Department of Geography, Kyung Hee University',
     ko: { name: '김소현', position: '학부연구생', affiliation: '경희대학교 화학과 / 지리학과' },
-    researchInterests: 'Biogeochemistry, Environmental Remote Sensing, Earth System Data Analysis',
+    researchInterests: 'Environmental Chemistry, Biogeochemistry, Environmental Remote Sensing, Earth System Data Analysis',
     email: 'nhye03@khu.ac.kr',
     photo: {
       src: '/images/people/sohyeon-kim-600.webp',

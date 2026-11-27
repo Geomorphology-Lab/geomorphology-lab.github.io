@@ -21,6 +21,18 @@ import type { Publication } from './types'
  */
 export const publications: Publication[] = [
   {
+    id: '2026-10-22658-koq-2026-36-1-043',
+    year: 2026,
+    title: 'Soil Erosion in the Anthropocene: Quaternary Natural Background Rates and Human-Induced Acceleration – A Case Study from the Sonoran Desert, USA',
+    authors: ['Jeong, A.'],
+    venue: 'The Korean Journal of Quaternary Research',
+    volume: '36',
+    issue: '1',
+    pages: '43–62',
+    doi: '10.22658/koq.2026.36.1.043',
+    type: 'journal',
+  },
+  {
     id: '2026-10-1016-j-earscirev-2025-105323',
     year: 2026,
     title: 'Global patterns of shore platform evolution and cliff retreat: Insights from cosmogenic radionuclides',
